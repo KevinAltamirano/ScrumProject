@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, ModalController } from 'ionic-angular';
-import { ProyectoPage } from '../proyecto/proyecto'
+import { ProyectoPage } from '../proyecto/proyecto';
+import { Login1Page } from '../login1/login1'; 
 
 @Component({
   selector: 'page-home',
@@ -13,7 +14,7 @@ export class HomePage {
   }
 
   public login(): void{
-  	let modal = this.navCtrl.setRoot(ProyectoPage)
+  	let modal = this.navCtrl.setRoot(Login1Page)
   	
   }
 }
