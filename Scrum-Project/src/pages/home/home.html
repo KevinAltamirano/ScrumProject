@@ -1,0 +1,28 @@
+<html ng-app="start">
+<head>
+  <title>Home Page</title>
+  <script src="app.js"></script>
+  <script src="cordova.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <script type="text/javascript" src="index.js"></script>
+</head>
+<body>
+  <ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Menu xd</ion-title>
+    </ion-navbar>
+  </ion-header>
+
+    <ion-content padding  ng-controller="LoginController">
+    <div>
+    <p>
+      <button ng-click="login()" ion-button color="primary" menuToggle>Click me</button>
+    </p>
+    <p>some {{count}}</p>
+  </div>
+  </ion-content>
+</body>
+</html>
