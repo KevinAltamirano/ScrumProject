@@ -15,6 +15,19 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class ProyectoPage {
 
+	lista: Array<any> =[
+	{
+		id: 1,
+		nombre: "ScrumProject",
+		idTeam: 2
+	},
+	{
+		id: 2,
+		nombre: "ScrumProject",
+		idTeam: 2
+	}
+	]
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 

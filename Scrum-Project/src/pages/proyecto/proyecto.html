@@ -4,20 +4,15 @@
 <body>
   <ion-header>
     <ion-navbar>
-      <button ion-button menuToggle>
-        <ion-icon name="menu"></ion-icon>
-      </button>
-      <ion-title>Este es el proyecto xd</ion-title>
+      <ion-title>Proyectos</ion-title>
     </ion-navbar>
   </ion-header>
 
     <ion-content padding>
-    <div>
-    <p>
-      <button ion-button color="primary" menuToggle (click)="login()">Click me</button>
-    </p>
-    <p>some</p>
-  </div>
+        <ion-list>
+          <ion-item *ngFor="let item of lista">{{item.nombre}}</ion-item>
+        </ion-list>
+        <button ion-button round>Crear proyecto</button>
   </ion-content>
 </body>
 </html>

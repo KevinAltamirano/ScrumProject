@@ -13,7 +13,7 @@ export class HomePage {
   }
 
   public login(): void{
-  	let modal = this.navCtrl.setRoot(ProyectoPage)
+  	this.navCtrl.setRoot(ProyectoPage)
   	
   }
 }
