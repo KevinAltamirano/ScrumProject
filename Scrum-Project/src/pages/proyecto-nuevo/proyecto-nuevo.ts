@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { HistoriasUsuariosPage } from '../historias-usuarios/historias-usuarios';
 
 /**
  * Generated class for the ProyectoNuevoPage page.
@@ -19,6 +20,11 @@ export class ProyectoNuevoPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProyectoNuevoPage');
+  }
+
+  public historias(): void {
+    let modal = this.navCtrl.setRoot(HistoriasUsuariosPage)
+
   }
 
 }

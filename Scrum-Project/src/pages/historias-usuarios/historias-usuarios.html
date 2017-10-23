@@ -16,15 +16,14 @@
 <ion-content padding>
   <div>
     <form>
-      Nombre del Proyecto<br>
+      Nombre Historia<br>
       <input type="text" name="nombre"><br>
       Descripción<br>
       <input type="text" name="descrip"> <br>
       Sprint<br>
       <input type ="number" name="sprint"><br>
 
-      <input type="submit" value="Siguiente"> <br>
-      <input type="submit" value="Crear otra Historia de Usuario"><br>
+      <button ion-button color="primary" menuToggle (click)="siguiente()">Siguiente</button>
 
     </form>
 </div>

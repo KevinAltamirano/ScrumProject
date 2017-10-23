@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { ProyectoNuevoPage } from '../proyecto-nuevo/proyecto-nuevo';
 
 /**
  * Generated class for the ProyectoPage page.
@@ -20,6 +21,11 @@ export class ProyectoPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProyectoPage');
+  }
+
+  public nuevo(): void {
+    let modal = this.navCtrl.setRoot(ProyectoNuevoPage)
+
   }
 
 }

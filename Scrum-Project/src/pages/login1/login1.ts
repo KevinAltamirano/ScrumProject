@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { ProyectoPage } from '../proyecto/proyecto';
 
 /**
  * Generated class for the Login1Page page.
@@ -21,4 +22,8 @@ export class Login1Page {
     console.log('ionViewDidLoad Login1Page');
   }
 
+  public proyecto(): void {
+    let modal = this.navCtrl.setRoot(ProyectoPage)
+
+  }
 }

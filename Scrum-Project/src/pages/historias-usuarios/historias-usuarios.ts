@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-
+import { CrearTareasPage } from '../crear-tareas/crear-tareas';
 /**
  * Generated class for the HistoriasUsuariosPage page.
  *
@@ -20,5 +20,8 @@ export class HistoriasUsuariosPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad HistoriasUsuariosPage');
   }
+  public siguiente(): void {
+    let modal = this.navCtrl.setRoot(CrearTareasPage)
 
+  }
 }

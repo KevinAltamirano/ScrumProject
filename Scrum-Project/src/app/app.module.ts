@@ -8,13 +8,22 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ProyectoPage } from '../pages/proyecto/proyecto';
 import { Login1Page } from '../pages/login1/login1';
+import { TareasaAsignarPage } from '../pages/tareasa-asignar/tareasa-asignar';
+import { ProyectoNuevoPage } from '../pages/proyecto-nuevo/proyecto-nuevo';
+import { HistoriasUsuariosPage } from '../pages/historias-usuarios/historias-usuarios';
+import { CrearTareasPage } from '../pages/crear-tareas/crear-tareas';
+
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     ProyectoPage,
-    Login1Page
+    Login1Page,
+    ProyectoNuevoPage,
+    HistoriasUsuariosPage,
+    TareasaAsignarPage,
+    CrearTareasPage
   ],
   imports: [
     BrowserModule,
@@ -25,7 +34,11 @@ import { Login1Page } from '../pages/login1/login1';
     MyApp,
     HomePage,
     ProyectoPage,
-    Login1Page
+    Login1Page,
+    ProyectoNuevoPage,
+    HistoriasUsuariosPage,
+    TareasaAsignarPage,
+    CrearTareasPage
   ],
   providers: [
     StatusBar,
