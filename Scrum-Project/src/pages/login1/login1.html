@@ -16,13 +16,17 @@
   
       <ion-content padding>
       <div>
-        <form>
-          Usuario<br>
-          <input type="text" name="usuario"><br>
-          Contraseña<br>
-          <input type="password" name="pass"> <br> <br>
-          <button ion-button color="primary" menuToggle (click)="proyecto()">Aceptar</button>
-        </form>
+          <ion-item>
+              <ion-label floating>Usuario</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+            
+          <ion-item>
+              <ion-label floating>Contraseña</ion-label>
+              <ion-input type="password"></ion-input>
+            </ion-item>
+       
+        <button ion-button color="primary" menuToggle (click)="proyecto()" block>Sing IN</button>
     </div>
     </ion-content>
   </body>

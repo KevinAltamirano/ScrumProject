@@ -14,11 +14,8 @@ export class HomePage {
   }
 
   public login(): void{
-<<<<<<< HEAD
   	let modal = this.navCtrl.setRoot(Login1Page)
-=======
-  	this.navCtrl.setRoot(ProyectoPage)
->>>>>>> 2f7c09215f9ad1f0fbc0d3311c8923b3fb4e3562
+  	
   	
   }
 }

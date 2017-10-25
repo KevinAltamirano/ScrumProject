@@ -22,6 +22,7 @@ export class HistoriasUsuariosPage {
   }
   public siguiente(): void {
     let modal = this.navCtrl.setRoot(CrearTareasPage)
+    
 
   }
 }
