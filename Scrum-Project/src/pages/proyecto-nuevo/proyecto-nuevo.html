@@ -15,28 +15,28 @@
 
 <ion-content padding>
   <div>
-    <form>
-      Nombre del Proyecto<br>
-      <input type="text" name="nombre"><br>
-      Descripción<br>
-      <input type="text" name="descrip"> <br>
-      Número de Sprints<br>
-      <select>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-      </select>
-
-      Asignar Equipo al proyecto<br>
-      <form>
-        <input type="checkbox"  value="Kevin" checked> Kevin<br>
-        <input type="checkbox"  value="Andrea"> Andrea<br>
-        <input type="checkbox"  value="Kike"> Kike<br>  
-      </form> 
-      
-
+      <ion-item>
+          <ion-label color="primary">Nombre del proyecto</ion-label>
+          <ion-input type="text" placeholder="Ejemplo: Sistema solar"></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label color="primary">Descripción</ion-label>
+          <ion-input type="text" placeholder=""></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label color="primary">Número de Sprints</ion-label>
+          <ion-input type="number" placeholder="Numero"></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label color="primary">Asignar equipo al proyecto</ion-label>
+          <ion-select [(ngModel)]="toppings" okText="Okay" cancelText="Nah!" multiple="true">
+            <ion-option>Andrea</ion-option>
+            <ion-option>Kevin</ion-option>
+            <ion-option>Kike</ion-option>
+          </ion-select>
+        </ion-item>
+        
       <button ion-button color="primary" menuToggle (click)="historias()">Historias de Usuarios</button>
-    </form>
+   
 </div>
 </ion-content>

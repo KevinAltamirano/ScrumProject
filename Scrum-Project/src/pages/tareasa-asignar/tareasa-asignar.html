@@ -15,20 +15,23 @@
 
 <ion-content padding>
   <div>
+      <ion-item>
+          <ion-label color="primary">Nombre de la tarea</ion-label>
+          <ion-input type="text" placeholder=""></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label color="primary">Descripción</ion-label>
+          <ion-input type="text" placeholder="150 caracteres Máx."></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label color="primary">Asignar equipo al proyecto</ion-label>
+          <ion-select [(ngModel)]="toppings" okText="Okay" cancelText="Nah!" multiple="true">
+            <ion-option>Andrea</ion-option>
+            <ion-option>Kevin</ion-option>
+            <ion-option>Kike</ion-option>
+          </ion-select>
+        </ion-item>
     <form>
-      Nombre de la tarea<br>
-      <input type="text" name="nombre"><br>
-      Descripción<br>
-      <input type="text" name="descrip"> <br>
-      
-      Asignar la tarea <br>
-      <form>
-        <input type="radio"  value="Andrea" checked> Andrea<br>
-        <input type="radio"  value="Kevin"> Kevin<br>
-        <input type="radio"  value="Kike"> Kike<br>  
-      </form> 
-      
-
       <input type="submit" value="Historias de Usuarios">
     </form>
 </div>

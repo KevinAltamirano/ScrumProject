@@ -2,35 +2,37 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the CrearTareasPage page.
+ * Generated class for the VerTareasPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
 
 @Component({
-  selector: 'page-crear-tareas',
-  templateUrl: 'crear-tareas.html',
+  selector: 'page-ver-tareas',
+  templateUrl: 'ver-tareas.html',
 })
-export class CrearTareasPage {
-  lista: Array<any> =[
+export class VerTareasPage {
+  
+	listaTareas: Array<any> =[
     {
       id: 1,
-      nombre: "Acceso Usuarioss",
+      nombre: "Hacer Login",
       idTeam: 2
     },
     {
       id: 2,
-      nombre: "ScrumProject",
+      nombre: "Otra tarea xd",
       idTeam: 2
     }
     ]
+  
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CrearTareasPage');
+    console.log('ionViewDidLoad VerTareasPage');
   }
 
 }

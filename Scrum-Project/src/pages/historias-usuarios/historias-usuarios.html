@@ -15,16 +15,18 @@
 
 <ion-content padding>
   <div>
-    <form>
-      Nombre Historia<br>
-      <input type="text" name="nombre"><br>
-      Descripción<br>
-      <input type="text" name="descrip"> <br>
-      Sprint<br>
-      <input type ="number" name="sprint"><br>
-
-      <button ion-button color="primary" menuToggle (click)="siguiente()">Siguiente</button>
-
-    </form>
+      <ion-item>
+          <ion-label color="primary">Nombre de la historia</ion-label>
+          <ion-input type="text" placeholder=""></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label color="primary">Descripción</ion-label>
+          <ion-input type="text" placeholder="150 caracteres Máx."></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label color="primary">Número de Sprints</ion-label>
+          <ion-input type="number" placeholder="Numero"></ion-input>
+      </ion-item>
+    <button ion-button color="primary" menuToggle (click)="siguiente()">Siguiente</button>
 </div>
 </ion-content>
