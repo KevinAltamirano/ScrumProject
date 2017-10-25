@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { CrearTareasPage } from '../crear-tareas/crear-tareas';
+
+import { ProyectoNuevoPage } from '../proyecto-nuevo/proyecto-nuevo';
 /**
  * Generated class for the HistoriasUsuariosPage page.
  *
@@ -25,4 +27,10 @@ export class HistoriasUsuariosPage {
     
 
   }
+  public atras(): void {
+    let modal = this.navCtrl.setRoot(ProyectoNuevoPage)
+
+
+  }
+  
 }

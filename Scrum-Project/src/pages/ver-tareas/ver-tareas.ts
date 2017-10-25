@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
+import { CrearTareasPage } from '../crear-tareas/crear-tareas';
 /**
  * Generated class for the VerTareasPage page.
  *
@@ -22,8 +23,14 @@ export class VerTareasPage {
     },
     {
       id: 2,
-      nombre: "Otra tarea xd",
+      nombre: "Tarea Ejemplo",
       idTeam: 2
+    },
+    
+    {
+      id: 3,
+      nombre: "Tarea Ejemplo2",
+      idTeam:2
     }
     ]
   
@@ -33,6 +40,12 @@ export class VerTareasPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad VerTareasPage');
+  }
+  public atras(): void {
+    let modal = this.navCtrl.setRoot(CrearTareasPage)
+
+
+
   }
 
 }

@@ -14,22 +14,35 @@
 
 
 <ion-content padding>
+
+
   <div>
     <form>
-      <h1>Historias</h1><br>
-      <ul>
-        <li>Acceso para usuarios
-          <input type="submit" value="Crear Tareas">
-          <input type="submit" value="Ver Tareas">
-        </li>
-
-        <li>Enviar datos por correo</li>
-      </ul>
-     
+      
+      
+      <ion-list>
+      
+        <ion-list-header>
+          Historias
+        </ion-list-header>
+      
+        <ion-item>
+          Acceso para Usuarios
+          <br>
+          <button ion-button color="danger" (click)="crear()">Crear Tareas</button>
+          <button ion-button color="danger" (click)="ver()">Ver Tareas</button>
+        </ion-item>
+      <ion-item>
+      Enviar datos por correo
       <br>
-      <input type="submit" value="Regresar">
-
-      <input type="submit" value="Crear Otra Historia">
+      <button ion-button color="danger" (click)="crear()">Crear Tareas</button>
+      <button ion-button color="danger" (click)="ver()">Ver Tareas</button>
+      </ion-item>     
+      <br>
+      
+      <button ion-button color="primary" (click)="atras()">Crear Historia</button>
+      <button ion-button color="secondary" (click)="home()">Proyectos</button>
+</ion-list>
     </form>
 </div>
 </ion-content>

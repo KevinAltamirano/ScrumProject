@@ -27,6 +27,17 @@ export class ProyectoPage {
 		nombre: "ScrumProject",
 		idTeam: 2
 	}
+		,
+	{
+		id: 3,
+		nombre: "ScrumProject",
+		idTeam: 2
+	},
+	{
+		id: 4,
+		nombre: "ScrumProject",
+		idTeam: 2
+	}
 	]
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
@@ -39,6 +50,6 @@ export class ProyectoPage {
   public nuevo(): void {
     let modal = this.navCtrl.setRoot(ProyectoNuevoPage)
 
-  }
+	}
 
 }

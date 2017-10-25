@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { TareasaAsignarPage } from '../tareasa-asignar/tareasa-asignar'
+import { HistoriasUsuariosPage } from '../historias-usuarios/historias-usuarios';
+import { VerTareasPage } from '../ver-tareas/ver-tareas'
+
+import { ProyectoPage } from '../proyecto/proyecto';
 
 /**
  * Generated class for the CrearTareasPage page.
@@ -32,5 +37,30 @@ export class CrearTareasPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad CrearTareasPage');
   }
+
+  public atras(): void {
+    let modal = this.navCtrl.setRoot(HistoriasUsuariosPage)
+
+
+  }
+  public home(): void {
+    let modal = this.navCtrl.setRoot(ProyectoPage)
+
+
+  }
+  public crear(): void {
+    let modal = this.navCtrl.setRoot(TareasaAsignarPage)
+
+
+  }
+
+  public ver(): void {
+    let modal = this.navCtrl.setRoot(VerTareasPage)
+
+
+  }
+
+
+
 
 }

@@ -16,27 +16,28 @@
 <ion-content padding>
   <div>
       <ion-item>
-          <ion-label color="primary">Nombre del proyecto</ion-label>
-          <ion-input type="text" placeholder="Ejemplo: Sistema solar"></ion-input>
+          <ion-label color="primary" floating>Nombre del proyecto</ion-label>
+          <ion-input type="text" ></ion-input>
       </ion-item>
       <ion-item>
-          <ion-label color="primary">Descripción</ion-label>
+          <ion-label color="primary"floating>Descripción</ion-label>
           <ion-input type="text" placeholder=""></ion-input>
       </ion-item>
       <ion-item>
-          <ion-label color="primary">Número de Sprints</ion-label>
-          <ion-input type="number" placeholder="Numero"></ion-input>
+          <ion-label color="primary"floating>Número de Sprints</ion-label>
+          <ion-input type="number" placeholder="  "></ion-input>
       </ion-item>
       <ion-item>
-          <ion-label color="primary">Asignar equipo al proyecto</ion-label>
+          <ion-label color="primary" floating>Asignar equipo al proyecto</ion-label>
           <ion-select [(ngModel)]="toppings" okText="Okay" cancelText="Nah!" multiple="true">
             <ion-option>Andrea</ion-option>
             <ion-option>Kevin</ion-option>
             <ion-option>Kike</ion-option>
           </ion-select>
         </ion-item>
-        
+        <br><br>
       <button ion-button color="primary" menuToggle (click)="historias()">Historias de Usuarios</button>
+      <button ion-button color="secondary" menuToggle (click)="atras()">Atras</button>
    
 </div>
 </ion-content>

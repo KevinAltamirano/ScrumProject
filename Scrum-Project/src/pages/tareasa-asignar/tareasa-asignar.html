@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>tareasaAsignar</ion-title>
+    <ion-title>Crear Tarea</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -16,23 +16,24 @@
 <ion-content padding>
   <div>
       <ion-item>
-          <ion-label color="primary">Nombre de la tarea</ion-label>
+          <ion-label color="primary" floating>Nombre de la tarea</ion-label>
           <ion-input type="text" placeholder=""></ion-input>
       </ion-item>
       <ion-item>
-          <ion-label color="primary">Descripción</ion-label>
-          <ion-input type="text" placeholder="150 caracteres Máx."></ion-input>
+          <ion-label color="primary" floating>Descripción</ion-label>
+          <ion-input type="text" placeholder=""></ion-input>
       </ion-item>
       <ion-item>
-          <ion-label color="primary">Asignar equipo al proyecto</ion-label>
+          <ion-label color="primary" floating>Asignar equipo al proyecto</ion-label>
           <ion-select [(ngModel)]="toppings" okText="Okay" cancelText="Nah!" multiple="true">
             <ion-option>Andrea</ion-option>
             <ion-option>Kevin</ion-option>
             <ion-option>Kike</ion-option>
           </ion-select>
         </ion-item>
-    <form>
-      <input type="submit" value="Historias de Usuarios">
-    </form>
+        <br>
+          <form>
+            <button ion-button color="primary" (click)="siguiente()">Agregar</button>
+          </form>
 </div>
 </ion-content>

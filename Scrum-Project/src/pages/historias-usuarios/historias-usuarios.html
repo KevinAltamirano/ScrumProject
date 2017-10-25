@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Historias de Usuarios</ion-title>
+    <ion-title>Crear Historia</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -16,17 +16,20 @@
 <ion-content padding>
   <div>
       <ion-item>
-          <ion-label color="primary">Nombre de la historia</ion-label>
+          <ion-label color="primary" floating>Nombre de la historia</ion-label>
           <ion-input type="text" placeholder=""></ion-input>
       </ion-item>
       <ion-item>
-          <ion-label color="primary">Descripción</ion-label>
-          <ion-input type="text" placeholder="150 caracteres Máx."></ion-input>
+          <ion-label color="primary" floating>Descripción</ion-label>
+          <ion-input type="text" ></ion-input>
       </ion-item>
       <ion-item>
-          <ion-label color="primary">Número de Sprints</ion-label>
-          <ion-input type="number" placeholder="Numero"></ion-input>
+          <ion-label color="primary"floating  >Número de Sprints</ion-label>
+          <ion-input type="number" placeholder=""></ion-input>
       </ion-item>
-    <button ion-button color="primary" menuToggle (click)="siguiente()">Siguiente</button>
+
+      <br><br>
+    <button ion-button color="primary" menuToggle (click)="siguiente()">Agregar</button>
+    <button ion-button color="secondary" menuToggle (click)="atras()">Atras</button>
 </div>
 </ion-content>

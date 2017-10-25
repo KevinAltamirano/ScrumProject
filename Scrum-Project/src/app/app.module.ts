@@ -12,7 +12,7 @@ import { TareasaAsignarPage } from '../pages/tareasa-asignar/tareasa-asignar';
 import { ProyectoNuevoPage } from '../pages/proyecto-nuevo/proyecto-nuevo';
 import { HistoriasUsuariosPage } from '../pages/historias-usuarios/historias-usuarios';
 import { CrearTareasPage } from '../pages/crear-tareas/crear-tareas';
-
+import { VerTareasPage } from '../pages/ver-tareas/ver-tareas'
 
 @NgModule({
   declarations: [
@@ -23,7 +23,8 @@ import { CrearTareasPage } from '../pages/crear-tareas/crear-tareas';
     ProyectoNuevoPage,
     HistoriasUsuariosPage,
     TareasaAsignarPage,
-    CrearTareasPage
+    CrearTareasPage,
+    VerTareasPage
   ],
   imports: [
     BrowserModule,
@@ -38,7 +39,8 @@ import { CrearTareasPage } from '../pages/crear-tareas/crear-tareas';
     ProyectoNuevoPage,
     HistoriasUsuariosPage,
     TareasaAsignarPage,
-    CrearTareasPage
+    CrearTareasPage,
+    VerTareasPage
   ],
   providers: [
     StatusBar,

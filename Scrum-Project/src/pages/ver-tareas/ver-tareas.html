@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>verTareas</ion-title>
+    <ion-title>Ver Tareas</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -17,4 +17,6 @@
     <ion-list>
         <ion-item *ngFor="let item of listaTareas">{{item.nombre}}</ion-item>
     </ion-list>
+    <br>
+    <button ion-button color="secondary" (click)="atras()">Atras</button>
 </ion-content>

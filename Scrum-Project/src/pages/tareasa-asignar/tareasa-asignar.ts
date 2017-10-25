@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
+import { CrearTareasPage } from '../crear-tareas/crear-tareas';
 /**
  * Generated class for the TareasaAsignarPage page.
  *
@@ -20,5 +21,11 @@ export class TareasaAsignarPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad TareasaAsignarPage');
   }
+ 
+  public siguiente(): void {
+    let modal = this.navCtrl.setRoot(CrearTareasPage)
+    
 
+
+  }
 }
