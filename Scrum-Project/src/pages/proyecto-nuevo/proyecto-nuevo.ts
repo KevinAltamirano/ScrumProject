@@ -24,11 +24,11 @@ export class ProyectoNuevoPage {
   }
 
   public historias(): void {
-    let modal = this.navCtrl.setRoot(HistoriasUsuariosPage)
+    let modal = this.navCtrl.setRoot(HistoriasUsuariosPage);
 
   }
   public atras(): void {
-    let modal = this.navCtrl.setRoot(ProyectoPage)
+    let modal = this.navCtrl.setRoot(ProyectoPage);
 
   }
 

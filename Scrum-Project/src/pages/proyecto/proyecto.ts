@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { ProyectoNuevoPage } from '../proyecto-nuevo/proyecto-nuevo';
 import { ManejadorProvider } from '../../providers/manejador';
 
@@ -20,7 +20,7 @@ export class ProyectoPage {
   project: any;
 	lista: Array<any> = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public manejadorProvider: ManejadorProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public manejadorProvider: ManejadorProvider, public modalCtrl: ModalController) {
 
   }
 
@@ -37,7 +37,8 @@ export class ProyectoPage {
           var p = {
         		id: this.project[_i]['idProyecto'],
         		nombre: this.project[_i]['Nombre'],
-        		idTeam: this.project[_i]['idTeam']
+        		idTeam: this.project[_i]['idTeam'],
+            descripcion: this.project[_i]['Descripcion']
         	};
           this.lista.push(p);
         }
@@ -47,8 +48,8 @@ export class ProyectoPage {
   }
 
   public nuevo(): void {
-    this.navCtrl.setRoot(ProyectoNuevoPage)
-
+    let modal = this.modalCtrl.create(ProyectoNuevoPage);
+    modal.present();
 	}
 
 }
