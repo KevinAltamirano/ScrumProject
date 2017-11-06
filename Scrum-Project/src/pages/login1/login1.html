@@ -13,16 +13,16 @@
         <ion-title>Universidad Politecnica Chiapas</ion-title>
       </ion-navbar>
     </ion-header>
-  
+
       <ion-content padding>
       <div>
           <ion-item>
               <ion-label floating>Usuario</ion-label>
-              <ion-input type="email" ></ion-input>
+              <ion-input type="text" [(ngModel)]="usuario"></ion-input>
           </ion-item>
           <ion-item>
               <ion-label floating>Contraseña</ion-label>
-              <ion-input type="password"></ion-input>
+              <ion-input type="password" [(ngModel)]="contrasena"></ion-input>
           </ion-item>
           <br><br>
       <button ion-button round menuToggle (click)="proyecto()" full>Sign In</button>

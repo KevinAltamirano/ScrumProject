@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { ProyectoPage } from '../proyecto/proyecto';
+import { ManejadorProvider } from '../../providers/manejador';
+import 'rxjs/add/operator/map';
 
 /**
  * Generated class for the Login1Page page.
@@ -15,7 +17,11 @@ import { ProyectoPage } from '../proyecto/proyecto';
 })
 export class Login1Page {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  usuario = "";
+  contrasena = "";
+  accion = "login";
+  user: any;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public manejadorProvider: ManejadorProvider) {
   }
 
   ionViewDidLoad() {
@@ -23,7 +29,15 @@ export class Login1Page {
   }
 
   public proyecto(): void {
-    let modal = this.navCtrl.setRoot(ProyectoPage)
+    this.manejadorProvider.login(this.usuario, this.contrasena, this.accion)
+    .then(data => {
+      this.user = data['usuario'];
+      if(this.user==null){
+          alert('Credenciales incorrectas');
+      }else{
+        this.navCtrl.setRoot(ProyectoPage);
+      }
 
+    });
   }
 }

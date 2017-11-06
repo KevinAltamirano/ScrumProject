@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { ProyectoNuevoPage } from '../proyecto-nuevo/proyecto-nuevo';
+import { ManejadorProvider } from '../../providers/manejador';
 
 /**
  * Generated class for the ProyectoPage page.
@@ -15,40 +16,38 @@ import { ProyectoNuevoPage } from '../proyecto-nuevo/proyecto-nuevo';
   templateUrl: 'proyecto.html',
 })
 export class ProyectoPage {
+  accion = "proyecto";
+  project: any;
+	lista: Array<any> = [];
 
-	lista: Array<any> =[
-	{
-		id: 1,
-		nombre: "ScrumProject",
-		idTeam: 2
-	},
-	{
-		id: 2,
-		nombre: "ScrumProject",
-		idTeam: 2
-	}
-		,
-	{
-		id: 3,
-		nombre: "ScrumProject",
-		idTeam: 2
-	},
-	{
-		id: 4,
-		nombre: "ScrumProject",
-		idTeam: 2
-	}
-	]
+  constructor(public navCtrl: NavController, public navParams: NavParams, public manejadorProvider: ManejadorProvider) {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProyectoPage');
+    this.manejadorProvider.proyecto(this.accion)
+    .then(data => {
+      this.project = data['proyectos'];
+      console.log(this.project.length);
+      if(this.project==null){
+          alert('No tiene ningun proyecto');
+      }else{
+        for (var _i = 0; _i < this.project.length; _i++) {
+          var p = {
+        		id: this.project[_i]['idProyecto'],
+        		nombre: this.project[_i]['Nombre'],
+        		idTeam: this.project[_i]['idTeam']
+        	};
+          this.lista.push(p);
+        }
+      }
+
+    });
   }
 
   public nuevo(): void {
-    let modal = this.navCtrl.setRoot(ProyectoNuevoPage)
+    this.navCtrl.setRoot(ProyectoNuevoPage)
 
 	}
 
