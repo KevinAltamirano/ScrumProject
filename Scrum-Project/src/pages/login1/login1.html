@@ -9,13 +9,15 @@
   </head>
   <body>
     <ion-header>
-      <ion-navbar>
+      <ion-navbar color="primary">
         <ion-title>Universidad Politecnica Chiapas</ion-title>
       </ion-navbar>
     </ion-header>
 
       <ion-content padding>
+        
       <div>
+        <ion-icon name="md-contact" color="dark" icon-center></ion-icon>
           <ion-item>
               <ion-label floating>Usuario</ion-label>
               <ion-input type="text" [(ngModel)]="usuario"></ion-input>
@@ -25,7 +27,7 @@
               <ion-input type="password" [(ngModel)]="contrasena"></ion-input>
           </ion-item>
           <br><br>
-      <button ion-button round menuToggle (click)="proyecto()" full>Log In</button>
+      <button ion-button round  menuToggle (click)="proyecto()" medium color="primary" full>Ingresar</button>
     </div>
     </ion-content>
   </body>

@@ -3,22 +3,44 @@
 </head>
 <body>
   <ion-header>
-    <ion-navbar>
+    <ion-navbar color="primary">
       <button ion-button menuToggle>
         <ion-icon name="menu"></ion-icon>
       </button>
-      <ion-title>Proyecto</ion-title>
+      <ion-title>Proyectos</ion-title>
     </ion-navbar>
   </ion-header>
 
+
+
+  <ion-menu [content]="content">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title >Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <button ion-item (click)="atras()">
+          Proyectos
+        </button>
+        <button ion-item (click)="nuevo()">
+          Crear Proyecto
+        </button>
+        
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+<ion-nav id="nav" #content [root]="rootPage"></ion-nav>
+  
   <ion-content padding>
         <ion-list>
           <div *ngFor="let item of lista">
-            <ion-item>{{item.nombre}}</ion-item>
-            <ion-label stacked>{{item.descripcion}}</ion-label>
+            <ion-item (click)="historias()">{{item.nombre}}</ion-item>
+            <ion-label stacked >{{item.descripcion}}</ion-label>
           </div>
         </ion-list>
-        <button ion-button color="primary" menuToggle (click)="nuevo()">Crear Proyecto</button>
 
   </ion-content>
 </body>

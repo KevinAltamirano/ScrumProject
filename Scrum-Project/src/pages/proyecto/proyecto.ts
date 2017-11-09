@@ -3,6 +3,9 @@ import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { ProyectoNuevoPage } from '../proyecto-nuevo/proyecto-nuevo';
 import { ManejadorProvider } from '../../providers/manejador';
 
+import { CrearTareasPage } from '../crear-tareas/crear-tareas';
+
+import { HistoriasUsuariosPage } from '../historias-usuarios/historias-usuarios';
 /**
  * Generated class for the ProyectoPage page.
  *
@@ -50,6 +53,13 @@ export class ProyectoPage {
   public nuevo(): void {
     let modal = this.modalCtrl.create(ProyectoNuevoPage);
     modal.present();
-	}
+  }
+  public atras(): void {
+    let modal = this.modalCtrl.create(ProyectoPage);
+    modal.present();
+  }
+  public historias(): void {
+    let modal = this.navCtrl.setRoot(CrearTareasPage);
 
+  }
 }
