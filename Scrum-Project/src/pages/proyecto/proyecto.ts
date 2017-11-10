@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ModalController } from 'ionic-angular';
+import { NavController, NavParams, ModalController, ViewController } from 'ionic-angular';
 import { ProyectoNuevoPage } from '../proyecto-nuevo/proyecto-nuevo';
 import { ManejadorProvider } from '../../providers/manejador';
 
@@ -50,6 +50,11 @@ export class ProyectoPage {
     });
   }
 
+  public openModal(){
+    let modal = this.modalCtrl.create(ProyectoNuevoPage);
+    modal.present();
+  }
+
   public nuevo(): void {
     let modal = this.modalCtrl.create(ProyectoNuevoPage);
     modal.present();
@@ -62,4 +67,12 @@ export class ProyectoPage {
     let modal = this.navCtrl.setRoot(CrearTareasPage);
 
   }
+}
+
+@Component({
+	templateUrl:'src/pages/proyecto-nuevo/proyeco-nuevo.html'
+})
+
+export class ModalsContentPage {
+
 }

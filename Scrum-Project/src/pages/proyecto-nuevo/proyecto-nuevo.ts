@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams,} from 'ionic-angular';
 import { HistoriasUsuariosPage } from '../historias-usuarios/historias-usuarios';
 
 import { ProyectoPage } from '../proyecto/proyecto';
+import { ViewController } from 'ionic-angular/navigation/view-controller';
 /**
  * Generated class for the ProyectoNuevoPage page.
  *
@@ -16,7 +17,7 @@ import { ProyectoPage } from '../proyecto/proyecto';
 })
 export class ProyectoNuevoPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
   }
 
   ionViewDidLoad() {
@@ -31,5 +32,10 @@ export class ProyectoNuevoPage {
     let modal = this.navCtrl.setRoot(ProyectoPage);
 
   }
+
+  dismiss()
+	{
+		this.viewCtrl.dismiss();
+	}
 
 }
