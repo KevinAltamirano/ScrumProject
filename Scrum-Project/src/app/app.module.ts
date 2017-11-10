@@ -14,7 +14,8 @@ import { TareasaAsignarPage } from '../pages/tareasa-asignar/tareasa-asignar';
 import { ProyectoNuevoPage } from '../pages/proyecto-nuevo/proyecto-nuevo';
 import { HistoriasUsuariosPage } from '../pages/historias-usuarios/historias-usuarios';
 import { CrearTareasPage } from '../pages/crear-tareas/crear-tareas';
-import { VerTareasPage } from '../pages/ver-tareas/ver-tareas'
+import { VerTareasPage } from '../pages/ver-tareas/ver-tareas';
+import { SprintsPage} from '../pages/sprints/sprints';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { VerTareasPage } from '../pages/ver-tareas/ver-tareas'
     HistoriasUsuariosPage,
     TareasaAsignarPage,
     CrearTareasPage,
-    VerTareasPage
+    VerTareasPage,
+    SprintsPage
   ],
   imports: [
     HttpClientModule,
@@ -43,7 +45,8 @@ import { VerTareasPage } from '../pages/ver-tareas/ver-tareas'
     HistoriasUsuariosPage,
     TareasaAsignarPage,
     CrearTareasPage,
-    VerTareasPage
+    VerTareasPage,
+    SprintsPage
   ],
   providers: [
     StatusBar,

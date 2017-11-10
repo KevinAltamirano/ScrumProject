@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController, ViewController } from 'ionic-angular';
 import { ProyectoNuevoPage } from '../proyecto-nuevo/proyecto-nuevo';
 import { ManejadorProvider } from '../../providers/manejador';
-
+import { SprintsPage } from '../sprints/sprints';
 import { CrearTareasPage } from '../crear-tareas/crear-tareas';
 
 import { HistoriasUsuariosPage } from '../historias-usuarios/historias-usuarios';
@@ -64,7 +64,7 @@ export class ProyectoPage {
     modal.present();
   }
   public historias(): void {
-    let modal = this.navCtrl.setRoot(CrearTareasPage);
+    let modal = this.navCtrl.setRoot(SprintsPage);
 
   }
 }

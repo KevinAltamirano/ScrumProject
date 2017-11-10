@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,ModalController, ViewController } from 'ionic-angular';
 import { NuevoSprintPage } from '../nuevo-sprint/nuevo-sprint';
+import { ManejadorProvider } from '../../providers/manejador';
 
+import { CrearTareasPage } from '../crear-tareas/crear-tareas';
 /**
  * Generated class for the SprintsPage page.
  *
@@ -16,14 +18,43 @@ import { NuevoSprintPage } from '../nuevo-sprint/nuevo-sprint';
 })
 export class SprintsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
+  accion = "proyecto";
+  project: any;
+  lista: Array<any> = [];
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public manejadorProvider: ManejadorProvider, public modalCtrl: ModalController) {
+
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SprintsPage');
+    console.log('ionViewDidLoad ProyectoPage');
+    this.manejadorProvider.proyecto(this.accion)
+      .then(data => {
+        this.project = data['proyectos'];
+        console.log(this.project.length);
+        if (this.project == null) {
+          alert('No tiene ningun proyecto');
+        } else {
+          for (var _i = 0; _i < this.project.length; _i++) {
+            var p = {
+              id: this.project[_i]['idProyecto'],
+              nombre: this.project[_i]['Nombre'],
+              idTeam: this.project[_i]['idTeam'],
+              descripcion: this.project[_i]['Descripcion']
+            };
+            this.lista.push(p);
+          }
+        }
+
+      });
   }
   public openModal(){
     let modal = this.modalCtrl.create(NuevoSprintPage);
     modal.present();
   }
+  public h(): void {
+    let modal = this.navCtrl.setRoot(CrearTareasPage);
+
+  }
+  
 }
