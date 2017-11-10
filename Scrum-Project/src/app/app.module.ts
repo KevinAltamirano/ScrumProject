@@ -16,6 +16,7 @@ import { HistoriasUsuariosPage } from '../pages/historias-usuarios/historias-usu
 import { CrearTareasPage } from '../pages/crear-tareas/crear-tareas';
 import { VerTareasPage } from '../pages/ver-tareas/ver-tareas';
 import { SprintsPage} from '../pages/sprints/sprints';
+import { NuevoSprintPage} from '../pages/nuevo-sprint/nuevo-sprint';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,9 @@ import { SprintsPage} from '../pages/sprints/sprints';
     TareasaAsignarPage,
     CrearTareasPage,
     VerTareasPage,
-    SprintsPage
+    SprintsPage,
+    NuevoSprintPage
+    
   ],
   imports: [
     HttpClientModule,
@@ -46,7 +49,8 @@ import { SprintsPage} from '../pages/sprints/sprints';
     TareasaAsignarPage,
     CrearTareasPage,
     VerTareasPage,
-    SprintsPage
+    SprintsPage,
+    NuevoSprintPage
   ],
   providers: [
     StatusBar,

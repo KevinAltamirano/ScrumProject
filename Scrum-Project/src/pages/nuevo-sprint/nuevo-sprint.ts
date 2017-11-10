@@ -22,6 +22,8 @@ export class NuevoSprintPage {
     console.log('ionViewDidLoad NuevoSprintPage');
   }
 
+  
+
   dismiss()
 	{
 		this.viewCtrl.dismiss();
