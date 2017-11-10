@@ -4,7 +4,7 @@ import { ProyectoNuevoPage } from '../proyecto-nuevo/proyecto-nuevo';
 import { ManejadorProvider } from '../../providers/manejador';
 import { SprintsPage } from '../sprints/sprints';
 import { CrearTareasPage } from '../crear-tareas/crear-tareas';
-
+import { ViewProjectPage } from '../view-project/view-project';
 import { HistoriasUsuariosPage } from '../historias-usuarios/historias-usuarios';
 /**
  * Generated class for the ProyectoPage page.
@@ -67,12 +67,10 @@ export class ProyectoPage {
     let modal = this.navCtrl.setRoot(SprintsPage);
 
   }
-}
 
-@Component({
-	templateUrl:'src/pages/proyecto-nuevo/proyeco-nuevo.html'
-})
-
-export class ModalsContentPage {
+  public detalles(id:number): void {
+    let modal = this.modalCtrl.create(ViewProjectPage, { projectId: id });
+    modal.present();
+	}
 
 }

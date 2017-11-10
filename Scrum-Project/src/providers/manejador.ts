@@ -42,4 +42,55 @@ export class ManejadorProvider{
   });
   }
 
+  public showteam(ac:string){
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    let data=JSON.stringify({accion:ac});
+    return new Promise(resolve => {
+    this.http.post(this.database,data,headers).subscribe(data => {
+      //console.log('esto es del manejadorProvider');
+      resolve(data);
+      //console.log(data['proyectos'][0]['Nombre']);
+
+    }, err => {
+      console.log(err);
+    });
+  });
+}
+
+
+
+public newProject(nombre:string, descripcion:string, team:string){
+  let headers = new Headers();
+  headers.append('Content-Type', 'application/json');
+  let data=JSON.stringify({accion:"newProject", id:this.usuario['idUsuario'], nombre:nombre, descripcion:descripcion, team:team});
+  return new Promise(resolve => {
+  this.http.post(this.database,data,headers).subscribe(data => {
+    //console.log('esto es del manejadorProvider');
+    resolve(data);
+    //console.log(data['proyectos'][0]['Nombre']);
+
+  }, err => {
+    console.log(err);
+  });
+});
+}
+
+public showProject(ac:string, idP:number){
+  let headers = new Headers();
+  headers.append('Content-Type', 'application/json');
+  let data=JSON.stringify({accion:ac, id:idP});
+  console.log(idP);
+  return new Promise(resolve => {
+  this.http.post(this.database,data,headers).subscribe(data => {
+    //console.log('esto es del manejadorProvider');
+    resolve(data);
+    //console.log(data[0]);
+
+  }, err => {
+    console.log(err);
+  });
+});
+}
+
 }

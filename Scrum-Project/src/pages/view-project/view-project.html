@@ -1,0 +1,30 @@
+<!--
+  Generated template for the ViewProjectPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<html>
+<head>
+</head>
+<body>
+  <ion-header>
+      <ion-toolbar>
+         <ion-buttons end>
+           <button (click)="dismiss()"> Atras</button>
+         </ion-buttons>
+      </ion-toolbar>
+  </ion-header>
+
+  <ion-content padding>
+    <ion-list>
+      <ion-item *ngFor="let item of lista">
+        <ion-title>{{item.nombre}} </ion-title>
+        <br>
+        <ion-option>{{item.descripcion}} </ion-option>
+      </ion-item>
+    </ion-list>
+
+  </ion-content>
+</body>
+</html>

@@ -17,6 +17,7 @@ import { CrearTareasPage } from '../pages/crear-tareas/crear-tareas';
 import { VerTareasPage } from '../pages/ver-tareas/ver-tareas';
 import { SprintsPage} from '../pages/sprints/sprints';
 import { NuevoSprintPage} from '../pages/nuevo-sprint/nuevo-sprint';
+import { ViewProjectPage } from '../pages/view-project/view-project';
 
 @NgModule({
   declarations: [
@@ -30,8 +31,8 @@ import { NuevoSprintPage} from '../pages/nuevo-sprint/nuevo-sprint';
     CrearTareasPage,
     VerTareasPage,
     SprintsPage,
-    NuevoSprintPage
-    
+    NuevoSprintPage,
+    ViewProjectPage
   ],
   imports: [
     HttpClientModule,
@@ -50,7 +51,8 @@ import { NuevoSprintPage} from '../pages/nuevo-sprint/nuevo-sprint';
     CrearTareasPage,
     VerTareasPage,
     SprintsPage,
-    NuevoSprintPage
+    NuevoSprintPage,
+    ViewProjectPage
   ],
   providers: [
     StatusBar,

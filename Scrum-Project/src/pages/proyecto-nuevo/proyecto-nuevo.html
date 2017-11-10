@@ -9,7 +9,7 @@
         <ion-title>Descripción</ion-title>
        <ion-buttons end>
          <button (click)="dismiss()"> Cancelar</button>
-       </ion-buttons> 		
+       </ion-buttons>
     </ion-toolbar>
 </ion-header>
 
@@ -18,22 +18,16 @@
   <div>
       <ion-item>
           <ion-label color="primary" floating>Nombre del proyecto</ion-label>
-          <ion-input type="text" ></ion-input>
+          <ion-input [(ngModel)]="nombre" type="text" ></ion-input>
       </ion-item>
       <ion-item>
           <ion-label color="primary"floating>Descripción</ion-label>
-          <ion-input type="text" placeholder=""></ion-input>
-      </ion-item>
-      <ion-item>
-          <ion-label color="primary"floating>Número de Sprints</ion-label>
-          <ion-input type="number" placeholder="  "></ion-input>
+          <ion-input [(ngModel)]="descripcion" type="text" placeholder=""></ion-input>
       </ion-item>
       <ion-item>
           <ion-label color="primary" floating>Asignar equipo al proyecto</ion-label>
           <ion-select [(ngModel)]="toppings" okText="Okay" cancelText="Nah!" multiple="true">
-            <ion-option>Andrea</ion-option>
-            <ion-option>Kevin</ion-option>
-            <ion-option>Kike</ion-option>
+            <ion-option  *ngFor="let item of lista" [value]=item.id>{{item.nombre}}</ion-option>
           </ion-select>
         </ion-item>
         <br><br>

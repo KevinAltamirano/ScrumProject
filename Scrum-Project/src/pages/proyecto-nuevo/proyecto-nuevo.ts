@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams,} from 'ionic-angular';
 import { HistoriasUsuariosPage } from '../historias-usuarios/historias-usuarios';
-
+import { ManejadorProvider } from '../../providers/manejador';
 import { ProyectoPage } from '../proyecto/proyecto';
 import { ViewController } from 'ionic-angular/navigation/view-controller';
 /**
@@ -17,11 +17,35 @@ import { ViewController } from 'ionic-angular/navigation/view-controller';
 })
 export class ProyectoNuevoPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
+  accion = "showteam";
+  users: any;
+  lista: Array<any> = [];
+
+  nombre="";
+  descripcion="";
+  toppings="";
+  team ="";
+  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public manejadorProvider: ManejadorProvider) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ProyectoNuevoPage');
+    this.manejadorProvider.showteam(this.accion)
+    .then(data => {
+      this.users = data['usuarios'];
+      //console.log(this.project.length);
+      if(this.users==null){
+          alert('No tiene ningun proyecto');
+      }else{
+        for (var _i = 0; _i < this.users.length; _i++) {
+          var p = {
+        		id: this.users[_i]['idUsuario'],
+        		nombre: this.users[_i]['Usuario']
+        	};
+          this.lista.push(p);
+        }
+      }
+
+    });
   }
 
   public historias(): void {
@@ -29,7 +53,14 @@ export class ProyectoNuevoPage {
 
   }
   public atras(): void {
-    let modal = this.navCtrl.setRoot(ProyectoPage);
+    this.team = JSON.stringify({idUser: this.toppings})
+    this.manejadorProvider.newProject(this.nombre, this.descripcion, this.team)
+    .then(data => {
+    //  this.users = data['usuarios'];
+      let modal = this.navCtrl.setRoot(ProyectoPage);
+
+    });
+
 
   }
 
