@@ -6,29 +6,22 @@
 -->
 <ion-header>
 
-  <ion-navbar >
-    <ion-title>Crear Historia</ion-title>
+  <ion-navbar>
+      <ion-toolbar>
+          <ion-title>Crear hist de usuario</ion-title>
+         <ion-buttons end>
+           <button (click)="dismiss()">Cancelar</button>
+         </ion-buttons>
+      </ion-toolbar>
   </ion-navbar>
-
 </ion-header>
-
-
 <ion-content padding>
   <div>
       <ion-item>
           <ion-label color="primary" floating>Nombre de la historia</ion-label>
-          <ion-input type="text" placeholder=""></ion-input>
+          <ion-input [(ngModel)]="nombre" type="text" placeholder=""></ion-input>
       </ion-item>
-      <ion-item>
-          <ion-label color="primary" floating>Descripción</ion-label>
-          <ion-input type="text" ></ion-input>
-      </ion-item>
-      <ion-item>
-          <ion-label color="primary"floating  >Número de Sprints</ion-label>
-          <ion-input type="number" placeholder=""></ion-input>
-      </ion-item>
-
       <br><br>
-    <button ion-button color="primary" menuToggle (click)="siguiente()">Agregar</button>
+    <button ion-button color="primary" menuToggle (click)="crear()">Agregar</button>
 </div>
 </ion-content>

@@ -13,11 +13,11 @@ import { Login1Page } from '../pages/login1/login1';
 import { TareasaAsignarPage } from '../pages/tareasa-asignar/tareasa-asignar';
 import { ProyectoNuevoPage } from '../pages/proyecto-nuevo/proyecto-nuevo';
 import { HistoriasUsuariosPage } from '../pages/historias-usuarios/historias-usuarios';
-import { CrearTareasPage } from '../pages/crear-tareas/crear-tareas';
 import { VerTareasPage } from '../pages/ver-tareas/ver-tareas';
 import { SprintsPage} from '../pages/sprints/sprints';
 import { NuevoSprintPage} from '../pages/nuevo-sprint/nuevo-sprint';
 import { ViewProjectPage } from '../pages/view-project/view-project';
+import { ViewHistPage } from '../pages/view-hist/view-hist';
 
 @NgModule({
   declarations: [
@@ -28,11 +28,11 @@ import { ViewProjectPage } from '../pages/view-project/view-project';
     ProyectoNuevoPage,
     HistoriasUsuariosPage,
     TareasaAsignarPage,
-    CrearTareasPage,
     VerTareasPage,
     SprintsPage,
     NuevoSprintPage,
-    ViewProjectPage
+    ViewProjectPage,
+    ViewHistPage
   ],
   imports: [
     HttpClientModule,
@@ -48,11 +48,11 @@ import { ViewProjectPage } from '../pages/view-project/view-project';
     ProyectoNuevoPage,
     HistoriasUsuariosPage,
     TareasaAsignarPage,
-    CrearTareasPage,
     VerTareasPage,
     SprintsPage,
     NuevoSprintPage,
-    ViewProjectPage
+    ViewProjectPage,
+    ViewHistPage
   ],
   providers: [
     StatusBar,

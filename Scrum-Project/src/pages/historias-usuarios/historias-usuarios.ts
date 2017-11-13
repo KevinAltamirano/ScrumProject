@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { CrearTareasPage } from '../crear-tareas/crear-tareas';
-
-import { ProyectoNuevoPage } from '../proyecto-nuevo/proyecto-nuevo';
+import { ManejadorProvider } from '../../providers/manejador';
+import { ViewController } from 'ionic-angular/navigation/view-controller';
 /**
  * Generated class for the HistoriasUsuariosPage page.
  *
@@ -16,21 +15,32 @@ import { ProyectoNuevoPage } from '../proyecto-nuevo/proyecto-nuevo';
 })
 export class HistoriasUsuariosPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  idS:number;
+  idHU:any;
+  nombre="";
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public manejadorProvider: ManejadorProvider, public viewCtrl: ViewController) {
+  //  console.log('sprintId', navParams.get('sprintId'));
+    this.idS = navParams.get('sprintId');
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad HistoriasUsuariosPage');
+    //console.log('ionViewDidLoad HistoriasUsuariosPage');
   }
-  public siguiente(): void {
-    let modal = this.navCtrl.setRoot(CrearTareasPage)
-    
 
+  public crear(): void{
+    this.manejadorProvider.newHU(this.idS, this.nombre)
+      .then(data => {
+        this.idHU = data;
+        this.viewCtrl.dismiss();
+      });
   }
-  public atras(): void {
-    let modal = this.navCtrl.setRoot(ProyectoNuevoPage)
 
 
-  }
-  
+
+  dismiss()
+	{
+		this.viewCtrl.dismiss();
+	}
+
 }

@@ -11,7 +11,7 @@
           <ion-title>Sprints</ion-title>
          <ion-buttons end>
            <button (click)="dismiss()"> Cancelar</button>
-         </ion-buttons> 		
+         </ion-buttons>
       </ion-toolbar>
   </ion-navbar>
 
@@ -22,21 +22,21 @@
     <div>
         <ion-item>
             <ion-label color="primary" floating>Nombre Sprint</ion-label>
-            <ion-input type="text" ></ion-input>
+            <ion-input type="text" [(ngModel)]="nombre"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label color="primary"floating>Fechar inicial</ion-label>
-            <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate">
+            <ion-label color="primary"floating>Fecha inicial</ion-label>
+            <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDateI">
             </ion-datetime>
         </ion-item>
         <ion-item>
-            <ion-label color="primary"floating>Fechar final</ion-label>
-            <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate">
+            <ion-label color="primary"floating>Fecha final</ion-label>
+            <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDateF">
             </ion-datetime>
         </ion-item>
 
           <br><br>
-        <button ion-button color="secondary"  full>Crear</button>
-  
+        <button ion-button color="secondary" (click) = "crear()"  full>Crear</button>
+
   </div>
 </ion-content>

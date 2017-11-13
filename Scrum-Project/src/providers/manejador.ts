@@ -16,10 +16,8 @@ export class ManejadorProvider{
     let data=JSON.stringify({user:usuario, pass:contrasena, accion:ac});
     return new Promise(resolve => {
     this.http.post(this.database,data,headers).subscribe(data => {
-      //console.log('esto es del manejadorProvider');
       resolve(data);
       this.usuario = data['usuario'];
-    //  console.log(this.usuario);
     }, err => {
       console.log(err);
     });
@@ -32,10 +30,7 @@ export class ManejadorProvider{
     let data=JSON.stringify({id:this.usuario['idUsuario'], accion:ac});
     return new Promise(resolve => {
     this.http.post(this.database,data,headers).subscribe(data => {
-      //console.log('esto es del manejadorProvider');
       resolve(data);
-      //console.log(data['proyectos'][0]['Nombre']);
-
     }, err => {
       console.log(err);
     });
@@ -48,10 +43,7 @@ export class ManejadorProvider{
     let data=JSON.stringify({accion:ac});
     return new Promise(resolve => {
     this.http.post(this.database,data,headers).subscribe(data => {
-      //console.log('esto es del manejadorProvider');
       resolve(data);
-      //console.log(data['proyectos'][0]['Nombre']);
-
     }, err => {
       console.log(err);
     });
@@ -66,27 +58,87 @@ public newProject(nombre:string, descripcion:string, team:string){
   let data=JSON.stringify({accion:"newProject", id:this.usuario['idUsuario'], nombre:nombre, descripcion:descripcion, team:team});
   return new Promise(resolve => {
   this.http.post(this.database,data,headers).subscribe(data => {
-    //console.log('esto es del manejadorProvider');
     resolve(data);
-    //console.log(data['proyectos'][0]['Nombre']);
-
   }, err => {
     console.log(err);
   });
 });
 }
 
-public showProject(ac:string, idP:number){
+public showProject(ac:string, idP:number, type:string){
   let headers = new Headers();
   headers.append('Content-Type', 'application/json');
-  let data=JSON.stringify({accion:ac, id:idP});
-  console.log(idP);
+  let data=JSON.stringify({accion:ac, id:idP, type:type});
   return new Promise(resolve => {
   this.http.post(this.database,data,headers).subscribe(data => {
-    //console.log('esto es del manejadorProvider');
     resolve(data);
-    //console.log(data[0]);
+  }, err => {
+    console.log(err);
+  });
+});
+}
 
+public newSprint(idProject: number, nombre:string, inicial:string, final:string){
+  let headers = new Headers();
+  headers.append('Content-Type', 'application/json');
+  let data=JSON.stringify({accion:"newSprint", id:idProject, nombre:nombre, inicial:inicial, final:final});
+  return new Promise(resolve => {
+  this.http.post(this.database,data,headers).subscribe(data => {
+    resolve(data);
+  }, err => {
+    console.log(err);
+  });
+});
+}
+
+public newHU(idSprint: number, nombre:string){
+  let headers = new Headers();
+  headers.append('Content-Type', 'application/json');
+  let data=JSON.stringify({accion:"newHU", id:idSprint, nombre:nombre});
+  return new Promise(resolve => {
+  this.http.post(this.database,data,headers).subscribe(data => {
+    resolve(data);
+  }, err => {
+    console.log(err);
+  });
+});
+}
+
+public newTarea(idHU:number, nombre:string, descripcion:string, idU:number){
+  let headers = new Headers();
+  headers.append('Content-Type', 'application/json');
+  let data=JSON.stringify({accion:"newTarea", idHU:idHU, nombre:nombre, descripcion:descripcion, idU:idU});
+  return new Promise(resolve => {
+  this.http.post(this.database,data,headers).subscribe(data => {
+    resolve(data);
+  }, err => {
+    console.log(err);
+  });
+});
+}
+
+public getTeam(id:number){
+  let headers = new Headers();
+  headers.append('Content-Type', 'application/json');
+  let data=JSON.stringify({accion:"getTeam", id:id});
+  //console.log('El id del proyec que estoy pasando', id);
+  return new Promise(resolve => {
+  this.http.post(this.database,data,headers).subscribe(data => {
+    resolve(data);
+  }, err => {
+    console.log(err);
+  });
+});
+}
+
+public eliminar(id:number, accion:string, referencia:string){
+  let headers = new Headers();
+  headers.append('Content-Type', 'application/json');
+  let data=JSON.stringify({accion:accion, id:id, referencia:referencia});
+  //console.log('El id del proyec que estoy pasando', id);
+  return new Promise(resolve => {
+  this.http.post(this.database,data,headers).subscribe(data => {
+    resolve(data);
   }, err => {
     console.log(err);
   });

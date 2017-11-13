@@ -2,57 +2,57 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController, ActionSheetController } from 'ionic-angular';
 import { ManejadorProvider } from '../../providers/manejador';
 import { ViewController } from 'ionic-angular/navigation/view-controller';
-import { NuevoSprintPage } from '../nuevo-sprint/nuevo-sprint';
-import { SprintsPage} from '../sprints/sprints';
+import { TareasaAsignarPage } from '../tareasa-asignar/tareasa-asignar';
+import { VerTareasPage } from '../ver-tareas/ver-tareas';
+
 /**
- * Generated class for the ViewProjectPage page.
+ * Generated class for the ViewHistPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
 
 @Component({
-  selector: 'page-view-project',
-  templateUrl: 'view-project.html',
+  selector: 'page-view-hist',
+  templateUrl: 'view-hist.html',
 })
-export class ViewProjectPage {
-  idProject:number;
-  project:any;
-  sprints:any;
+export class ViewHistPage {
+  idHU:number;
+  idP:number;
+  hu:any;
+  tareas:any;
   lista: Array<any> = [];
   lista2: Array<any> = [];
   constructor(public navCtrl: NavController, public navParams: NavParams, public manejadorProvider: ManejadorProvider,public modalCtrl: ModalController, public viewCtrl: ViewController, public actionSheetCtrl: ActionSheetController) {
-    //console.log('UserId', navParams.get('projectId'));
-    this.idProject = navParams.get('projectId');
+    //console.log('UserId', navParams.get('huId'));
+    this.idHU = navParams.get('huId');
+    this.idP = navParams.get('projectId');
   }
 
   ionViewDidLoad() {
-    this.manejadorProvider.showProject("viewProject", this.idProject, "idProyecto")
+    this.manejadorProvider.showProject("viewHU", this.idHU, "idHU")
     .then(data => {
-    //  console.log('hola', data[0]['Descripcion']);
-      this.project = data[0];
+      //console.log('hola', data['hu']);
+      this.hu = data['hu'][0];
           var p = {
-        		nombre: this.project['Nombre'],
-        		descripcion: this.project['Descripcion']
+        		nombre: this.hu['Nombre'],
+            id: this.hu['idHU']
         	};
           //console.log(p);
           this.lista.push(p);
 
     });
 
-    this.manejadorProvider.showProject("viewSprints", this.idProject, "idProyecto")
+    this.manejadorProvider.showProject("viewTareas", this.idHU, "idHU")
     .then(data => {
-      this.sprints = data['sprints'];
-      //console.log(this.sprints.length);
-      if(this.sprints==null){
-          alert('No tiene ningun sprint');
+      this.tareas = data['tareas'];
+      if(this.tareas==null){
+          alert('No tiene ninguna tarea');
       }else{
-        for (var _i = 0; _i < this.sprints.length; _i++) {
+        for (var _i = 0; _i < this.tareas.length; _i++) {
           var a = {
-        		id: this.sprints[_i]['idSprint'],
-        		nombre: this.sprints[_i]['SprintName'],
-        		inicial: this.sprints[_i]['FechaInicial'],
-            final: this.sprints[_i]['FechaFinal']
+        		id: this.tareas[_i]['idTarea'],
+        		nombre: this.tareas[_i]['Nombre']
         	};
           this.lista2.push(a);
         }
@@ -62,7 +62,7 @@ export class ViewProjectPage {
   }
 
   public open(){
-    let modal = this.modalCtrl.create(NuevoSprintPage, { projectId: this.idProject });
+    let modal = this.modalCtrl.create(TareasaAsignarPage, { huId: this.idHU, projectId: this.idP });
     modal.present();
   }
 
@@ -73,7 +73,7 @@ export class ViewProjectPage {
          {
            text: 'Ver',
            handler: () => {
-          let modal = this.modalCtrl.create(SprintsPage, { sprintId: id, projectId: this.idProject });
+          let modal = this.modalCtrl.create(VerTareasPage, { tareaId: id });
           modal.present();
            }
          },
@@ -86,7 +86,7 @@ export class ViewProjectPage {
          {
            text: 'Eliminar',
            handler: () => {
-             this.manejadorProvider.eliminar(id, 'eliminarSprint', 'idSprint')
+             this.manejadorProvider.eliminar(id, 'eliminarTarea', 'idTarea')
              .then(data => {
                console.log(data);
                this.viewCtrl.dismiss();

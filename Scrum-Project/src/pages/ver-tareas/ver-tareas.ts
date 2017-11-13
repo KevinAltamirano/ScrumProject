@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-
-import { CrearTareasPage } from '../crear-tareas/crear-tareas';
+import { ManejadorProvider } from '../../providers/manejador';
+import { ViewController } from 'ionic-angular/navigation/view-controller';
 /**
  * Generated class for the VerTareasPage page.
  *
@@ -14,38 +14,42 @@ import { CrearTareasPage } from '../crear-tareas/crear-tareas';
   templateUrl: 'ver-tareas.html',
 })
 export class VerTareasPage {
-  
-	listaTareas: Array<any> =[
-    {
-      id: 1,
-      nombre: "Hacer Login",
-      idTeam: 2
-    },
-    {
-      id: 2,
-      nombre: "Tarea Ejemplo",
-      idTeam: 2
-    },
-    
-    {
-      id: 3,
-      nombre: "Tarea Ejemplo2",
-      idTeam:2
-    }
-    ]
-  
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  idTarea:number;
+  lista: Array<any> = [];
+  tareas:any;
+  username:string;
+  status:string;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public manejadorProvider: ManejadorProvider, public viewCtrl: ViewController) {
+    this.idTarea = navParams.get('tareaId');
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad VerTareasPage');
+    this.manejadorProvider.showProject("viewTareas", this.idTarea, "idTarea")
+    .then(data => {
+      this.tareas = data['tareas'];
+      this.manejadorProvider.showProject("getUser", this.tareas[0]['idUsuario'], 'idUsuario')
+      .then(dat => {
+        this.username = dat[0]['Usuario'];
+        this.manejadorProvider.showProject("getStatus", this.tareas[0]['idEstatus'], 'idEstatus')
+        .then(dataa => {
+          this.status = dataa[0]['Nombre'];
+          console.log('El nombre de mi usuario',this.username);
+          var a = {
+            id: this.tareas[0]['idTarea'],
+            nombre: this.tareas[0]['Nombre'],
+            descripcion: this.tareas[0]['Descripcion'],
+            responsable: this.username,
+            estatus: this.status
+          };
+          this.lista.push(a);
+        });
+      });
+    });
   }
-  public atras(): void {
-    let modal = this.navCtrl.setRoot(CrearTareasPage)
 
-
-
-  }
+  dismiss()
+	{
+		this.viewCtrl.dismiss();
+	}
 
 }

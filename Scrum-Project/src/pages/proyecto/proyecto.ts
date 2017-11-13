@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ModalController, ViewController } from 'ionic-angular';
+import { NavController, NavParams, ModalController, ViewController, ActionSheetController } from 'ionic-angular';
 import { ProyectoNuevoPage } from '../proyecto-nuevo/proyecto-nuevo';
 import { ManejadorProvider } from '../../providers/manejador';
 import { SprintsPage } from '../sprints/sprints';
-import { CrearTareasPage } from '../crear-tareas/crear-tareas';
 import { ViewProjectPage } from '../view-project/view-project';
 import { HistoriasUsuariosPage } from '../historias-usuarios/historias-usuarios';
 /**
@@ -23,16 +22,15 @@ export class ProyectoPage {
   project: any;
 	lista: Array<any> = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public manejadorProvider: ManejadorProvider, public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public manejadorProvider: ManejadorProvider, public modalCtrl: ModalController, public actionSheetCtrl: ActionSheetController) {
 
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ProyectoPage');
+    //console.log('ionViewDidLoad ProyectoPage');
     this.manejadorProvider.proyecto(this.accion)
     .then(data => {
       this.project = data['proyectos'];
-      console.log(this.project.length);
       if(this.project==null){
           alert('No tiene ningun proyecto');
       }else{
@@ -69,8 +67,44 @@ export class ProyectoPage {
   }
 
   public detalles(id:number): void {
-    let modal = this.modalCtrl.create(ViewProjectPage, { projectId: id });
-    modal.present();
+    let actionSheet = this.actionSheetCtrl.create({
+      title: 'Opciones',
+       buttons: [
+         {
+           text: 'Ver',
+           handler: () => {
+             let modal = this.modalCtrl.create(ViewProjectPage, { projectId: id });
+             modal.present();
+           }
+         },
+         {
+           text: 'Editar',
+           handler: () => {
+             console.log('Archive clicked');
+           }
+         },
+         {
+           text: 'Eliminar',
+           handler: () => {
+             this.manejadorProvider.eliminar(id, 'eliminarProyecto', 'idProyecto')
+             .then(data => {
+               console.log(data);
+               this.navCtrl.setRoot(ProyectoPage);
+             });
+           }
+         },
+         {
+           text: 'Cancelar',
+           role: 'cancel',
+           handler: () => {
+             console.log('Cancel clicked');
+           }
+         }
+       ]
+     });
+
+     actionSheet.present();
+
 	}
 
 }

@@ -7,9 +7,13 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Crear Tarea</ion-title>
+      <ion-toolbar>
+          <ion-title>Crear tarea</ion-title>
+         <ion-buttons end>
+           <button (click)="dismiss()"> Cancelar</button>
+         </ion-buttons>
+      </ion-toolbar>
   </ion-navbar>
-
 </ion-header>
 
 
@@ -17,23 +21,21 @@
   <div>
       <ion-item>
           <ion-label color="primary" floating>Nombre de la tarea</ion-label>
-          <ion-input type="text" placeholder=""></ion-input>
+          <ion-input [(ngModel)]="nombre" type="text" placeholder=""></ion-input>
       </ion-item>
       <ion-item>
           <ion-label color="primary" floating>Descripción</ion-label>
-          <ion-input type="text" placeholder=""></ion-input>
+          <ion-input [(ngModel)]="descripcion" type="text" placeholder=""></ion-input>
       </ion-item>
       <ion-item>
-          <ion-label color="primary" floating>Asignar equipo al proyecto</ion-label>
-          <ion-select [(ngModel)]="toppings" okText="Okay" cancelText="Nah!" multiple="true">
-            <ion-option>Andrea</ion-option>
-            <ion-option>Kevin</ion-option>
-            <ion-option>Kike</ion-option>
+          <ion-label color="primary" floating>Asignar responsable</ion-label>
+          <ion-select [(ngModel)]="responsable" okText="Okay" cancelText="Nah!">
+            <ion-option (click)="open()"  *ngFor="let item of lista" [value]=item.id>{{item.nombre}}</ion-option>
           </ion-select>
         </ion-item>
         <br>
           <form>
-            <button ion-button color="primary" (click)="siguiente()">Agregar</button>
+            <button ion-button color="primary" (click)="crear()">Agregar</button>
           </form>
 </div>
 </ion-content>

@@ -25,14 +25,12 @@
     <ion-list>
       <ion-item *ngFor="let item of lista">
         <ion-title>{{item.nombre}} </ion-title>
-        <br>
-        <ion-option>{{item.descripcion}} </ion-option>
       </ion-item>
     </ion-list>
     <ion-list>
       <ion-item *ngFor="let item of lista2">
-        <ion-title (click)="detalles(item.id)">{{item.nombre}} </ion-title>
-        <ion-option>{{item.inicial}} -  {{item.final}}</ion-option>
+        <!---->
+        <ion-title (click)="detalles(item.id)" >{{item.nombre}}</ion-title>
       </ion-item>
     </ion-list>
 

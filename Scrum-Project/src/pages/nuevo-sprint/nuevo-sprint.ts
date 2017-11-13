@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { ViewController } from 'ionic-angular/navigation/view-controller';
+import { ManejadorProvider } from '../../providers/manejador';
 
 /**
  * Generated class for the NuevoSprintPage page.
@@ -15,14 +16,34 @@ import { ViewController } from 'ionic-angular/navigation/view-controller';
 })
 export class NuevoSprintPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController ) {
+  nombre = "";
+  myDateI = "";
+  myDateF = "";
+  idSprint:any;
+  idProject:number;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public manejadorProvider: ManejadorProvider ) {
+    this.idProject = navParams.get('projectId');
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad NuevoSprintPage');
   }
 
-  
+  public crear(){
+    this.manejadorProvider.newSprint(this.idProject, this.nombre, this.myDateI, this.myDateF)
+      .then(data => {
+        console.log(data);
+        this.idSprint = data;
+        this.viewCtrl.dismiss();
+      });
+  }
+/*
+  public crear(){
+    this.manejadorProvider.newSprint("newSprint", this.idProject, this.nombre, this.myDateI, this.myDateF)
+    .then(data => {
+      console.log(data);
+  }*/
 
   dismiss()
 	{

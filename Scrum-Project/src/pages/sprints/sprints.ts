@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams,ModalController, ViewController } from 'ionic-angular';
-import { NuevoSprintPage } from '../nuevo-sprint/nuevo-sprint';
+import { NavController, NavParams,ModalController, ActionSheetController} from 'ionic-angular';
 import { ManejadorProvider } from '../../providers/manejador';
-
-
-import { CrearTareasPage } from '../crear-tareas/crear-tareas';
+import { ViewController } from 'ionic-angular/navigation/view-controller';
+import { HistoriasUsuariosPage } from '../historias-usuarios/historias-usuarios';
+import { ViewHistPage } from '../view-hist/view-hist';
 
 @Component({
   selector: 'page-sprints',
@@ -12,53 +11,102 @@ import { CrearTareasPage } from '../crear-tareas/crear-tareas';
 })
 export class SprintsPage {
 
-  accion = "proyecto";
-  project: any;
+  idS:number;
+  idP:number;
+  sprint:any;
+  hu:any;
   lista: Array<any> = [];
+  lista2: Array<any> = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public manejadorProvider: ManejadorProvider, public modalCtrl: ModalController) {
-
+  constructor(public navCtrl: NavController, public navParams: NavParams, public manejadorProvider: ManejadorProvider, public modalCtrl: ModalController, public viewCtrl: ViewController, public actionSheetCtrl: ActionSheetController) {
+    //console.log('sprintId', navParams.get('sprintId'));
+    this.idS = navParams.get('sprintId');
+    this.idP = navParams.get('projectId');
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ProyectoPage');
-    this.manejadorProvider.proyecto(this.accion)
-      .then(data => {
-        this.project = data['proyectos'];
-        console.log(this.project.length);
-        if (this.project == null) {
-          alert('No tiene ningun proyecto');
-        } else {
-          for (var _i = 0; _i < this.project.length; _i++) {
-            var p = {
-              id: this.project[_i]['idProyecto'],
-              nombre: this.project[_i]['Nombre'],
-              idTeam: this.project[_i]['idTeam'],
-              descripcion: this.project[_i]['Descripcion']
-            };
-            this.lista.push(p);
-          }
-        }
+    this.manejadorProvider.showProject("viewSprints", this.idS, "idSprint")
+    .then(data => {
+      //console.log(data[0]['Descripcion']);
+      this.sprint = data['sprints'][0];
+          var p = {
+            id: this.sprint['idSprint'],
+        		nombre: this.sprint['SprintName'],
+        		inicial: this.sprint['FechaInicial'],
+            final: this.sprint['FechaFinal']
+        	};
+          //console.log(p);
+          this.lista.push(p);
 
-      });
+    });
+
+    this.manejadorProvider.showProject("viewHU", this.idS, "idSprint")
+    .then(data => {
+      this.hu = data['hu'];
+      //console.log(this.sprints.length);
+      if(this.hu==null){
+          alert('No tiene ninguna historia de usuario');
+      }else{
+        for (var _i = 0; _i < this.hu.length; _i++) {
+          var a = {
+        		id: this.hu[_i]['idHU'],
+        		nombre: this.hu[_i]['Nombre'],
+        	};
+          this.lista2.push(a);
+        }
+      }
+
+    });
   }
+
   public open(){
-    let modal = this.modalCtrl.create(NuevoSprintPage);
+    let modal = this.modalCtrl.create(HistoriasUsuariosPage, { sprintId: this.idS});
     modal.present();
   }
 
-  public h(): void {
-    let modal = this.navCtrl.setRoot(CrearTareasPage);
+  public detalles(id:number): void {
+    let actionSheet = this.actionSheetCtrl.create({
+      title: 'Opciones',
+       buttons: [
+         {
+           text: 'Ver',
+           handler: () => {
+          let modal = this.modalCtrl.create(ViewHistPage, { huId: id, projectId: this.idP });
+          modal.present();
+           }
+         },
+         {
+           text: 'Editar',
+           handler: () => {
+             console.log('Archive clicked');
+           }
+         },
+         {
+           text: 'Eliminar',
+           handler: () => {
+             this.manejadorProvider.eliminar(id, 'eliminarHU', 'idHU')
+             .then(data => {
+               console.log(data);
+               this.viewCtrl.dismiss();
+             });
+           }
+         },
+         {
+           text: 'Cancelar',
+           role: 'cancel',
+           handler: () => {
+             console.log('Cancel clicked');
+           }
+         }
+       ]
+     });
 
-  }
-  
-}
+     actionSheet.present();
+	}
 
-
-@Component({
-	templateUrl:'src/pages/nuevo-sprint/nuevo-sprint.html'
-})
-
-export class ModalsContentPage {
+  dismiss()
+	{
+		this.viewCtrl.dismiss();
+	}
 
 }
