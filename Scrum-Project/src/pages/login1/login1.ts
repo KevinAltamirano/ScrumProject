@@ -25,7 +25,7 @@ export class Login1Page {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad Login1Page');
+    
   }
 
   public proyecto(): void {
@@ -35,7 +35,10 @@ export class Login1Page {
       if(this.user==null){
           alert('Credenciales incorrectas');
       }else{
-        this.navCtrl.setRoot(ProyectoPage);
+        console.log(this.user['idRol']);
+        if(this.user['idRol']==1){
+          this.navCtrl.setRoot(ProyectoPage);
+        }
       }
 
     });

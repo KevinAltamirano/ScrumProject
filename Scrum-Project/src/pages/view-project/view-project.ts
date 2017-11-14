@@ -80,7 +80,8 @@ export class ViewProjectPage {
          {
            text: 'Editar',
            handler: () => {
-             console.log('Archive clicked');
+             let modal = this.modalCtrl.create(NuevoSprintPage, { sprintId: id });
+             modal.present();
            }
          },
          {

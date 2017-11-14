@@ -62,7 +62,7 @@ export class ProyectoPage {
     modal.present();
   }
   public historias(): void {
-    let modal = this.navCtrl.setRoot(SprintsPage);
+    this.navCtrl.setRoot(SprintsPage);
 
   }
 
@@ -81,6 +81,8 @@ export class ProyectoPage {
            text: 'Editar',
            handler: () => {
              console.log('Archive clicked');
+             let modal = this.modalCtrl.create(ProyectoNuevoPage, {idP: id});
+             modal.present();
            }
          },
          {

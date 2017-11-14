@@ -78,7 +78,8 @@ export class SprintsPage {
          {
            text: 'Editar',
            handler: () => {
-             console.log('Archive clicked');
+             let modal = this.modalCtrl.create(HistoriasUsuariosPage, { huId: id});
+             modal.present();
            }
          },
          {

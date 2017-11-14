@@ -26,15 +26,34 @@ export class TareasaAsignarPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public manejadorProvider: ManejadorProvider, public viewCtrl: ViewController) {
     this.idHU = navParams.get('huId');
     this.idP = navParams.get('projectId');
+    this.idTarea = navParams.get('tareaId');
   }
 
   ionViewDidLoad() {
+    if(this.idTarea){
+      this.manejadorProvider.showProject("viewTareas", this.idTarea, "idTarea")
+      .then(data => {
+        this.tareas = data['tareas'];
+        this.nombre = data['tareas'][0]['Nombre'];
+        this.descripcion = data['tareas'][0]['Descripcion'];
+        this.manejadorProvider.getTeam(this.idP)
+        .then(data => {
+          this.users = data['usuarios'];
+            for (var _i = 0; _i < this.users.length; _i++) {
+              var p = {
+            		id: this.users[_i]['idUsuario'],
+            		nombre: this.users[_i]['Usuario']
+            	};
+              this.lista.push(p);
+            }
+
+        });
+      });
+
+    }else{
     this.manejadorProvider.getTeam(this.idP)
     .then(data => {
       this.users = data['usuarios'];
-      if(this.users==null){
-          alert('No tiene ningun proyecto');
-      }else{
         for (var _i = 0; _i < this.users.length; _i++) {
           var p = {
         		id: this.users[_i]['idUsuario'],
@@ -42,9 +61,9 @@ export class TareasaAsignarPage {
         	};
           this.lista.push(p);
         }
-      }
 
     });
+    }
   }
 
   public crear(): void{

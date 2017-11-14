@@ -21,22 +21,41 @@ export class NuevoSprintPage {
   myDateF = "";
   idSprint:any;
   idProject:number;
+  idSprint:number
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public manejadorProvider: ManejadorProvider ) {
     this.idProject = navParams.get('projectId');
+    this.idSprint = navParams.get('sprintId');
+
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad NuevoSprintPage');
+    if(this.idSprint){
+      this.manejadorProvider.showProject("viewSprints",this.idSprint, "idSprint")
+        .then(data => {
+          this.nombre = data['sprints'][0]['SprintName'];
+          this.myDateI = data['sprints'][0]['FechaInicial'];
+          this.myDateF = data['sprints'][0]['FechaFinal'];
+        });
+    }
   }
 
   public crear(){
-    this.manejadorProvider.newSprint(this.idProject, this.nombre, this.myDateI, this.myDateF)
-      .then(data => {
-        console.log(data);
-        this.idSprint = data;
-        this.viewCtrl.dismiss();
-      });
+    if(this.idSprint){
+      this.manejadorProvider.newSprint("updateSprint",this.idSprint, this.nombre, this.myDateI, this.myDateF)
+        .then(data => {
+        //  console.log(data);
+          this.idSprint = data;
+          this.viewCtrl.dismiss();
+        });
+    }else{
+      this.manejadorProvider.newSprint("newSprint",this.idProject, this.nombre, this.myDateI, this.myDateF)
+        .then(data => {
+          console.log(data);
+          this.idSprint = data;
+          this.viewCtrl.dismiss();
+        });
+    }
   }
 /*
   public crear(){

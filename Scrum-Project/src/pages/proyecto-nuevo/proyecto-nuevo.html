@@ -27,7 +27,7 @@
       <ion-item>
           <ion-label color="primary" floating>Asignar equipo al proyecto</ion-label>
           <ion-select [(ngModel)]="toppings" okText="Okay" cancelText="Nah!" multiple="true">
-            <ion-option  *ngFor="let item of lista" [value]=item.id>{{item.nombre}}</ion-option>
+            <ion-option *ngFor="let item of lista" [value]=item.id >{{item.nombre}}</ion-option>
           </ion-select>
         </ion-item>
         <br><br>

@@ -20,48 +20,85 @@ export class ProyectoNuevoPage {
   accion = "showteam";
   users: any;
   lista: Array<any> = [];
-
+  idProject:any;
   nombre="";
   descripcion="";
   toppings="";
   team ="";
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public manejadorProvider: ManejadorProvider) {
+    this.idProject = navParams.get('idP');
   }
 
   ionViewDidLoad() {
-    this.manejadorProvider.showteam(this.accion)
-    .then(data => {
-      this.users = data['usuarios'];
-      //console.log(this.project.length);
-      if(this.users==null){
-          alert('No tiene ningun proyecto');
-      }else{
-        for (var _i = 0; _i < this.users.length; _i++) {
-          var p = {
-        		id: this.users[_i]['idUsuario'],
-        		nombre: this.users[_i]['Usuario']
-        	};
-          this.lista.push(p);
-        }
-      }
+    if(this.idProject){
+      this.manejadorProvider.showProject("viewProject", this.idProject, "idProyecto")
+      .then(data => {
+          		this.nombre= data[0]['Nombre'];
+          		this.descripcion= data[0]['Descripcion'];
 
-    });
+              this.manejadorProvider.showteam(this.accion)
+              .then(data => {
+                this.users = data['usuarios'];
+                //console.log(this.project.length);
+                if(this.users==null){
+                    alert('No tiene ningun proyecto');
+                }else{
+                  for (var _i = 0; _i < this.users.length; _i++) {
+                    var p = {
+                      id: this.users[_i]['idUsuario'],
+                      nombre: this.users[_i]['Usuario']
+                    };
+                    this.lista.push(p);
+                  }
+                }
+
+              });
+
+      });
+    }else{
+      this.manejadorProvider.showteam(this.accion)
+      .then(data => {
+        this.users = data['usuarios'];
+        //console.log(this.project.length);
+        if(this.users==null){
+            alert('No tiene ningun proyecto');
+        }else{
+          for (var _i = 0; _i < this.users.length; _i++) {
+            var p = {
+              id: this.users[_i]['idUsuario'],
+              nombre: this.users[_i]['Usuario']
+            };
+            this.lista.push(p);
+          }
+        }
+
+      });
+    }
+
   }
 
   public historias(): void {
-    let modal = this.navCtrl.setRoot(HistoriasUsuariosPage);
+    this.navCtrl.setRoot(HistoriasUsuariosPage);
 
   }
   public atras(): void {
-    this.team = JSON.stringify({idUser: this.toppings})
-    this.manejadorProvider.newProject(this.nombre, this.descripcion, this.team)
+    if(this.idProject){
+      this.team = JSON.stringify({idUser: this.toppings});
+      this.manejadorProvider.newProject("updateProject",this.nombre, this.descripcion, this.team, this.idProject)
+      .then(data => {
+      //  this.users = data['usuarios'];
+      this.navCtrl.setRoot(ProyectoPage);
+
+      });
+    }else{
+    this.team = JSON.stringify({idUser: this.toppings});
+    this.manejadorProvider.newProject("newProject",this.nombre, this.descripcion, this.team, 0)
     .then(data => {
     //  this.users = data['usuarios'];
-      let modal = this.navCtrl.setRoot(ProyectoPage);
+    this.navCtrl.setRoot(ProyectoPage);
 
     });
-
-
+    }
   }
 
   dismiss()

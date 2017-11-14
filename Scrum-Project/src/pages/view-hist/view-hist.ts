@@ -80,7 +80,8 @@ export class ViewHistPage {
          {
            text: 'Editar',
            handler: () => {
-             console.log('Archive clicked');
+             let modal = this.modalCtrl.create(TareasaAsignarPage, { tareaId: id, projectId: this.idP });
+             modal.present();
            }
          },
          {

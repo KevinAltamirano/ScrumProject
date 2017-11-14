@@ -52,10 +52,10 @@ export class ManejadorProvider{
 
 
 
-public newProject(nombre:string, descripcion:string, team:string){
+public newProject(accion: string,nombre:string, descripcion:string, team:string, idP:number){
   let headers = new Headers();
   headers.append('Content-Type', 'application/json');
-  let data=JSON.stringify({accion:"newProject", id:this.usuario['idUsuario'], nombre:nombre, descripcion:descripcion, team:team});
+  let data=JSON.stringify({accion:accion, id:this.usuario['idUsuario'], nombre:nombre, descripcion:descripcion, team:team, idP:idP});
   return new Promise(resolve => {
   this.http.post(this.database,data,headers).subscribe(data => {
     resolve(data);
@@ -78,10 +78,10 @@ public showProject(ac:string, idP:number, type:string){
 });
 }
 
-public newSprint(idProject: number, nombre:string, inicial:string, final:string){
+public newSprint(accion:string, idProject: number, nombre:string, inicial:string, final:string){
   let headers = new Headers();
   headers.append('Content-Type', 'application/json');
-  let data=JSON.stringify({accion:"newSprint", id:idProject, nombre:nombre, inicial:inicial, final:final});
+  let data=JSON.stringify({accion:accion, id:idProject, nombre:nombre, inicial:inicial, final:final});
   return new Promise(resolve => {
   this.http.post(this.database,data,headers).subscribe(data => {
     resolve(data);
@@ -91,10 +91,10 @@ public newSprint(idProject: number, nombre:string, inicial:string, final:string)
 });
 }
 
-public newHU(idSprint: number, nombre:string){
+public newHU(accion:string, idSprint: number, nombre:string){
   let headers = new Headers();
   headers.append('Content-Type', 'application/json');
-  let data=JSON.stringify({accion:"newHU", id:idSprint, nombre:nombre});
+  let data=JSON.stringify({accion:accion, id:idSprint, nombre:nombre});
   return new Promise(resolve => {
   this.http.post(this.database,data,headers).subscribe(data => {
     resolve(data);
@@ -121,7 +121,6 @@ public getTeam(id:number){
   let headers = new Headers();
   headers.append('Content-Type', 'application/json');
   let data=JSON.stringify({accion:"getTeam", id:id});
-  //console.log('El id del proyec que estoy pasando', id);
   return new Promise(resolve => {
   this.http.post(this.database,data,headers).subscribe(data => {
     resolve(data);
@@ -144,5 +143,6 @@ public eliminar(id:number, accion:string, referencia:string){
   });
 });
 }
+
 
 }

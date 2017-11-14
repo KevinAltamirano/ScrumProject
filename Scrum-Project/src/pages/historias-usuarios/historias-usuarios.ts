@@ -18,22 +18,37 @@ export class HistoriasUsuariosPage {
   idS:number;
   idHU:any;
   nombre="";
+  idHU:number;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public manejadorProvider: ManejadorProvider, public viewCtrl: ViewController) {
-  //  console.log('sprintId', navParams.get('sprintId'));
     this.idS = navParams.get('sprintId');
+    this.idHU = navParams.get('huId');
   }
 
   ionViewDidLoad() {
-    //console.log('ionViewDidLoad HistoriasUsuariosPage');
+    if(this.idHU){
+      this.manejadorProvider.showProject("viewHU", this.idHU, "idHU")
+      .then(data => {
+        this.nombre= data['hu'][0]['Nombre'];
+
+      });
+    }
   }
 
   public crear(): void{
-    this.manejadorProvider.newHU(this.idS, this.nombre)
+    if(this.idHU){
+      this.manejadorProvider.newHU("updateHU",this.idHU, this.nombre)
+        .then(data => {
+          this.idHU = data;
+          this.viewCtrl.dismiss();
+        });
+    }else{
+    this.manejadorProvider.newHU("newHU",this.idS, this.nombre)
       .then(data => {
         this.idHU = data;
         this.viewCtrl.dismiss();
       });
+    }
   }
 
 
