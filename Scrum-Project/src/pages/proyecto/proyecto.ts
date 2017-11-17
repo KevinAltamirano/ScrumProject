@@ -5,6 +5,7 @@ import { ManejadorProvider } from '../../providers/manejador';
 import { SprintsPage } from '../sprints/sprints';
 import { ViewProjectPage } from '../view-project/view-project';
 import { HistoriasUsuariosPage } from '../historias-usuarios/historias-usuarios';
+import { AlertController } from 'ionic-angular';
 /**
  * Generated class for the ProyectoPage page.
  *
@@ -22,7 +23,7 @@ export class ProyectoPage {
   project: any;
 	lista: Array<any> = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public manejadorProvider: ManejadorProvider, public modalCtrl: ModalController, public actionSheetCtrl: ActionSheetController) {
+  constructor(public alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams, public manejadorProvider: ManejadorProvider, public modalCtrl: ModalController, public actionSheetCtrl: ActionSheetController) {
 
   }
 
@@ -90,16 +91,40 @@ export class ProyectoPage {
              modal.present();
            }
          },
+
+
          {
            text: 'Eliminar',
            handler: () => {
-             this.manejadorProvider.eliminar(id, 'eliminarProyecto', 'idProyecto')
-             .then(data => {
-               console.log(data);
-               this.navCtrl.setRoot(ProyectoPage);
-             });
+             
+            let alert = this.alertCtrl.create({
+              title: 'Confirmar',
+              message: '¿Seguro que deseas eliminar?',
+              buttons: [
+                {
+                  text: 'Cancelar',
+                  role: 'cancel',
+                  handler: () => {
+                    console.log('Cancel clicked');
+                  }
+                },
+                {
+                  text: 'Si!',
+                  handler: () => {
+                    this.manejadorProvider.eliminar(id, 'eliminarProyecto', 'idProyecto')
+                    .then(data => {
+                      console.log(data);
+                      this.navCtrl.setRoot(ProyectoPage);
+                    });
+                  }
+                }
+              ]
+            });
+            alert.present();
            }
          },
+
+
          {
            text: 'Cancelar',
            role: 'cancel',
@@ -112,6 +137,29 @@ export class ProyectoPage {
 
      actionSheet.present();
 
-	}
+  }
+  
+  public presentConfirm() {
+    let alert = this.alertCtrl.create({
+      title: 'Confirmar',
+      message: '¿Seguro que deseas eliminar?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Si!',
+          handler: () => {
+            console.log('Buy clicked');
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
 
 }

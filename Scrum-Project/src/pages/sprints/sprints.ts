@@ -4,6 +4,7 @@ import { ManejadorProvider } from '../../providers/manejador';
 import { ViewController } from 'ionic-angular/navigation/view-controller';
 import { HistoriasUsuariosPage } from '../historias-usuarios/historias-usuarios';
 import { ViewHistPage } from '../view-hist/view-hist';
+import { AlertController } from 'ionic-angular';
 
 @Component({
   selector: 'page-sprints',
@@ -18,7 +19,7 @@ export class SprintsPage {
   lista: Array<any> = [];
   lista2: Array<any> = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public manejadorProvider: ManejadorProvider, public modalCtrl: ModalController, public viewCtrl: ViewController, public actionSheetCtrl: ActionSheetController) {
+  constructor(public alertCtrl: AlertController,public navCtrl: NavController, public navParams: NavParams, public manejadorProvider: ManejadorProvider, public modalCtrl: ModalController, public viewCtrl: ViewController, public actionSheetCtrl: ActionSheetController) {
     //console.log('sprintId', navParams.get('sprintId'));
     this.idS = navParams.get('sprintId');
     this.idP = navParams.get('projectId');
@@ -83,15 +84,35 @@ export class SprintsPage {
            }
          },
          {
-           text: 'Eliminar',
-           handler: () => {
-             this.manejadorProvider.eliminar(id, 'eliminarHU', 'idHU')
-             .then(data => {
-               console.log(data);
-               this.viewCtrl.dismiss();
-             });
-           }
-         },
+          text: 'Eliminar',
+          handler: () => {
+            
+           let alert = this.alertCtrl.create({
+             title: 'Confirmar',
+             message: '¿Seguro que deseas eliminar?',
+             buttons: [
+               {
+                 text: 'Cancelar',
+                 role: 'cancel',
+                 handler: () => {
+                   console.log('Cancel clicked');
+                 }
+               },
+               {
+                 text: 'Si!',
+                 handler: () => {
+                   this.manejadorProvider.eliminar(id, 'eliminarProyecto', 'idProyecto')
+                   .then(data => {
+                     console.log(data);
+                     this.navCtrl.setRoot(SprintsPage);
+                   });
+                 }
+               }
+             ]
+           });
+           alert.present();
+          }
+        },
          {
            text: 'Cancelar',
            role: 'cancel',
