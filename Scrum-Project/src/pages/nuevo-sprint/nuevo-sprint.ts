@@ -21,7 +21,7 @@ export class NuevoSprintPage {
   myDateF = "";
   idSprint:any;
   idProject:number;
-  idSprint:number
+  //idSprint:number;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public manejadorProvider: ManejadorProvider ) {
     this.idProject = navParams.get('projectId');

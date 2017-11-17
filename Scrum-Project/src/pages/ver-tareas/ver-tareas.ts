@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { ManejadorProvider } from '../../providers/manejador';
 import { ViewController } from 'ionic-angular/navigation/view-controller';
+import { TareasaAsignarPage } from '../tareasa-asignar/tareasa-asignar';
 /**
  * Generated class for the VerTareasPage page.
  *
@@ -50,6 +51,11 @@ export class VerTareasPage {
   dismiss()
 	{
 		this.viewCtrl.dismiss();
-	}
+  }
+  
+  open(){
+
+    this.navCtrl.setRoot(TareasaAsignarPage);
+  }
 
 }

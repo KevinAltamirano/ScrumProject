@@ -8,32 +8,57 @@
 <head>
 </head>
 <body>
-  <ion-header>
-      <ion-toolbar>
-         <ion-buttons>
-           <button (click)="dismiss()"> Atras</button>
-         </ion-buttons>
-         <ion-buttons end>
+  <ion-header >
+      <ion-toolbar color="primary">
+        <ion-title>Detalles</ion-title>
+        <ion-buttons end>
+          <button ion-button icon-only (click)="dismiss()">
+            <ion-icon name="arrow-round-back"></ion-icon>
+          </button>
+          
            <button ion-button icon-only (click)="open()">
              <ion-icon name="add"></ion-icon>
            </button>
+          <button ion-button icon-only>
+            <ion-icon name="close-circle"></ion-icon>
+          </button>
          </ion-buttons>
       </ion-toolbar>
   </ion-header>
 
-  <ion-content padding>
+  <ion-content >
     <ion-list>
       <ion-item *ngFor="let item of lista">
-        <ion-title>{{item.nombre}} </ion-title>
-        <br>
-        <ion-option>{{item.descripcion}} </ion-option>
+        <ion-card color="secondary">
+          <ion-card-header>
+            <h3>Nombre:</h3>
+           <h1>{{item.nombre}}</h1>
+          </ion-card-header>
+          <ion-card-content>
+            <h3>Descripcion: </h3>
+            <h1>{{item.descripcion}}</h1>
+          </ion-card-content>
+        </ion-card>
       </ion-item>
     </ion-list>
     <ion-list>
+
       <ion-item *ngFor="let item of lista2">
-        <ion-title (click)="detalles(item.id)">{{item.nombre}} </ion-title>
-        <ion-option>{{item.inicial}} -  {{item.final}}</ion-option>
+        <ion-card (click)="detalles(item.id)" color ="danger">
+          <ion-card-header>
+            <h3>Nombre Sprint:</h3>
+            <h1>{{item.nombre}}</h1>
+          </ion-card-header>
+          <ion-card-content>
+            <h3>Fecha Inicial: </h3>
+            <h1>{{item.inicial}}</h1>
+            <br>
+            <h3>Fecha Final: </h3>
+            <h1>{{item.final}}</h1>
+          </ion-card-content>
+        </ion-card>
       </ion-item>
+      
     </ion-list>
 
   </ion-content>

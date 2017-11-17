@@ -9,22 +9,37 @@
 </head>
 <body>
   <ion-header>
-      <ion-toolbar>
-         <ion-buttons>
-           <button (click)="dismiss()"> Atras</button>
-         </ion-buttons>
+      <ion-toolbar color="primary">
+        <ion-title>Detalles</ion-title>
+        <ion-buttons end>
+          <button ion-button icon-only (click)="dismiss()">
+            <ion-icon name="arrow-round-back"></ion-icon>
+          </button>
+          <button ion-button icon-only>
+            <ion-icon name="close-circle"></ion-icon>
+          </button>
+        </ion-buttons>
       </ion-toolbar>
   </ion-header>
 
   <ion-content padding>
     <ion-list>
       <ion-item *ngFor="let item of lista">
-        <ion-title>{{item.nombre}} </ion-title>
-        <ion-option>{{item.descripcion}}</ion-option>
-        <br>
-        <ion-option>Responsable: {{item.responsable}}</ion-option>
-        <br>
-        <ion-option>Estatus: {{item.estatus}}</ion-option>
+        <ion-card color="secondary">
+          <ion-card-header>
+            <h3>Nombre:</h3>
+            <h1>{{item.nombre}}</h1>
+          </ion-card-header>
+          <ion-card-content>
+            <h3>Descripcion: </h3>
+            <h1>{{item.descripcion}}</h1>
+            <h3>Responsable: </h3>
+            <h1>{{item.responsable}}</h1>
+            <h3>Estatus: </h3>
+            <h1>{{item.estatus}}</h1>
+          </ion-card-content>
+        </ion-card>
+        
       </ion-item>
     </ion-list>
 

@@ -22,6 +22,7 @@ export class TareasaAsignarPage {
   idP:number;
   idTarea:any;
   users:any;
+  tareas:any;
   lista: Array<any> = [];
   constructor(public navCtrl: NavController, public navParams: NavParams, public manejadorProvider: ManejadorProvider, public viewCtrl: ViewController) {
     this.idHU = navParams.get('huId');

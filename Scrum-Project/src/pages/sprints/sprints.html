@@ -9,27 +9,44 @@
 </head>
 <body>
   <ion-header>
-      <ion-toolbar>
-         <ion-buttons>
-           <button (click)="dismiss()"> Atras</button>
-         </ion-buttons>
-         <ion-buttons end>
-           <button ion-button icon-only (click)="open()">
-             <ion-icon name="add"></ion-icon>
-           </button>
-         </ion-buttons>
+      <ion-toolbar color="primary">
+        
+        <ion-title>Sprints</ion-title>
+        <ion-buttons end>
+          <button ion-button icon-only (click)="dismiss()">
+            <ion-icon name="arrow-round-back"></ion-icon>
+          </button>
+        
+          <button ion-button icon-only (click)="open()">
+            <ion-icon name="add"></ion-icon>
+          </button>
+          <button ion-button icon-only>
+            <ion-icon name="close-circle"></ion-icon>
+          </button>
+        </ion-buttons>
       </ion-toolbar>
   </ion-header>
 
-  <ion-content padding>
+  <ion-content >
     <ion-list>
       <ion-item *ngFor="let item of lista">
-        <ion-title>{{item.nombre}} </ion-title>
+
+        <ion-card color="secondary">
+          <ion-card-header>
+            <h3>Nombre:</h3>
+            <h1>{{item.nombre}}</h1>
+          </ion-card-header>
+        </ion-card>
       </ion-item>
     </ion-list>
   <ion-list>
       <ion-item *ngFor="let item of lista2">
-        <ion-title (click)="detalles(item.id)">{{item.nombre}} </ion-title>
+        <ion-card color="danger" (click)="detalles(item.id)">
+          <ion-card-header>
+            <h3>Nombre Historia:</h3>
+            <h1>{{item.nombre}}</h1>
+          </ion-card-header>
+        </ion-card>
       </ion-item>
     </ion-list>
 

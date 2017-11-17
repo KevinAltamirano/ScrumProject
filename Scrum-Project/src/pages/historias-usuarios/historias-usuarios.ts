@@ -18,7 +18,7 @@ export class HistoriasUsuariosPage {
   idS:number;
   idHU:any;
   nombre="";
-  idHU:number;
+  //idHU:number;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public manejadorProvider: ManejadorProvider, public viewCtrl: ViewController) {
     this.idS = navParams.get('sprintId');

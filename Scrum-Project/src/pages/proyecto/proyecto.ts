@@ -53,6 +53,11 @@ export class ProyectoPage {
     modal.present();
   }
 
+  public exit(){
+    
+  }
+
+
   public nuevo(): void {
     let modal = this.modalCtrl.create(ProyectoNuevoPage);
     modal.present();
