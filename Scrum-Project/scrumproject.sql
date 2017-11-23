@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-11-2017 a las 01:10:05
+-- Tiempo de generación: 23-11-2017 a las 07:57:39
 -- Versión del servidor: 10.1.25-MariaDB
 -- Versión de PHP: 7.1.7
 
@@ -52,17 +52,27 @@ INSERT INTO `estatus` (`idEstatus`, `Nombre`) VALUES
 CREATE TABLE `hu` (
   `idSprint` int(20) NOT NULL,
   `idHU` int(20) NOT NULL,
-  `Nombre` text NOT NULL
+  `Nombre` text NOT NULL,
+  `Estatus` int(10) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `hu`
 --
 
-INSERT INTO `hu` (`idSprint`, `idHU`, `Nombre`) VALUES
-(16, 23, 'Hisotira'),
-(8, 3, 'The first historia de usuario update'),
-(15, 22, 'historia');
+INSERT INTO `hu` (`idSprint`, `idHU`, `Nombre`, `Estatus`) VALUES
+(30, 35, 'vhvgbjhnjm', 1),
+(8, 3, 'The first historia de usuario update', 1),
+(15, 22, 'historia', 1),
+(16, 24, 'hola', 0),
+(16, 26, 'sd', 0),
+(16, 30, 'otro', 0),
+(18, 27, 'historia', 0),
+(30, 34, 'njkml,l', 0),
+(18, 29, 'new historia update', 0),
+(16, 31, 'historia otra', 0),
+(26, 32, 'SP Historia', 0),
+(26, 33, 'SP Historia 2', 0);
 
 -- --------------------------------------------------------
 
@@ -75,16 +85,19 @@ CREATE TABLE `proyecto` (
   `idUsuario` int(20) NOT NULL,
   `Nombre` text NOT NULL,
   `Descripcion` text NOT NULL,
-  `idTeam` int(20) NOT NULL
+  `idTeam` int(20) NOT NULL,
+  `Estatus` int(10) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `proyecto`
 --
 
-INSERT INTO `proyecto` (`idProyecto`, `idUsuario`, `Nombre`, `Descripcion`, `idTeam`) VALUES
-(35, 1, 'Proyectito', 'Mi proyectito', 24),
-(30, 1, 'My first project update', 'This is my first project in IOS but with update', 19);
+INSERT INTO `proyecto` (`idProyecto`, `idUsuario`, `Nombre`, `Descripcion`, `idTeam`, `Estatus`) VALUES
+(35, 1, 'Proyectito hkj', 'Mi proyectito', 34, 1),
+(30, 1, 'My first project update', 'This is my first project in IOS but with update', 19, 1),
+(41, 1, 'jh,', 'jhkj', 31, 1),
+(42, 1, 'SP Team', 'hkjk', 33, 1);
 
 -- --------------------------------------------------------
 
@@ -142,7 +155,17 @@ INSERT INTO `scrumteam` (`idTeam`, `idUsuario`) VALUES
 (21, '{\"idUser\":\"\"}'),
 (22, '{\"idUser\":\"\"}'),
 (23, '{\"idUser\":[\"1\",\"2\",\"3\"]}'),
-(24, '{\"idUser\":[\"1\"]}');
+(24, '{\"idUser\":[\"1\"]}'),
+(25, '{\"idUser\":[\"1\",\"2\",\"3\"]}'),
+(26, '{\"idUser\":[\"2\",\"3\"]}'),
+(27, '{\"idUser\":[\"3\"]}'),
+(28, '{\"idUser\":[\"3\"]}'),
+(29, '{\"idUser\":[\"3\"]}'),
+(30, '{\"idUser\":[\"3\"]}'),
+(31, '{\"idUser\":[\"3\"]}'),
+(32, '{\"idUser\":[\"3\"]}'),
+(33, '{\"idUser\":[\"3\"]}'),
+(34, '{\"idUser\":[\"2\",\"3\"]}');
 
 -- --------------------------------------------------------
 
@@ -155,17 +178,31 @@ CREATE TABLE `sprints` (
   `idSprint` int(20) NOT NULL,
   `SprintName` text NOT NULL,
   `FechaInicial` date NOT NULL,
-  `FechaFinal` date NOT NULL
+  `FechaFinal` date NOT NULL,
+  `Estatus` int(10) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `sprints`
 --
 
-INSERT INTO `sprints` (`idProyecto`, `idSprint`, `SprintName`, `FechaInicial`, `FechaFinal`) VALUES
-(30, 15, 'Second Sprint', '2017-11-14', '2017-11-20'),
-(35, 16, 'Sprint', '2017-11-13', '2017-11-13'),
-(30, 8, 'First Sprint', '2017-11-11', '2017-11-12');
+INSERT INTO `sprints` (`idProyecto`, `idSprint`, `SprintName`, `FechaInicial`, `FechaFinal`, `Estatus`) VALUES
+(30, 15, 'Second Sprint', '2017-11-14', '2017-11-20', 1),
+(35, 16, 'Sprint', '2017-11-13', '2017-11-14', 0),
+(30, 8, 'First Sprint', '2017-11-11', '2017-11-12', 1),
+(35, 28, 'otro mas', '2017-11-23', '2017-11-23', 0),
+(35, 18, 'sprint update', '2017-11-22', '2017-11-22', 0),
+(41, 19, 'gjbhknj update', '2017-11-23', '2017-11-23', 1),
+(41, 20, 's', '2017-11-23', '2017-11-23', 1),
+(41, 21, 'fhfvjbn', '2017-11-23', '2017-11-23', 1),
+(41, 22, 'prueba sprint', '2017-11-23', '2017-11-23', 1),
+(41, 23, 'another prueba', '2017-11-23', '2017-11-23', 1),
+(41, 24, 'uno mas update', '2017-11-23', '2017-11-25', 1),
+(35, 25, 'nuevo sprint', '2017-11-23', '2017-11-24', 0),
+(42, 26, 'SP Sprint', '2017-11-23', '2017-11-23', 0),
+(42, 27, 'SP Sprint 2', '2017-11-23', '2017-11-23', 1),
+(35, 29, 'la ultima prueba', '2017-11-23', '2017-11-23', 0),
+(35, 30, 'hvgjbhnkml', '2017-11-23', '2017-11-23', 1);
 
 -- --------------------------------------------------------
 
@@ -179,16 +216,27 @@ CREATE TABLE `tareas` (
   `Nombre` text NOT NULL,
   `Descripcion` text NOT NULL,
   `idUsuario` int(20) NOT NULL,
-  `idEstatus` int(20) NOT NULL
+  `idEstatus` int(20) NOT NULL,
+  `Estatus` int(10) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `tareas`
 --
 
-INSERT INTO `tareas` (`idHU`, `idTarea`, `Nombre`, `Descripcion`, `idUsuario`, `idEstatus`) VALUES
-(23, 28, 'tarea', 'gfcvhgbh', 1, 1),
-(3, 27, 'Mmy first homework', 'nfcgvhh', 1, 1);
+INSERT INTO `tareas` (`idHU`, `idTarea`, `Nombre`, `Descripcion`, `idUsuario`, `idEstatus`, `Estatus`) VALUES
+(3, 27, 'Mmy first homework', 'nfcgvhh', 3, 2, 1),
+(27, 29, 'Tareita', 'bhjnjm', 3, 2, 0),
+(32, 37, 'SP Tarea editada', 'jhkjlk', 3, 3, 0),
+(24, 36, 'v nbn', 'vhgjbnkmk', 3, 1, 0),
+(24, 35, ' gfvhgjbnk', 'gfvhjbnkml', 3, 1, 0),
+(24, 34, 'tarea', 'gfcfvhjbnkk', 3, 1, 0),
+(32, 38, 'SP Tarea 2', 'njmk', 3, 1, 0),
+(35, 40, 'gbhnjk', 'ghjbhnkml', 3, 1, 0),
+(32, 39, 'SP Otra tarea', 'jhkjk', 3, 1, 0),
+(35, 41, 'jhnjmk', 'jhnjkmkl,', 3, 1, 1),
+(35, 42, 'TAREA 1', 'JHNJMK', 2, 1, 1),
+(35, 43, 'TAREA 2', 'VHGJBNK', 3, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -209,8 +257,8 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`idUsuario`, `idRol`, `Usuario`, `Contrasena`) VALUES
 (1, 1, 'Andy', 'Andy'),
-(2, 1, 'Kevin', 'Kevin'),
-(3, 1, 'Kike', 'Kike');
+(2, 2, 'Kevin', 'Kevin'),
+(3, 2, 'Kike', 'Kike');
 
 --
 -- Índices para tablas volcadas
@@ -277,12 +325,12 @@ ALTER TABLE `estatus`
 -- AUTO_INCREMENT de la tabla `hu`
 --
 ALTER TABLE `hu`
-  MODIFY `idHU` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `idHU` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 --
 -- AUTO_INCREMENT de la tabla `proyecto`
 --
 ALTER TABLE `proyecto`
-  MODIFY `idProyecto` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `idProyecto` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 --
 -- AUTO_INCREMENT de la tabla `roles`
 --
@@ -292,17 +340,17 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `scrumteam`
 --
 ALTER TABLE `scrumteam`
-  MODIFY `idTeam` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `idTeam` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 --
 -- AUTO_INCREMENT de la tabla `sprints`
 --
 ALTER TABLE `sprints`
-  MODIFY `idSprint` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `idSprint` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 --
 -- AUTO_INCREMENT de la tabla `tareas`
 --
 ALTER TABLE `tareas`
-  MODIFY `idTarea` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `idTarea` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --

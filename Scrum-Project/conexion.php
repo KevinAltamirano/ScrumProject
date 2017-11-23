@@ -94,6 +94,17 @@
       return $dat;
    }
 
+   function showTareas($id='', $type=''){
+     $dat = array();
+      $func = 'conexion';
+      $result=mysqli_query($func(),"SELECT * FROM `proyecto` INNER JOIN sprints on proyecto.idProyecto = sprints.idProyecto INNER JOIN hu on sprints.idSprint=hu.idSprint INNER JOIN tareas on hu.idHU=tareas.idHU INNER JOIN estatus on tareas.idEstatus=estatus.idEstatus INNER JOIN usuarios on usuarios.idUsuario=tareas.idUsuario WHERE ".$type." = ".$id);
+      while ($row = mysqli_fetch_array($result)) {
+        $dat['tareas'][] = $row;
+
+       }
+      return $dat;
+   }
+
    function showteam(){
      $dat = array();
       $func = 'conexion';
@@ -111,7 +122,7 @@
      $con = $func();
      if(mysqli_query($con,"INSERT INTO `scrumteam`(`idUsuario`) VALUES ('".$idTeam."')")){
        $idT = mysqli_insert_id($con);
-       if(mysqli_query($con,"INSERT INTO `proyecto`(`idUsuario`, `Nombre`, `Descripcion`, `idTeam`) VALUES (".$idU.",'".$name."','".$desc."',".$idT.")")){
+       if(mysqli_query($con,"INSERT INTO `proyecto`(`idUsuario`, `Nombre`, `Descripcion`, `idTeam`, `Estatus`) VALUES (".$idU.",'".$name."','".$desc."',".$idT.", 1)")){
          $dat = mysqli_insert_id($con);
        }
      }
@@ -137,7 +148,7 @@
      $dat;
      $func = 'conexion';
      $con = $func();
-     if(mysqli_query($con,"INSERT INTO `sprints`(`idProyecto`, `SprintName`, `FechaInicial`, `FechaFinal`) VALUES (".$idP.",'".$sprintname."','".$fInicial."','".$fFinal."')")){
+     if(mysqli_query($con,"INSERT INTO `sprints`(`idProyecto`, `SprintName`, `FechaInicial`, `FechaFinal`, `Estatus`) VALUES (".$idP.",'".$sprintname."','".$fInicial."','".$fFinal."', 1)")){
        $idT = mysqli_insert_id($con);
      }
 
@@ -157,7 +168,7 @@
      $dat;
      $func = 'conexion';
      $con = $func();
-     if(mysqli_query($con,"INSERT INTO `hu`(`idSprint`,`Nombre`) VALUES (".$idP.",'".$name."')")){
+     if(mysqli_query($con,"INSERT INTO `hu`(`idSprint`,`Nombre`, `Estatus`) VALUES (".$idP.",'".$name."', 1)")){
        $idT = mysqli_insert_id($con);
      }
 
@@ -177,7 +188,7 @@
      $dat;
      $func = 'conexion';
      $con = $func();
-     if(mysqli_query($con,"INSERT INTO `tareas`(`idHU`, `Nombre`, `Descripcion`, `idUsuario`, `idEstatus`) VALUES (".$idHU.",'".$name."','".$descripcion."',".$idU.",1)")){
+     if(mysqli_query($con,"INSERT INTO `tareas`(`idHU`, `Nombre`, `Descripcion`, `idUsuario`, `idEstatus`, `Estatus`) VALUES (".$idHU.",'".$name."','".$descripcion."',".$idU.",1,1)")){
        $idT = mysqli_insert_id($con);
      }
 
@@ -189,8 +200,18 @@
      $func = 'conexion';
      $con = $func();
      $idT =(mysqli_query($con,"UPDATE `tareas` SET `Nombre`='".$name."',`Descripcion`='".$descripcion."',`idUsuario`=".$idU." WHERE idTarea =".$idHU));
-
      return $idT;
+   }
+
+   function updateStatus($idTarea='', $idEstatus=''){
+     $dat;
+     $func = 'conexion';
+     $con = $func();
+     $idT =(mysqli_query($con,"UPDATE `tareas` SET `idEstatus`= ".$idEstatus." WHERE idTarea = ".$idTarea));
+
+          $fun = 'viewTareas';
+          $id = $fun($idTarea, 'idTarea');
+     return $id;
    }
 
    function getTeam($id=''){
@@ -230,9 +251,19 @@
       return $dat;
    }
 
+   function showStatus(){
+     $dat = array();
+     $func = 'conexion';
+     $result=mysqli_query($func(),"SELECT * FROM `estatus`");
+     while ($row = mysqli_fetch_array($result)) {
+       $dat['estatus'][]= $row;
+      }
+      return $dat;
+   }
+
    function eliminarTarea($id='', $referencia=''){
      $func = 'conexion';
-     $result=mysqli_query($func(),"DELETE FROM `tareas` WHERE ".$referencia." = ".$id);
+     $result=mysqli_query($func(),"UPDATE `tareas` SET `Estatus`= 0 WHERE ".$referencia." = ".$id);
 
       return $result;
    }
@@ -249,7 +280,7 @@
         $flag = $f($dat[$i]['idHU'], "idHU");
         //echo $flag;
       }
-     $result=mysqli_query($func(),"DELETE FROM `hu` WHERE ".$referencia." = ".$id);
+     $result=mysqli_query($func(),"UPDATE `hu` SET `Estatus`= 0 WHERE ".$referencia." = ".$id);
 
       return $result;
    }
@@ -267,7 +298,7 @@
         $flag = $f($dat[$i]['idSprint'], "idSprint");
         //echo $flag;
       }
-        $result=mysqli_query($func(),"DELETE FROM `sprints` WHERE ".$referencia." = ".$id);
+        $result=mysqli_query($func(),"UPDATE `sprints` SET `Estatus`= 0 WHERE ".$referencia." = ".$id);
       return $result;
    }
 
@@ -284,7 +315,7 @@
         $flag = $f($dat[$i]['idProyecto'],"idProyecto");
         //echo $flag;
       }
-        $result=mysqli_query($func(),"DELETE FROM `proyecto` WHERE ".$referencia."= ".$id);
+        $result=mysqli_query($func(),"UPDATE `proyecto` SET `Estatus`= 0 WHERE ".$referencia."= ".$id);
         //echo $result;
       return $result;
    }
@@ -348,6 +379,12 @@
               $func = 'viewTareas';
               echo json_encode($func($idP, $type));
               break;
+          case "showTareas":
+              $idP=$request->id;
+              $type=$request->type;
+              $func = 'showTareas';
+              echo json_encode($func($idP, $type));
+              break;
           case "newHU":
               $idP=$request->id;
               $nombre=$request->nombre;
@@ -378,6 +415,16 @@
               $type=$request->type;
               $func = 'getStatus';
               echo json_encode($func($idP, $type));
+              break;
+          case "updateStatus":
+              $idT=$request->id;
+              $idS=$request->type;
+              $func = 'updateStatus';
+              echo json_encode($func($idT, $idS));
+              break;
+          case "showStatus":
+              $func = 'showStatus';
+              echo json_encode($func());
               break;
           case "eliminarTarea":
               $idP=$request->id;
