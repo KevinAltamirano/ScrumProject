@@ -9,14 +9,6 @@
 </head>
 <body>
   <ion-header>
-      <ion-toolbar color="primary">
-        <ion-title>Detalles</ion-title>
-        <ion-buttons end>
-          <button ion-button icon-only>
-            <ion-icon name="close-circle"></ion-icon>
-          </button>
-        </ion-buttons>
-      </ion-toolbar>
   </ion-header>
 
   <ion-content padding>
@@ -30,10 +22,14 @@
           <ion-card-content>
             <h3>Descripcion: </h3>
             <h1>{{item.descripcion}}</h1>
-            <h3>Responsable: </h3>
-            <h1>{{item.responsable}}</h1>
             <h3>Estatus: </h3>
             <h1>{{item.estatus}}</h1>
+            <h3>Proyecto: {{item.proyecto}}</h3>
+            <h3>Sprint: {{item.sprint}}</h3>
+            <h3>Historia de usuario: {{item.hu}}</h3>
+            <button ion-button icon-only (click)="editar(item.id)">
+              <ion-icon name="create"></ion-icon>
+            </button>
           </ion-card-content>
         </ion-card>
 

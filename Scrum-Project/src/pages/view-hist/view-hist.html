@@ -12,10 +12,6 @@
       <ion-toolbar color="primary">
           <ion-title>Historia</ion-title>
           <ion-buttons end>
-            <button ion-button icon-only (click)="dismiss()">
-              <ion-icon name="arrow-round-back"></ion-icon>
-            </button>
-          
             <button ion-button icon-only (click)="open()">
               <ion-icon name="add"></ion-icon>
             </button>
@@ -45,11 +41,20 @@
       <ion-item *ngFor="let item of lista2">
         <!---->
 
-        <ion-card color="danger" (click)="detalles(item.id)">
+        <ion-card color="danger">
           <ion-card-header>
             <h3>Nombre Tarea:</h3>
             <h1>{{item.nombre}}</h1>
           </ion-card-header>
+          <button ion-button icon-only (click)="ver(item.id)">
+            <ion-icon name="eye"></ion-icon>
+          </button>
+          <button ion-button icon-only (click)="editar(item.id)">
+            <ion-icon name="create"></ion-icon>
+          </button>
+          <button ion-button icon-only (click)="eliminar(item.id)">
+            <ion-icon name="trash"></ion-icon>
+          </button>
         </ion-card>
       </ion-item>
     </ion-list>

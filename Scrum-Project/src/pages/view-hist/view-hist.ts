@@ -25,7 +25,7 @@ export class ViewHistPage {
   lista: Array<any> = [];
   lista2: Array<any> = [];
   constructor(public alertCtrl: AlertController,public navCtrl: NavController, public navParams: NavParams, public manejadorProvider: ManejadorProvider,public modalCtrl: ModalController, public viewCtrl: ViewController, public actionSheetCtrl: ActionSheetController) {
-    //console.log('UserId', navParams.get('huId'));
+    console.log('projectId VIEW-HIST', navParams.get('projectId'));
     this.idHU = navParams.get('huId');
     this.idP = navParams.get('projectId');
   }
@@ -51,11 +51,13 @@ export class ViewHistPage {
           alert('No tiene ninguna tarea');
       }else{
         for (var _i = 0; _i < this.tareas.length; _i++) {
+          if( this.tareas[_i]['Estatus']==1){
           var a = {
         		id: this.tareas[_i]['idTarea'],
         		nombre: this.tareas[_i]['Nombre']
         	};
           this.lista2.push(a);
+        }
         }
       }
 
@@ -67,66 +69,41 @@ export class ViewHistPage {
     modal.present();
   }
 
-  public detalles(id:number): void {
-    let actionSheet = this.actionSheetCtrl.create({
-      title: 'Opciones',
-       buttons: [
-         {
-           text: 'Ver',
-           handler: () => {
-          let modal = this.modalCtrl.create(VerTareasPage, { tareaId: id });
-          modal.present();
-           }
-         },
-         {
-           text: 'Editar',
-           handler: () => {
-             let modal = this.modalCtrl.create(TareasaAsignarPage, { tareaId: id, projectId: this.idP });
-             modal.present();
-           }
-         },
-         {
-          text: 'Eliminar',
+  public ver(id:number){
+    this.navCtrl.setRoot(VerTareasPage, { tareaId: id });
+  }
+
+  public editar(id:number){
+    let modal = this.modalCtrl.create(TareasaAsignarPage, { tareaId: id, projectId: this.idP, huId: this.idHU });
+    modal.present();
+  }
+
+  public eliminar(id:number){
+    let alert = this.alertCtrl.create({
+      title: 'Confirmar',
+      message: '¿Seguro que deseas eliminar?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
           handler: () => {
-            
-           let alert = this.alertCtrl.create({
-             title: 'Confirmar',
-             message: '¿Seguro que deseas eliminar?',
-             buttons: [
-               {
-                 text: 'Cancelar',
-                 role: 'cancel',
-                 handler: () => {
-                   console.log('Cancel clicked');
-                 }
-               },
-               {
-                 text: 'Si!',
-                 handler: () => {
-                   this.manejadorProvider.eliminar(id, 'eliminarProyecto', 'idProyecto')
-                   .then(data => {
-                     console.log(data);
-                     this.navCtrl.setRoot(ViewHistPage);
-                   });
-                 }
-               }
-             ]
-           });
-           alert.present();
+            console.log('Cancel clicked');
           }
         },
-         {
-           text: 'Cancelar',
-           role: 'cancel',
-           handler: () => {
-             console.log('Cancel clicked');
-           }
-         }
-       ]
-     });
-
-     actionSheet.present();
-	}
+        {
+          text: 'Si!',
+          handler: () => {
+            this.manejadorProvider.eliminar(id, 'eliminarTarea', 'idTarea')
+            .then(data => {
+              console.log(data);
+              this.navCtrl.setRoot(ViewHistPage, { huId: this.idHU, projectId: this.idP });
+            });
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
 
   dismiss()
 	{

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { ManejadorProvider } from '../../providers/manejador';
 import { ViewController } from 'ionic-angular/navigation/view-controller';
+import { SprintsPage } from '../sprints/sprints';
 /**
  * Generated class for the HistoriasUsuariosPage page.
  *
@@ -23,6 +24,7 @@ export class HistoriasUsuariosPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public manejadorProvider: ManejadorProvider, public viewCtrl: ViewController) {
     this.idS = navParams.get('sprintId');
     this.idHU = navParams.get('huId');
+    this.idP = navParams.get('projectId');
   }
 
   ionViewDidLoad() {
@@ -40,13 +42,13 @@ export class HistoriasUsuariosPage {
       this.manejadorProvider.newHU("updateHU",this.idHU, this.nombre)
         .then(data => {
           this.idHU = data;
-          this.viewCtrl.dismiss();
+          this.navCtrl.setRoot(SprintsPage, { sprintId: this.idS, projectId: this.idP});
         });
     }else{
     this.manejadorProvider.newHU("newHU",this.idS, this.nombre)
       .then(data => {
         this.idHU = data;
-        this.viewCtrl.dismiss();
+        this.navCtrl.setRoot(SprintsPage, { sprintId: this.idS, projectId: this.idP});
       });
     }
   }

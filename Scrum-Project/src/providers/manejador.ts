@@ -104,10 +104,10 @@ public newHU(accion:string, idSprint: number, nombre:string){
 });
 }
 
-public newTarea(idHU:number, nombre:string, descripcion:string, idU:number){
+public newTarea(accion: string, idHU:number, nombre:string, descripcion:string, idU:number){
   let headers = new Headers();
   headers.append('Content-Type', 'application/json');
-  let data=JSON.stringify({accion:"newTarea", idHU:idHU, nombre:nombre, descripcion:descripcion, idU:idU});
+  let data=JSON.stringify({accion:accion, idHU:idHU, nombre:nombre, descripcion:descripcion, idU:idU});
   return new Promise(resolve => {
   this.http.post(this.database,data,headers).subscribe(data => {
     resolve(data);

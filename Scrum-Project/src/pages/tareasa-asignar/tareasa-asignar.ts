@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { ManejadorProvider } from '../../providers/manejador';
 import { ViewController } from 'ionic-angular/navigation/view-controller';
+import { ViewHistPage } from '../view-hist/view-hist';
 /**
  * Generated class for the TareasaAsignarPage page.
  *
@@ -28,6 +29,7 @@ export class TareasaAsignarPage {
     this.idHU = navParams.get('huId');
     this.idP = navParams.get('projectId');
     this.idTarea = navParams.get('tareaId');
+    console.log('projectId TAREASA-ASIGNAR', navParams.get('projectId'));
   }
 
   ionViewDidLoad() {
@@ -68,11 +70,19 @@ export class TareasaAsignarPage {
   }
 
   public crear(): void{
-    this.manejadorProvider.newTarea(this.idHU, this.nombre, this.descripcion, this.responsable)
+    if(this.idTarea){
+      this.manejadorProvider.newTarea("updateTarea",this.idTarea, this.nombre, this.descripcion, this.responsable)
+        .then(data => {
+          this.idTarea = data;
+          this.navCtrl.setRoot(ViewHistPage, { huId: this.idHU, projectId: this.idP});
+        });
+    }else{
+    this.manejadorProvider.newTarea("newTarea",this.idHU, this.nombre, this.descripcion, this.responsable)
       .then(data => {
         this.idTarea = data;
-        this.viewCtrl.dismiss();
+        this.navCtrl.setRoot(ViewHistPage, { huId: this.idHU, projectId: this.idP});
       });
+    }
   }
 
   dismiss(){

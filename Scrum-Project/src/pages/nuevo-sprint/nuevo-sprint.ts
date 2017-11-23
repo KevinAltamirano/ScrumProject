@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { ViewController } from 'ionic-angular/navigation/view-controller';
 import { ManejadorProvider } from '../../providers/manejador';
+import { ViewProjectPage } from '../view-project/view-project';
 
 /**
  * Generated class for the NuevoSprintPage page.
@@ -44,16 +45,16 @@ export class NuevoSprintPage {
     if(this.idSprint){
       this.manejadorProvider.newSprint("updateSprint",this.idSprint, this.nombre, this.myDateI, this.myDateF)
         .then(data => {
-        //  console.log(data);
+          console.log("entra en update y mi idProject", this.idProject);
           this.idSprint = data;
-          this.viewCtrl.dismiss();
+          this.navCtrl.setRoot(ViewProjectPage, { projectId: this.idProject });
         });
     }else{
       this.manejadorProvider.newSprint("newSprint",this.idProject, this.nombre, this.myDateI, this.myDateF)
         .then(data => {
           console.log(data);
           this.idSprint = data;
-          this.viewCtrl.dismiss();
+          this.navCtrl.setRoot(ViewProjectPage, { projectId: this.idProject });
         });
     }
   }
@@ -68,6 +69,6 @@ export class NuevoSprintPage {
 	{
 		this.viewCtrl.dismiss();
   }
-  
-  
+
+
 }

@@ -18,6 +18,8 @@ import { SprintsPage} from '../pages/sprints/sprints';
 import { NuevoSprintPage} from '../pages/nuevo-sprint/nuevo-sprint';
 import { ViewProjectPage } from '../pages/view-project/view-project';
 import { ViewHistPage } from '../pages/view-hist/view-hist';
+import { TareasDevPage } from '../pages/tareas-dev/tareas-dev';
+import { EstatusTareaPage} from '../pages/estatus-tarea/estatus-tarea';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { ViewHistPage } from '../pages/view-hist/view-hist';
     SprintsPage,
     NuevoSprintPage,
     ViewProjectPage,
-    ViewHistPage
+    ViewHistPage,
+    TareasDevPage,
+    EstatusTareaPage
   ],
   imports: [
     HttpClientModule,
@@ -52,7 +56,9 @@ import { ViewHistPage } from '../pages/view-hist/view-hist';
     SprintsPage,
     NuevoSprintPage,
     ViewProjectPage,
-    ViewHistPage
+    ViewHistPage,
+    TareasDevPage,
+    EstatusTareaPage
   ],
   providers: [
     StatusBar,

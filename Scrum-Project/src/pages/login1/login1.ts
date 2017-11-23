@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { ProyectoPage } from '../proyecto/proyecto';
 import { ManejadorProvider } from '../../providers/manejador';
+import {TareasDevPage} from '../tareas-dev/tareas-dev'
 import 'rxjs/add/operator/map';
 
 /**
@@ -25,7 +26,7 @@ export class Login1Page {
   }
 
   ionViewDidLoad() {
-    
+
   }
 
   public proyecto(): void {
@@ -35,9 +36,12 @@ export class Login1Page {
       if(this.user==null){
           alert('Credenciales incorrectas');
       }else{
-        console.log(this.user['idRol']);
+        //console.log(this.user['idRol']);
         if(this.user['idRol']==1){
           this.navCtrl.setRoot(ProyectoPage);
+        }
+        if(this.user['idRol']==2){
+          this.navCtrl.setRoot(TareasDevPage, {idU:this.user['idUsuario']});
         }
       }
 

@@ -36,13 +36,15 @@ export class ProyectoPage {
           alert('No tiene ningun proyecto');
       }else{
         for (var _i = 0; _i < this.project.length; _i++) {
-          var p = {
-        		id: this.project[_i]['idProyecto'],
-        		nombre: this.project[_i]['Nombre'],
-        		idTeam: this.project[_i]['idTeam'],
-            descripcion: this.project[_i]['Descripcion']
-        	};
-          this.lista.push(p);
+          if( this.project[_i]['Estatus']==1){
+            var p = {
+          		id: this.project[_i]['idProyecto'],
+          		nombre: this.project[_i]['Nombre'],
+          		idTeam: this.project[_i]['idTeam'],
+              descripcion: this.project[_i]['Descripcion']
+          	};
+            this.lista.push(p);
+          }
         }
       }
 
@@ -55,7 +57,7 @@ export class ProyectoPage {
   }
 
   public exit(){
-    
+
   }
 
 
@@ -72,74 +74,16 @@ export class ProyectoPage {
 
   }
 
-  public detalles(id:number): void {
-    let actionSheet = this.actionSheetCtrl.create({
-      title: 'Opciones',
-       buttons: [
-         {
-           text: 'Ver',
-           handler: () => {
-             let modal = this.modalCtrl.create(ViewProjectPage, { projectId: id });
-             modal.present();
-           }
-         },
-         {
-           text: 'Editar',
-           handler: () => {
-             console.log('Archive clicked');
-             let modal = this.modalCtrl.create(ProyectoNuevoPage, {idP: id});
-             modal.present();
-           }
-         },
-
-
-         {
-           text: 'Eliminar',
-           handler: () => {
-             
-            let alert = this.alertCtrl.create({
-              title: 'Confirmar',
-              message: '¿Seguro que deseas eliminar?',
-              buttons: [
-                {
-                  text: 'Cancelar',
-                  role: 'cancel',
-                  handler: () => {
-                    console.log('Cancel clicked');
-                  }
-                },
-                {
-                  text: 'Si!',
-                  handler: () => {
-                    this.manejadorProvider.eliminar(id, 'eliminarProyecto', 'idProyecto')
-                    .then(data => {
-                      console.log(data);
-                      this.navCtrl.setRoot(ProyectoPage);
-                    });
-                  }
-                }
-              ]
-            });
-            alert.present();
-           }
-         },
-
-
-         {
-           text: 'Cancelar',
-           role: 'cancel',
-           handler: () => {
-             console.log('Cancel clicked');
-           }
-         }
-       ]
-     });
-
-     actionSheet.present();
-
+  public ver(id:number){
+    this.navCtrl.setRoot(ViewProjectPage, { projectId: id });
   }
-  
-  public presentConfirm() {
+
+  public editar(id:number){
+    let modal = this.modalCtrl.create(ProyectoNuevoPage, {idP: id});
+    modal.present();
+  }
+
+  public eliminar(id:number){
     let alert = this.alertCtrl.create({
       title: 'Confirmar',
       message: '¿Seguro que deseas eliminar?',
@@ -154,12 +98,16 @@ export class ProyectoPage {
         {
           text: 'Si!',
           handler: () => {
-            console.log('Buy clicked');
+            this.manejadorProvider.eliminar(id, 'eliminarProyecto', 'idProyecto')
+            .then(data => {
+            });
           }
         }
       ]
     });
     alert.present();
   }
+
+
 
 }
