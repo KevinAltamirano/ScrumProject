@@ -36,6 +36,7 @@ export class TareasDevPage {
           alert('No tiene ninguna tarea asignada');
       }else{
         for (var _i = 0; _i < this.tareas.length; _i++) {
+          if(this.tareas[_i]['Estatus']==1){
           var p = {
             id: this.tareas[_i]['idTarea'],
             nombre: this.tareas[_i][18],
@@ -46,6 +47,7 @@ export class TareasDevPage {
             estatus: this.tareas[_i][24]
           };
           this.lista.push(p);
+        }
         }
       }
     });

@@ -44,11 +44,13 @@ export class ProyectoNuevoPage {
                     alert('No tiene ningun proyecto');
                 }else{
                   for (var _i = 0; _i < this.users.length; _i++) {
+                    if(this.users[_i]['idRol']==2){
                     var p = {
                       id: this.users[_i]['idUsuario'],
                       nombre: this.users[_i]['Usuario']
                     };
                     this.lista.push(p);
+                  }
                   }
                 }
 
@@ -64,11 +66,13 @@ export class ProyectoNuevoPage {
             alert('No tiene ningun proyecto');
         }else{
           for (var _i = 0; _i < this.users.length; _i++) {
+            if(this.users[_i]['idRol']==2){
             var p = {
               id: this.users[_i]['idUsuario'],
               nombre: this.users[_i]['Usuario']
             };
             this.lista.push(p);
+          }
           }
         }
 
