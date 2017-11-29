@@ -19,6 +19,7 @@ export class HistoriasUsuariosPage {
   idS:number;
   idHU:any;
   nombre="";
+  idP:any;
   //idHU:number;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public manejadorProvider: ManejadorProvider, public viewCtrl: ViewController) {

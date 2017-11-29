@@ -6,6 +6,8 @@ import { SprintsPage } from '../sprints/sprints';
 import { ViewProjectPage } from '../view-project/view-project';
 import { HistoriasUsuariosPage } from '../historias-usuarios/historias-usuarios';
 import { AlertController } from 'ionic-angular';
+import { App } from 'ionic-angular';
+import { Login1Page } from '../login1/login1';
 /**
  * Generated class for the ProyectoPage page.
  *
@@ -23,12 +25,13 @@ export class ProyectoPage {
   project: any;
 	lista: Array<any> = [];
 
-  constructor(public alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams, public manejadorProvider: ManejadorProvider, public modalCtrl: ModalController, public actionSheetCtrl: ActionSheetController) {
+  constructor(public app: App,public alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams, public manejadorProvider: ManejadorProvider, public modalCtrl: ModalController, public actionSheetCtrl: ActionSheetController) {
 
   }
 
   ionViewDidLoad() {
     //console.log('ionViewDidLoad ProyectoPage');
+
     this.manejadorProvider.proyecto(this.accion)
     .then(data => {
       this.project = data['proyectos'];
@@ -48,6 +51,8 @@ export class ProyectoPage {
         }
       }
 
+
+
     });
   }
 
@@ -57,8 +62,10 @@ export class ProyectoPage {
   }
 
   public exit(){
-
+    this.app.getRootNav().setRoot(Login1Page);
   }
+
+  
 
 
   public nuevo(): void {

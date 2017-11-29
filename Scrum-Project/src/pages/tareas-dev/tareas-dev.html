@@ -9,12 +9,27 @@
 </head>
 <body>
   <ion-header>
+    <ion-navbar color="primary">
+      <ion-title>
+        Proyectos
+      </ion-title>
+      <ion-buttons end>
+        <button ion-button icon-only (click)="exit()">
+          <ion-icon name="close-circle"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+
   </ion-header>
+
+
+<ion-nav id="nav" #content [root]="rootPage"></ion-nav>
+
 
   <ion-content padding>
     <ion-list>
-      <ion-item *ngFor="let item of lista">
-        <ion-card color="secondary">
+      <ion-item *ngFor="let item of lista" >
+        <ion-card  [color]="try" class="schedule-card" id="" >
           <ion-card-header>
             <h3>Nombre:</h3>
             <h1>{{item.nombre}}</h1>
