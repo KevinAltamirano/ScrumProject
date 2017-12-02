@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { ProyectoPage } from '../proyecto/proyecto';
 import { ManejadorProvider } from '../../providers/manejador';
-import {TareasDevPage} from '../tareas-dev/tareas-dev'
+import { TareasDevPage } from '../tareas-dev/tareas-dev';
+import { ChiefmasterPage } from '../chiefmaster/chiefmaster';
 import 'rxjs/add/operator/map';
 
 /**
@@ -38,10 +39,13 @@ export class Login1Page {
       }else{
         //console.log(this.user['idRol']);
         if(this.user['idRol']==1){
-          this.navCtrl.setRoot(ProyectoPage);
+          this.navCtrl.setRoot(ProyectoPage, {idU:this.user['idUsuario']});
         }
         if(this.user['idRol']==2){
           this.navCtrl.setRoot(TareasDevPage, {idU:this.user['idUsuario']});
+        }
+        if(this.user['idRol']==3){
+          this.navCtrl.setRoot(ChiefmasterPage);
         }
       }
 

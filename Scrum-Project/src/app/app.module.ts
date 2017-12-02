@@ -20,6 +20,8 @@ import { ViewProjectPage } from '../pages/view-project/view-project';
 import { ViewHistPage } from '../pages/view-hist/view-hist';
 import { TareasDevPage } from '../pages/tareas-dev/tareas-dev';
 import { EstatusTareaPage} from '../pages/estatus-tarea/estatus-tarea';
+import { ChiefmasterPage } from '../pages/chiefmaster/chiefmaster';
+import { ProjectGraphicsPage } from '../pages/project-graphics/project-graphics';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { EstatusTareaPage} from '../pages/estatus-tarea/estatus-tarea';
     ViewProjectPage,
     ViewHistPage,
     TareasDevPage,
-    EstatusTareaPage
+    EstatusTareaPage,
+    ChiefmasterPage,
+    ProjectGraphicsPage
   ],
   imports: [
     HttpClientModule,
@@ -58,7 +62,9 @@ import { EstatusTareaPage} from '../pages/estatus-tarea/estatus-tarea';
     ViewProjectPage,
     ViewHistPage,
     TareasDevPage,
-    EstatusTareaPage
+    EstatusTareaPage,
+    ChiefmasterPage,
+    ProjectGraphicsPage
   ],
   providers: [
     StatusBar,

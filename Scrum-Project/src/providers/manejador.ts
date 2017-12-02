@@ -4,7 +4,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class ManejadorProvider{
-  database = 'http://localhost:80/scrumproject/conexion.php';
+  database = 'http://localhost:8080/scrumproject/conexion.php';
   usuario: any;
   constructor(public http: HttpClient){
 
@@ -24,10 +24,10 @@ export class ManejadorProvider{
   });
   }
 
-  public proyecto(ac:string){
+  public proyecto(ac:string, id: number){
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    let data=JSON.stringify({id:this.usuario['idUsuario'], accion:ac});
+    let data=JSON.stringify({id:id, accion:ac});
     return new Promise(resolve => {
     this.http.post(this.database,data,headers).subscribe(data => {
       resolve(data);
@@ -51,11 +51,10 @@ export class ManejadorProvider{
 }
 
 
-
-public newProject(accion: string,nombre:string, descripcion:string, team:string, idP:number){
+public newProject(accion: string,nombre:string, descripcion:string, team:string, idP:number, idU:number){
   let headers = new Headers();
   headers.append('Content-Type', 'application/json');
-  let data=JSON.stringify({accion:accion, id:this.usuario['idUsuario'], nombre:nombre, descripcion:descripcion, team:team, idP:idP});
+  let data=JSON.stringify({accion:accion, id:idU, nombre:nombre, descripcion:descripcion, team:team, idP:idP});
   return new Promise(resolve => {
   this.http.post(this.database,data,headers).subscribe(data => {
     resolve(data);

@@ -24,15 +24,16 @@ export class ProyectoPage {
   accion = "proyecto";
   project: any;
 	lista: Array<any> = [];
+  idUser:number;
 
   constructor(public app: App,public alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams, public manejadorProvider: ManejadorProvider, public modalCtrl: ModalController, public actionSheetCtrl: ActionSheetController) {
-
+    this.idUser = navParams.get('idU');
   }
 
   ionViewDidLoad() {
     //console.log('ionViewDidLoad ProyectoPage');
 
-    this.manejadorProvider.proyecto(this.accion)
+    this.manejadorProvider.proyecto(this.accion, this.idUser)
     .then(data => {
       this.project = data['proyectos'];
       if(this.project==null){
@@ -57,7 +58,7 @@ export class ProyectoPage {
   }
 
   public openModal(){
-    let modal = this.modalCtrl.create(ProyectoNuevoPage);
+    let modal = this.modalCtrl.create(ProyectoNuevoPage, {idU:this.idUser});
     modal.present();
   }
 
@@ -65,13 +66,6 @@ export class ProyectoPage {
     this.app.getRootNav().setRoot(Login1Page);
   }
 
-  
-
-
-  public nuevo(): void {
-    let modal = this.modalCtrl.create(ProyectoNuevoPage);
-    modal.present();
-  }
   public atras(): void {
     let modal = this.modalCtrl.create(ProyectoPage);
     modal.present();

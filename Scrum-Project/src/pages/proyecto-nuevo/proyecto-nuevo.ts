@@ -25,8 +25,11 @@ export class ProyectoNuevoPage {
   descripcion="";
   toppings="";
   team ="";
+  idUser:number;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public manejadorProvider: ManejadorProvider) {
     this.idProject = navParams.get('idP');
+    this.idUser = navParams.get('idU');
   }
 
   ionViewDidLoad() {
@@ -85,21 +88,20 @@ export class ProyectoNuevoPage {
     this.navCtrl.setRoot(HistoriasUsuariosPage);
 
   }
-  public atras(): void {
-    if(this.idProject){
+  public atras(): void {    
       this.team = JSON.stringify({idUser: this.toppings});
-      this.manejadorProvider.newProject("updateProject",this.nombre, this.descripcion, this.team, this.idProject)
+    if(this.idProject){
+      this.manejadorProvider.newProject("updateProject",this.nombre, this.descripcion, this.team, this.idProject, this.idUser)
       .then(data => {
       //  this.users = data['usuarios'];
-      this.navCtrl.setRoot(ProyectoPage);
+      this.navCtrl.setRoot(ProyectoPage, {idU:this.idUser});
 
       });
     }else{
-    this.team = JSON.stringify({idUser: this.toppings});
-    this.manejadorProvider.newProject("newProject",this.nombre, this.descripcion, this.team, 0)
+    this.manejadorProvider.newProject("newProject",this.nombre, this.descripcion, this.team, 0, this.idUser)
     .then(data => {
     //  this.users = data['usuarios'];
-    this.navCtrl.setRoot(ProyectoPage);
+    this.navCtrl.setRoot(ProyectoPage, {idU:this.idUser});
 
     });
     }
