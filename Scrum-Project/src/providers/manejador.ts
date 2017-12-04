@@ -143,5 +143,19 @@ public eliminar(id:number, accion:string, referencia:string){
 });
 }
 
+public count(accion:string, idP:number, referencia:string){
+  let headers = new Headers();
+  headers.append('Content-Type', 'application/json');
+  let data=JSON.stringify({accion:accion, idP:idP, referencia:referencia});
+  //console.log('El id del proyec que estoy pasando', id);
+  return new Promise(resolve => {
+  this.http.post(this.database,data,headers).subscribe(data => {
+    resolve(data);
+  }, err => {
+    console.log(err);
+  });
+});
+}
+
 
 }

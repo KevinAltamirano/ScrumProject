@@ -88,19 +88,19 @@ export class ProyectoNuevoPage {
     this.navCtrl.setRoot(HistoriasUsuariosPage);
 
   }
-  public atras(): void {    
+  public atras(): void {
       this.team = JSON.stringify({idUser: this.toppings});
     if(this.idProject){
       this.manejadorProvider.newProject("updateProject",this.nombre, this.descripcion, this.team, this.idProject, this.idUser)
       .then(data => {
-      //  this.users = data['usuarios'];
+      this.viewCtrl.dismiss();
       this.navCtrl.setRoot(ProyectoPage, {idU:this.idUser});
 
       });
     }else{
     this.manejadorProvider.newProject("newProject",this.nombre, this.descripcion, this.team, 0, this.idUser)
     .then(data => {
-    //  this.users = data['usuarios'];
+    this.viewCtrl.dismiss();
     this.navCtrl.setRoot(ProyectoPage, {idU:this.idUser});
 
     });

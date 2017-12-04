@@ -80,7 +80,7 @@ export class ProyectoPage {
   }
 
   public editar(id:number){
-    let modal = this.modalCtrl.create(ProyectoNuevoPage, {idP: id});
+    let modal = this.modalCtrl.create(ProyectoNuevoPage, {idP: id, idU:this.idUser});
     modal.present();
   }
 

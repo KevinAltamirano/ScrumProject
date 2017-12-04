@@ -5,6 +5,7 @@ import { AlertController } from 'ionic-angular';
 import { App } from 'ionic-angular';
 import { Login1Page } from '../login1/login1';
 import { ProjectGraphicsPage } from '../project-graphics/project-graphics';
+import { DevelopersGraphicsPage } from '../developers-graphics/developers-graphics';
 
 /**
  * Generated class for the ChiefmasterPage page.
@@ -57,6 +58,10 @@ export class ChiefmasterPage {
 
   public ver(id:number){
     this.navCtrl.setRoot(ProjectGraphicsPage, { projectId: id });
+  }
+
+  public devs(){
+    this.navCtrl.setRoot(DevelopersGraphicsPage);
   }
 
 }

@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpClientModule } from '@angular/common/http';
 import { ManejadorProvider } from '../providers/manejador';
+import { ChartsModule } from 'ng2-charts';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -22,6 +23,7 @@ import { TareasDevPage } from '../pages/tareas-dev/tareas-dev';
 import { EstatusTareaPage} from '../pages/estatus-tarea/estatus-tarea';
 import { ChiefmasterPage } from '../pages/chiefmaster/chiefmaster';
 import { ProjectGraphicsPage } from '../pages/project-graphics/project-graphics';
+import { DevelopersGraphicsPage } from '../pages/developers-graphics/developers-graphics';
 
 @NgModule({
   declarations: [
@@ -40,11 +42,13 @@ import { ProjectGraphicsPage } from '../pages/project-graphics/project-graphics'
     TareasDevPage,
     EstatusTareaPage,
     ChiefmasterPage,
-    ProjectGraphicsPage
+    ProjectGraphicsPage,
+    DevelopersGraphicsPage
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
+    ChartsModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -64,7 +68,8 @@ import { ProjectGraphicsPage } from '../pages/project-graphics/project-graphics'
     TareasDevPage,
     EstatusTareaPage,
     ChiefmasterPage,
-    ProjectGraphicsPage
+    ProjectGraphicsPage,
+    DevelopersGraphicsPage
   ],
   providers: [
     StatusBar,

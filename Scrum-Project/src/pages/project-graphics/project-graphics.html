@@ -1,18 +1,47 @@
 <!--
-  Generated template for the ProjectGraphicsPage page.
+  Generated template for the ViewProjectPage page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
+<html>
+<head>
+</head>
+<body>
+  <ion-header >
+      <ion-toolbar color="primary">
+        <ion-title>Detalles</ion-title>
+        <ion-buttons end>
+          <button ion-button icon-only (click)="exit()">
+            <ion-icon name="close-circle"></ion-icon>
+          </button>
+         </ion-buttons>
+      </ion-toolbar>
+  </ion-header>
 
-  <ion-navbar>
-    <ion-title>project-graphics</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
-<ion-content padding>
-
-</ion-content>
+  <ion-content >
+    <ion-list>
+      <ion-item *ngFor="let item of lista">
+        <ion-card color="secondary">
+          <ion-card-header>
+            <h3>Nombre:</h3>
+           <h1>{{item.nombre}}</h1>
+             <h3>Descripcion: </h3>
+             <h1>{{item.descripcion}}</h1>
+          </ion-card-header>
+          <ion-card-content>
+            <div class="chart-container" style="position: relative; height:40vh; width:80vw">
+            <canvas baseChart
+                    [data]="pieChartData"
+                    [labels]="pieChartLabels"
+                    [chartType]="pieChartType"
+                    (chartHover)="chartHovered($event)"
+                    (chartClick)="chartClicked($event)"></canvas>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</body>
+</html>
