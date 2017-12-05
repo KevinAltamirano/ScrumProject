@@ -24,6 +24,7 @@ import { EstatusTareaPage} from '../pages/estatus-tarea/estatus-tarea';
 import { ChiefmasterPage } from '../pages/chiefmaster/chiefmaster';
 import { ProjectGraphicsPage } from '../pages/project-graphics/project-graphics';
 import { DevelopersGraphicsPage } from '../pages/developers-graphics/developers-graphics';
+import { TableroDevsPage } from '../pages/tablero-devs/tablero-devs';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { DevelopersGraphicsPage } from '../pages/developers-graphics/developers-
     EstatusTareaPage,
     ChiefmasterPage,
     ProjectGraphicsPage,
-    DevelopersGraphicsPage
+    DevelopersGraphicsPage,
+    TableroDevsPage
   ],
   imports: [
     HttpClientModule,
@@ -69,7 +71,8 @@ import { DevelopersGraphicsPage } from '../pages/developers-graphics/developers-
     EstatusTareaPage,
     ChiefmasterPage,
     ProjectGraphicsPage,
-    DevelopersGraphicsPage
+    DevelopersGraphicsPage,
+    TableroDevsPage
   ],
   providers: [
     StatusBar,
