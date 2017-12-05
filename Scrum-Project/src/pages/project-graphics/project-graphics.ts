@@ -23,7 +23,7 @@ export class ProjectGraphicsPage {
   lista: Array<any> = [];
   cantidades: any;
   public pieChartLabels:string[] = ['Pendiente', 'Haciendo', 'En pruebas', 'Terminado'];
-  public pieChart:number[] = [];
+  public pieChart:number[] = [0,0,0,0];
   public pieChartType:string = 'pie';
 
   constructor(public app: App, public navCtrl: NavController, public navParams: NavParams, public manejadorProvider: ManejadorProvider) {
@@ -33,6 +33,7 @@ export class ProjectGraphicsPage {
 
   ionViewDidLoad() {
     if(this.idP){
+      console.log(this.pieChart);
       this.manejadorProvider.showProject("viewProject", this.idP, "idProyecto")
       .then(data => {
         //console.log('hola', data);
@@ -47,10 +48,10 @@ export class ProjectGraphicsPage {
       });
       this.manejadorProvider.count("countTareas", this.idP, "proyecto.idProyecto")
       .then(data => {
-          this.pieChart.push((data[0][0]));
-          this.pieChart.push((data[0][1]));
-          this.pieChart.push((data[0][2]));
-          this.pieChart.push((data[0][3]));
+        for (var i = 0; i < 4; i++) {
+          var p =  (parseInt(data[0][i]));
+          this.pieChart[i] = p;
+        }
           console.log(this.pieChart);
       });
     }
@@ -60,7 +61,7 @@ export class ProjectGraphicsPage {
         //console.log('hola', data);
         this.project = data[0];
             var p = {
-          		nombre: this.project['Nombre'],
+          		nombre: this.project['Usuario'],
           		descripcion: "Desarrollador"
           	};
             //console.log(p);
@@ -69,11 +70,10 @@ export class ProjectGraphicsPage {
       });
       this.manejadorProvider.count("countTareas", this.idU, "tareas.idUsuario")
       .then(data => {
-
-          this.pieChart.push(parseInt(data[0][0]));
-          this.pieChart.push(parseInt(data[0][1]));
-          this.pieChart.push(parseInt(data[0][2]));
-          this.pieChart.push(parseInt(data[0][3]));
+        for (var i = 0; i < 4; i++) {
+          var p =  (parseInt(data[0][i]));
+          this.pieChart[i] = p;
+        }
           console.log(this.pieChart);
       });
     }

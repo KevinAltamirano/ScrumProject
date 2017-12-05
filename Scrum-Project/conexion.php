@@ -31,11 +31,20 @@
    function proyecto($id=''){
      $dat = array();
       $func = 'conexion';
-      $result=mysqli_query($func(),"SELECT * FROM proyecto WHERE idUsuario = ".$id);
-      while ($row = mysqli_fetch_array($result)) {
-        $dat['proyectos'][] = $row;
+      if ($id == 0) {
+        $result=mysqli_query($func(),"SELECT * FROM proyecto");
+        while ($row = mysqli_fetch_array($result)) {
+          $dat['proyectos'][] = $row;
 
-       }
+         }
+      }
+      else {
+        $result=mysqli_query($func(),"SELECT * FROM proyecto WHERE idUsuario = ".$id);
+        while ($row = mysqli_fetch_array($result)) {
+          $dat['proyectos'][] = $row;
+
+         }
+      }
       return $dat;
    }
 
@@ -116,7 +125,7 @@
       return $dat;
    }
 
-   function newProject($idU='', $name='', $desc='', $idTeam){
+   function newProject($idU='', $name='', $desc='', $idTeam=''){
      $dat;
      $func = 'conexion';
      $con = $func();
@@ -320,6 +329,22 @@
       return $result;
    }
 
+   function countTareas($idP='',$referencia=''){
+     //SELECT COUNT(*) AS tareas FROM `tareas` INNER JOIN `hu` on tareas.idHU = hu.idHU INNER JOIN sprints ON hu.idSprint = sprints.idSprint INNER JOIN proyecto on proyecto.idProyecto = sprints.idProyecto WHERE proyecto.idProyecto = 35 AND tareas.Estatus = 1 AND tareas.idEstatus = 4
+     $dat = array();
+     $func = 'conexion';
+     $result=mysqli_query($func(),"SELECT
+    SUM(IF(tareas.idEstatus = 1, 1, 0)) AS UNO,
+    SUM(IF(tareas.idEstatus = 2, 1, 0)) AS DOS,
+    SUM(IF(tareas.idEstatus = 3, 1, 0)) AS TRES,
+    SUM(IF(tareas.idEstatus = 4, 1, 0)) AS CUATRO
+    FROM tareas INNER JOIN hu on tareas.idHU = hu.idHU INNER JOIN sprints ON hu.idSprint = sprints.idSprint INNER JOIN proyecto on proyecto.idProyecto = sprints.idProyecto INNER JOIN estatus ON estatus.idEstatus = tareas.idEstatus  WHERE ".$referencia." = ".$idP." AND tareas.Estatus = 1");
+     while ($row = mysqli_fetch_array($result)) {
+       $dat[] = $row;
+      }
+     return $dat;
+   }
+
    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $postdata = file_get_contents("php://input");
         $request = json_decode($postdata);
@@ -480,6 +505,12 @@
               $idU=$request->idU;
               $func = 'updateTarea';
               echo json_encode($func($idHU, $nombre, $descripcion, $idU));
+              break;
+          case "countTareas":
+              $idP=$request->idP;
+              $referencia=$request->referencia;
+              $func = 'countTareas';
+              echo json_encode($func($idP, $referencia));
               break;
         }
     }

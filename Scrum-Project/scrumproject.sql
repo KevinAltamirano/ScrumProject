@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-11-2017 a las 07:57:39
+-- Tiempo de generación: 05-12-2017 a las 18:51:32
 -- Versión del servidor: 10.1.25-MariaDB
 -- Versión de PHP: 7.1.7
 
@@ -94,10 +94,17 @@ CREATE TABLE `proyecto` (
 --
 
 INSERT INTO `proyecto` (`idProyecto`, `idUsuario`, `Nombre`, `Descripcion`, `idTeam`, `Estatus`) VALUES
-(35, 1, 'Proyectito hkj', 'Mi proyectito', 34, 1),
-(30, 1, 'My first project update', 'This is my first project in IOS but with update', 19, 1),
+(35, 1, 'Proyectito hkj', 'Mi proyectito', 42, 1),
+(30, 1, 'My first project update', 'This is my first project in IOS but with update', 43, 1),
+(44, 4, 'otro', 'hgbhnj', 36, 1),
+(43, 4, 'Proyecto nuevo', 'gbjhnjmk', 35, 1),
 (41, 1, 'jh,', 'jhkj', 31, 1),
-(42, 1, 'SP Team', 'hkjk', 33, 1);
+(42, 1, 'SP Team', 'hkjk', 33, 1),
+(45, 4, 'vhgbhj', 'vhgbhjnj', 37, 1),
+(46, 4, 'bmn,m', 'njmk', 38, 1),
+(47, 4, ' hghbjhnjkml', 'b nm,', 39, 1),
+(48, 1, 'otro', 'otro', 40, 1),
+(49, 1, 'Proyecto actualizado la prueba', 'proyecto de prueba', 46, 1);
 
 -- --------------------------------------------------------
 
@@ -165,7 +172,19 @@ INSERT INTO `scrumteam` (`idTeam`, `idUsuario`) VALUES
 (31, '{\"idUser\":[\"3\"]}'),
 (32, '{\"idUser\":[\"3\"]}'),
 (33, '{\"idUser\":[\"3\"]}'),
-(34, '{\"idUser\":[\"2\",\"3\"]}');
+(34, '{\"idUser\":[\"2\",\"3\"]}'),
+(35, '{\"idUser\":[\"3\",\"5\"]}'),
+(36, '{\"idUser\":[\"5\"]}'),
+(37, '{\"idUser\":[\"3\",\"5\"]}'),
+(38, '{\"idUser\":[\"5\"]}'),
+(39, '{\"idUser\":[\"5\"]}'),
+(40, '{\"idUser\":[\"3\",\"5\"]}'),
+(41, '{\"idUser\":[\"3\",\"5\"]}'),
+(42, '{\"idUser\":[\"3\",\"5\"]}'),
+(43, '{\"idUser\":[\"3\",\"5\"]}'),
+(44, '{\"idUser\":[\"3\",\"5\"]}'),
+(45, '{\"idUser\":[\"3\"]}'),
+(46, '{\"idUser\":[\"3\",\"5\"]}');
 
 -- --------------------------------------------------------
 
@@ -225,18 +244,19 @@ CREATE TABLE `tareas` (
 --
 
 INSERT INTO `tareas` (`idHU`, `idTarea`, `Nombre`, `Descripcion`, `idUsuario`, `idEstatus`, `Estatus`) VALUES
-(3, 27, 'Mmy first homework', 'nfcgvhh', 3, 2, 1),
+(3, 27, 'Mmy first homework', 'nfcgvhh', 3, 1, 1),
 (27, 29, 'Tareita', 'bhjnjm', 3, 2, 0),
 (32, 37, 'SP Tarea editada', 'jhkjlk', 3, 3, 0),
 (24, 36, 'v nbn', 'vhgjbnkmk', 3, 1, 0),
 (24, 35, ' gfvhgjbnk', 'gfvhjbnkml', 3, 1, 0),
 (24, 34, 'tarea', 'gfcfvhjbnkk', 3, 1, 0),
 (32, 38, 'SP Tarea 2', 'njmk', 3, 1, 0),
-(35, 40, 'gbhnjk', 'ghjbhnkml', 3, 1, 0),
+(35, 40, 'gbhnjk', 'ghjbhnkml', 3, 2, 1),
 (32, 39, 'SP Otra tarea', 'jhkjk', 3, 1, 0),
-(35, 41, 'jhnjmk', 'jhnjkmkl,', 3, 1, 1),
-(35, 42, 'TAREA 1', 'JHNJMK', 2, 1, 1),
-(35, 43, 'TAREA 2', 'VHGJBNK', 3, 1, 1);
+(35, 41, 'jhnjmk', 'jhnjkmkl,', 3, 4, 1),
+(35, 42, 'TAREA 1', 'JHNJMK', 3, 3, 1),
+(35, 43, 'TAREA 2', 'VHGJBNK', 3, 3, 1),
+(35, 44, 'hgbjnj', 'vbnmn,m', 5, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -257,8 +277,10 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`idUsuario`, `idRol`, `Usuario`, `Contrasena`) VALUES
 (1, 1, 'Andy', 'Andy'),
-(2, 2, 'Kevin', 'Kevin'),
-(3, 2, 'Kike', 'Kike');
+(2, 3, 'Kevin', 'Kevin'),
+(3, 2, 'Kike', 'Kike'),
+(4, 1, 'Martin', 'Martin'),
+(5, 2, 'Jhan', 'Jhan');
 
 --
 -- Índices para tablas volcadas
@@ -330,7 +352,7 @@ ALTER TABLE `hu`
 -- AUTO_INCREMENT de la tabla `proyecto`
 --
 ALTER TABLE `proyecto`
-  MODIFY `idProyecto` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `idProyecto` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 --
 -- AUTO_INCREMENT de la tabla `roles`
 --
@@ -340,7 +362,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `scrumteam`
 --
 ALTER TABLE `scrumteam`
-  MODIFY `idTeam` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `idTeam` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 --
 -- AUTO_INCREMENT de la tabla `sprints`
 --
@@ -350,12 +372,12 @@ ALTER TABLE `sprints`
 -- AUTO_INCREMENT de la tabla `tareas`
 --
 ALTER TABLE `tareas`
-  MODIFY `idTarea` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `idTarea` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `idUsuario` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;COMMIT;
+  MODIFY `idUsuario` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
