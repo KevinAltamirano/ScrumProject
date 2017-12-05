@@ -30,14 +30,14 @@
              <h1>{{item.descripcion}}</h1>
           </ion-card-header>
           <ion-card-content>
-            <div class="chart-container" style="position: relative; height:40vh; width:80vw">
-            <canvas baseChart
-                    [data]="pieChartData"
-                    [labels]="pieChartLabels"
-                    [chartType]="pieChartType"
-                    (chartHover)="chartHovered($event)"
-                    (chartClick)="chartClicked($event)"></canvas>
-            </div>
+          <div class="chart-container" style="position: relative; height:40vh; width:80vw">
+          <canvas baseChart
+                  [data]="pieChart"
+                  [labels]="pieChartLabels"
+                  [chartType]="pieChartType"
+                  (chartHover)="chartHovered($event)"
+                  (chartClick)="chartClicked($event)"></canvas>
+          </div>
           </ion-card-content>
         </ion-card>
       </ion-item>

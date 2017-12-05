@@ -23,7 +23,7 @@ export class ProjectGraphicsPage {
   lista: Array<any> = [];
   cantidades: any;
   public pieChartLabels:string[] = ['Pendiente', 'Haciendo', 'En pruebas', 'Terminado'];
-  public pieChartData:number[] = [];
+  public pieChart:number[] = [];
   public pieChartType:string = 'pie';
 
   constructor(public app: App, public navCtrl: NavController, public navParams: NavParams, public manejadorProvider: ManejadorProvider) {
@@ -47,10 +47,11 @@ export class ProjectGraphicsPage {
       });
       this.manejadorProvider.count("countTareas", this.idP, "proyecto.idProyecto")
       .then(data => {
-          this.pieChartData.push(data[0][0]);
-          this.pieChartData.push(data[0][1]);
-          this.pieChartData.push(data[0][2]);
-          this.pieChartData.push(data[0][3]);
+          this.pieChart.push((data[0][0]));
+          this.pieChart.push((data[0][1]));
+          this.pieChart.push((data[0][2]));
+          this.pieChart.push((data[0][3]));
+          console.log(this.pieChart);
       });
     }
     else{
@@ -69,11 +70,11 @@ export class ProjectGraphicsPage {
       this.manejadorProvider.count("countTareas", this.idU, "tareas.idUsuario")
       .then(data => {
 
-          this.pieChartData.push(data[0][0]);
-          this.pieChartData.push(data[0][1]);
-          this.pieChartData.push(data[0][2]);
-          this.pieChartData.push(data[0][3]);
-          console.log(this.pieChartData);
+          this.pieChart.push(parseInt(data[0][0]));
+          this.pieChart.push(parseInt(data[0][1]));
+          this.pieChart.push(parseInt(data[0][2]));
+          this.pieChart.push(parseInt(data[0][3]));
+          console.log(this.pieChart);
       });
     }
   }
