@@ -39,7 +39,7 @@ export class Login1Page {
       }else{
         //console.log(this.user['idRol']);
         if(this.user['idRol']==1){
-          this.navCtrl.setRoot(ProyectoPage, {idU:this.user['idUsuario']});
+          this.navCtrl.setRoot(ProyectoPage, {userId:this.user['idUsuario']});
         }
         if(this.user['idRol']==2){
           this.navCtrl.setRoot(TareasDevPage, {idU:this.user['idUsuario']});

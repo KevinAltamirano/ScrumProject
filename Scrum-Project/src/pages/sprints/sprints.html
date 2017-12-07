@@ -9,7 +9,7 @@
       <ion-toolbar color="upch">
 
         <ion-title>Historias Proyecto</ion-title>
-        
+
       </ion-toolbar>
   </ion-header>
 
@@ -56,3 +56,19 @@
       </button>
     </ion-fab>
   </ion-content>
+  <ion-footer style="position:absolute">
+<ion-toolbar>
+  <button style="width:48%" ion-button icon-only (click)="proyectos()" color="menu">
+    <span>
+    Proyectos
+    <ion-icon name="return-left"></ion-icon>
+  </span>
+  </button>
+  <button style="width:48%" ion-button icon-only (click)="sprints()" color="menu">
+    <span>
+    Sprints
+    <ion-icon name="return-left"></ion-icon>
+  </span>
+  </button>
+</ion-toolbar>
+</ion-footer>

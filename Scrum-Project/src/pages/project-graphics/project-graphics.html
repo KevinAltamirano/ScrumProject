@@ -11,11 +11,6 @@
   <ion-header >
       <ion-toolbar color="upch">
         <ion-title>Detalles Tarea</ion-title>
-        <ion-buttons end>
-          <button ion-button icon-only (click)="exit()">
-            <ion-icon name="close-circle"></ion-icon>
-          </button>
-         </ion-buttons>
       </ion-toolbar>
   </ion-header>
 
@@ -43,5 +38,27 @@
       </ion-item>
     </ion-list>
   </ion-content>
+  <ion-footer style="position:absolute">
+  <ion-toolbar>
+    <button style="width:31%" ion-button icon-only (click)="projects()" color="menu">
+      <span>
+      Proyectos
+      <ion-icon name="list"></ion-icon>
+    </span>
+    </button>
+    <button style="width:31%" ion-button icon-only (click)="tablero()" color="menu">
+      <span>
+      Tablero
+      <ion-icon name="clipboard"></ion-icon>
+    </span>
+    </button>
+    <button style="width:31%" ion-button icon-only (click)="devs()" color="menu">
+      <span>
+      Desarrolladores
+      <ion-icon name="people"></ion-icon>
+    </span>
+    </button>
+  </ion-toolbar>
+</ion-footer>
 </body>
 </html>

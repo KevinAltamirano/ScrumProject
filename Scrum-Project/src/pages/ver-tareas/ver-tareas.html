@@ -28,7 +28,7 @@
 
         <ion-card color="back">
           <ion-card-header>
-            
+
             <h3>Descripcion: </h3>
             <h1>{{item.descripcion}}</h1>
             <h3>Responsable: </h3>
@@ -42,5 +42,33 @@
     </ion-list>
 
   </ion-content>
+  <ion-footer style="position:absolute">
+<ion-toolbar>
+  <button style="width:23%" ion-button icon-only small (click)="proyectos()" color="menu">
+    <span>
+    Proyectos
+    <ion-icon name="return-left"></ion-icon>
+  </span>
+  </button>
+  <button style="width:23%" ion-button icon-only small (click)="sprints()" color="menu">
+    <span>
+    Sprints
+    <ion-icon name="return-left"></ion-icon>
+  </span>
+  </button>
+  <button style="width:23%" ion-button icon-only small (click)="historias()" color="menu">
+    <span>
+    HU
+    <ion-icon name="return-left"></ion-icon>
+  </span>
+  </button>
+  <button style="width:23%" ion-button icon-only small (click)="tarea()" color="menu">
+    <span>
+    Tareas
+    <ion-icon name="return-left"></ion-icon>
+  </span>
+  </button>
+</ion-toolbar>
+</ion-footer>
 </body>
 </html>

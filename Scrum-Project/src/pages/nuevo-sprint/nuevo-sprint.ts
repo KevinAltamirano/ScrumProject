@@ -17,6 +17,7 @@ import { ViewProjectPage } from '../view-project/view-project';
 })
 export class NuevoSprintPage {
 
+  idUsuario:number;
   nombre = "";
   myDateI = "";
   myDateF = "";
@@ -27,6 +28,7 @@ export class NuevoSprintPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public manejadorProvider: ManejadorProvider ) {
     this.idProject = navParams.get('projectId');
     this.idSprint = navParams.get('sprintId');
+    this.idUsuario = navParams.get('userId');
 
   }
 
@@ -47,14 +49,14 @@ export class NuevoSprintPage {
         .then(data => {
           console.log("entra en update y mi idProject", this.idProject);
           this.idSprint = data;
-          this.navCtrl.setRoot(ViewProjectPage, { projectId: this.idProject });
+          this.navCtrl.setRoot(ViewProjectPage, { projectId: this.idProject, userId: this.idUsuario });
         });
     }else{
       this.manejadorProvider.newSprint("newSprint",this.idProject, this.nombre, this.myDateI, this.myDateF)
         .then(data => {
           console.log(data);
           this.idSprint = data;
-          this.navCtrl.setRoot(ViewProjectPage, { projectId: this.idProject });
+          this.navCtrl.setRoot(ViewProjectPage, { projectId: this.idProject, userId: this.idUsuario });
         });
     }
   }

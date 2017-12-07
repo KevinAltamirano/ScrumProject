@@ -9,7 +9,7 @@
       <ion-toolbar color="upch">
           <ion-title>Tareas Proyecto</ion-title>
           <ion-buttons end>
-          
+
           </ion-buttons>
       </ion-toolbar>
   </ion-header>
@@ -38,7 +38,7 @@
             <h3>Nombre Tarea:</h3>
             <h1>{{item.nombre}}</h1>
           </ion-card-header>
-         
+
         </ion-card>
 
         <ion-card color="menu" full class="center">
@@ -53,7 +53,7 @@
               <ion-icon name="trash"></ion-icon>
             </button>
           </ion-card-header>
-        
+
         </ion-card>
 
       </ion-item>
@@ -63,5 +63,26 @@
         <ion-icon name="add"></ion-icon>
       </button>
     </ion-fab>
-
   </ion-content>
+  <ion-footer style="position:absolute">
+  <ion-toolbar>
+    <button style="width:31%" ion-button icon-only small (click)="proyectos()" color="menu">
+      <span>
+      Proyectos
+      <ion-icon name="return-left"></ion-icon>
+    </span>
+    </button>
+    <button style="width:31%" ion-button icon-only small (click)="sprints()" color="menu">
+      <span>
+      Sprints
+      <ion-icon name="return-left"></ion-icon>
+    </span>
+    </button>
+    <button style="width:31%" ion-button icon-only small (click)="historias()" color="menu">
+      <span>
+      HU
+      <ion-icon name="return-left"></ion-icon>
+    </span>
+    </button>
+  </ion-toolbar>
+</ion-footer>

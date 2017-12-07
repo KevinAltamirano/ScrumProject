@@ -6,6 +6,7 @@ import { App } from 'ionic-angular';
 import { Login1Page } from '../login1/login1';
 import { ProjectGraphicsPage } from '../project-graphics/project-graphics';
 import { TableroDevsPage } from '../tablero-devs/tablero-devs';
+import { DevelopersGraphicsPage } from '../developers-graphics/developers-graphics';
 
 /**
  * Generated class for the ChiefmasterPage page.
@@ -60,8 +61,12 @@ export class ChiefmasterPage {
     this.navCtrl.setRoot(ProjectGraphicsPage, { projectId: id });
   }
 
-  public devs(){
+  public tablero(){
     this.navCtrl.setRoot(TableroDevsPage);
+  }
+
+  public devs(){
+    this.navCtrl.setRoot(DevelopersGraphicsPage);
   }
 
 }

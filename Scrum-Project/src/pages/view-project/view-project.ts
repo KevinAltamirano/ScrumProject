@@ -20,20 +20,22 @@ import { App } from 'ionic-angular';
 })
 export class ViewProjectPage {
   idProject:number;
+  idUsuario:number;
   project:any;
   sprints:any;
   lista: Array<any> = [];
   lista2: Array<any> = [];
+  tab1Root = ProyectoPage;
   constructor(public app: App,public alertCtrl: AlertController,public navCtrl: NavController, public navParams: NavParams, public manejadorProvider: ManejadorProvider,public modalCtrl: ModalController, public viewCtrl: ViewController, public actionSheetCtrl: ActionSheetController) {
     //console.log('UserId', navParams.get('projectId'));
     this.idProject = navParams.get('projectId');
+    this.idUsuario = navParams.get('userId');
     console.log('hola ide de proyecto', this.idProject);
   }
 
   ionViewDidLoad() {
     this.manejadorProvider.showProject("viewProject", this.idProject, "idProyecto")
     .then(data => {
-      //console.log('hola', data);
       this.project = data[0];
           var p = {
         		nombre: this.project['Nombre'],
@@ -68,16 +70,16 @@ export class ViewProjectPage {
   }
 
   public open(){
-    let modal = this.modalCtrl.create(NuevoSprintPage, { projectId: this.idProject });
+    let modal = this.modalCtrl.create(NuevoSprintPage, { projectId: this.idProject, userId: this.idUsuario  });
     modal.present();
   }
 
   public ver(id:number){
-    this.navCtrl.setRoot(SprintsPage, { sprintId: id, projectId: this.idProject });
+    this.navCtrl.setRoot(SprintsPage, { sprintId: id, projectId: this.idProject, userId: this.idUsuario });
   }
 
   public editar(id:number){
-    let modal = this.modalCtrl.create(NuevoSprintPage, { sprintId: id, projectId: this.idProject });
+    let modal = this.modalCtrl.create(NuevoSprintPage, { sprintId: id, projectId: this.idProject, userId: this.idUsuario });
     modal.present();
   }
 
@@ -109,6 +111,8 @@ export class ViewProjectPage {
     alert.present();
   }
 
-
+  public proyectos(){
+    this.navCtrl.setRoot(ProyectoPage, {userId: this.idUsuario});
+  }
 
 }

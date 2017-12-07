@@ -93,15 +93,13 @@ export class ProyectoNuevoPage {
     if(this.idProject){
       this.manejadorProvider.newProject("updateProject",this.nombre, this.descripcion, this.team, this.idProject, this.idUser)
       .then(data => {
-      this.viewCtrl.dismiss();
-      this.navCtrl.setRoot(ProyectoPage, {idU:this.idUser});
+      this.navCtrl.setRoot(ProyectoPage, {userId:this.idUser});
 
       });
     }else{
     this.manejadorProvider.newProject("newProject",this.nombre, this.descripcion, this.team, 0, this.idUser)
     .then(data => {
-    this.viewCtrl.dismiss();
-    this.navCtrl.setRoot(ProyectoPage, {idU:this.idUser});
+    this.navCtrl.setRoot(ProyectoPage, {userId:this.idUser});
 
     });
     }

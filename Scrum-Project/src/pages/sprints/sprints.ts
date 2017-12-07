@@ -5,6 +5,8 @@ import { ViewController } from 'ionic-angular/navigation/view-controller';
 import { HistoriasUsuariosPage } from '../historias-usuarios/historias-usuarios';
 import { ViewHistPage } from '../view-hist/view-hist';
 import { AlertController } from 'ionic-angular';
+import { ProyectoPage } from '../proyecto/proyecto';
+import { ViewProjectPage } from '../view-project/view-project';
 
 @Component({
   selector: 'page-sprints',
@@ -14,6 +16,7 @@ export class SprintsPage {
 
   idS:number;
   idP:number;
+  idUsuario:number;
   sprint:any;
   hu:any;
   lista: Array<any> = [];
@@ -23,6 +26,8 @@ export class SprintsPage {
     //console.log('sprintId', navParams.get('sprintId'));
     this.idS = navParams.get('sprintId');
     this.idP = navParams.get('projectId');
+    this.idUsuario = navParams.get('userId');
+    console.log("id de usuario en sprint: ", this.idUsuario);
   }
 
   ionViewDidLoad() {
@@ -63,16 +68,16 @@ export class SprintsPage {
   }
 
   public open(){
-    let modal = this.modalCtrl.create(HistoriasUsuariosPage, { sprintId: this.idS, projectId: this.idP});
+    let modal = this.modalCtrl.create(HistoriasUsuariosPage, { sprintId: this.idS, projectId: this.idP, userId: this.idUsuario});
     modal.present();
   }
 
   public ver(id:number){
-    this.navCtrl.setRoot(ViewHistPage, { huId: id, projectId: this.idP });
+    this.navCtrl.setRoot(ViewHistPage, { huId: id, projectId: this.idP, userId: this.idUsuario, sprintId:this.idS });
   }
 
   public editar(id:number){
-    let modal = this.modalCtrl.create(HistoriasUsuariosPage, { huId: id, sprintId: this.idS, projectId: this.idP });
+    let modal = this.modalCtrl.create(HistoriasUsuariosPage, { huId: id, sprintId: this.idS, projectId: this.idP, userId: this.idUsuario });
     modal.present();
   }
 
@@ -107,5 +112,13 @@ export class SprintsPage {
 	{
 		this.viewCtrl.dismiss();
 	}
+
+  public proyectos(){
+    this.navCtrl.setRoot(ProyectoPage, {userId: this.idUsuario});
+  }
+
+  public sprints(){
+    this.navCtrl.setRoot(ViewProjectPage, {projectId: this.idP, userId: this.idUsuario});
+  }
 
 }

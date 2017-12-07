@@ -16,20 +16,12 @@
       <ion-buttons end>
         <button ion-button icon-only (click)="exit()">
           <ion-icon name="close-circle"></ion-icon>
-        </button>
-        <button ion-button icon-only (click)="devs()">
-          <ion-icon name="people"></ion-icon>
-        </button>
+          </button>
       </ion-buttons>
     </ion-navbar>
-
   </ion-header>
-
-
 <ion-nav id="nav" #content [root]="rootPage"></ion-nav>
-
   <ion-content >
-
     <ion-list>
       <ion-item *ngFor="let item of lista">
         <ion-card color="back" full>
@@ -38,19 +30,31 @@
            <h1>{{item.nombre}}</h1>
           </ion-card-header>
         </ion-card>
-
         <ion-card color="menu" full>
           <ion-card-header>
             <button ion-button icon-only (click)="ver(item.id)">
               <ion-icon name="eye"></ion-icon>
             </button>
           </ion-card-header>
-          
         </ion-card>
-
       </ion-item>
     </ion-list>
-
   </ion-content>
+  <ion-footer style="position:absolute">
+  <ion-toolbar>
+    <button style="width:48%" ion-button icon-only (click)="tablero()" color="menu">
+      <span>
+      Tablero
+      <ion-icon name="clipboard"></ion-icon>
+    </span>
+    </button>
+    <button style="width:48%" ion-button icon-only (click)="devs()" color="menu">
+      <span>
+      Desarrolladores
+      <ion-icon name="people"></ion-icon>
+    </span>
+    </button>
+  </ion-toolbar>
+</ion-footer>
 </body>
 </html>

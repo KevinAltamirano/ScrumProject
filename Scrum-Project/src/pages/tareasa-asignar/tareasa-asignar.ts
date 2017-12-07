@@ -17,6 +17,7 @@ import { ViewHistPage } from '../view-hist/view-hist';
 export class TareasaAsignarPage {
 
   responsable:number;
+  idS:number;
   nombre="";
   descripcion="";
   idHU:number;
@@ -25,11 +26,14 @@ export class TareasaAsignarPage {
   users:any;
   tareas:any;
   lista: Array<any> = [];
+  idUsuario:number;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public manejadorProvider: ManejadorProvider, public viewCtrl: ViewController) {
     this.idHU = navParams.get('huId');
     this.idP = navParams.get('projectId');
     this.idTarea = navParams.get('tareaId');
-    console.log('projectId TAREASA-ASIGNAR', navParams.get('projectId'));
+    this.idUsuario = navParams.get('userId');
+    this.idS = navParams.get('sprintId');
   }
 
   ionViewDidLoad() {
@@ -74,13 +78,13 @@ export class TareasaAsignarPage {
       this.manejadorProvider.newTarea("updateTarea",this.idTarea, this.nombre, this.descripcion, this.responsable)
         .then(data => {
           this.idTarea = data;
-          this.navCtrl.setRoot(ViewHistPage, { huId: this.idHU, projectId: this.idP});
+          this.navCtrl.setRoot(ViewHistPage, { huId: this.idHU, projectId: this.idP, userId:this.idUsuario, sprintId:this.idS});
         });
     }else{
     this.manejadorProvider.newTarea("newTarea",this.idHU, this.nombre, this.descripcion, this.responsable)
       .then(data => {
         this.idTarea = data;
-        this.navCtrl.setRoot(ViewHistPage, { huId: this.idHU, projectId: this.idP});
+        this.navCtrl.setRoot(ViewHistPage, { huId: this.idHU, projectId: this.idP, userId:this.idUsuario, sprintId:this.idS});
       });
     }
   }

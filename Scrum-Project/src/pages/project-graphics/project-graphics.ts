@@ -3,7 +3,9 @@ import { NavController, NavParams } from 'ionic-angular';
 import { ManejadorProvider } from '../../providers/manejador';
 import { App } from 'ionic-angular';
 import { Login1Page } from '../login1/login1';
-
+import { TableroDevsPage } from '../tablero-devs/tablero-devs';
+import { DevelopersGraphicsPage } from '../developers-graphics/developers-graphics';
+import { ChiefmasterPage } from '../chiefmaster/chiefmaster';
 /**
  * Generated class for the ProjectGraphicsPage page.
  *
@@ -89,6 +91,18 @@ export class ProjectGraphicsPage {
 
   public exit(){
     this.app.getRootNav().setRoot(Login1Page);
+  }
+
+  public tablero(){
+    this.navCtrl.setRoot(TableroDevsPage);
+  }
+
+  public devs(){
+    this.navCtrl.setRoot(DevelopersGraphicsPage);
+  }
+
+  public projects(){
+    this.navCtrl.setRoot(ChiefmasterPage);
   }
 
 }

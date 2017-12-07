@@ -8,11 +8,11 @@
   <ion-header >
       <ion-toolbar color="upch">
         <ion-title>Sprints Proyectos</ion-title>
-       
+
       </ion-toolbar>
   </ion-header>
 
-  
+
 
   <ion-content >
     <ion-list>
@@ -43,7 +43,7 @@
             <br>
             <h3>Fecha Final: </h3>
             <h1>{{item.final}}</h1>
-            
+
           </ion-card-content>
         </ion-card>
         <ion-card color="menu" full class="center">
@@ -66,5 +66,15 @@
       <button ion-button icon-only (click)="open()" large round color="upch">
         <ion-icon name="add"></ion-icon>
       </button>
-    </ion-fab> 
+    </ion-fab>
   </ion-content>
+  <ion-footer style="position:absolute">
+  <ion-toolbar>
+    <button ion-button full icon-only (click)="proyectos()" color="menu">
+      <span>
+      Proyectos
+      <ion-icon name="return-left"></ion-icon>
+    </span>
+    </button>
+  </ion-toolbar>
+</ion-footer>

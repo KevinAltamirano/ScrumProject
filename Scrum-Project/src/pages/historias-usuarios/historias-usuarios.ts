@@ -20,12 +20,13 @@ export class HistoriasUsuariosPage {
   idHU:any;
   nombre="";
   idP:any;
-  //idHU:number;
+  idUsuario:number;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public manejadorProvider: ManejadorProvider, public viewCtrl: ViewController) {
     this.idS = navParams.get('sprintId');
     this.idHU = navParams.get('huId');
     this.idP = navParams.get('projectId');
+    this.idUsuario = navParams.get('userId');
   }
 
   ionViewDidLoad() {
@@ -43,13 +44,13 @@ export class HistoriasUsuariosPage {
       this.manejadorProvider.newHU("updateHU",this.idHU, this.nombre)
         .then(data => {
           this.idHU = data;
-          this.navCtrl.setRoot(SprintsPage, { sprintId: this.idS, projectId: this.idP});
+          this.navCtrl.setRoot(SprintsPage, { sprintId: this.idS, projectId: this.idP, userId: this.idUsuario});
         });
     }else{
     this.manejadorProvider.newHU("newHU",this.idS, this.nombre)
       .then(data => {
         this.idHU = data;
-        this.navCtrl.setRoot(SprintsPage, { sprintId: this.idS, projectId: this.idP});
+        this.navCtrl.setRoot(SprintsPage, { sprintId: this.idS, projectId: this.idP, userId: this.idUsuario});
       });
     }
   }

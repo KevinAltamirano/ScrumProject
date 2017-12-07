@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { ManejadorProvider } from '../../providers/manejador';
 import { ProjectGraphicsPage } from '../project-graphics/project-graphics';
+import { TableroDevsPage } from '../tablero-devs/tablero-devs';
+import { ChiefmasterPage } from '../chiefmaster/chiefmaster';
 
 /**
  * Generated class for the DevelopersGraphicsPage page.
@@ -47,6 +49,14 @@ export class DevelopersGraphicsPage {
 
   public ver(id:number){
     this.navCtrl.setRoot(ProjectGraphicsPage, { userId: id });
+  }
+
+  public tablero(){
+    this.navCtrl.setRoot(TableroDevsPage);
+  }
+
+  public projects(){
+    this.navCtrl.setRoot(ChiefmasterPage);
   }
 
 }

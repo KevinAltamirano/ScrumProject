@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { ManejadorProvider } from '../../providers/manejador';
 import { DevelopersGraphicsPage } from '../developers-graphics/developers-graphics';
+import { ChiefmasterPage } from '../chiefmaster/chiefmaster';
 
 /**
  * Generated class for the TableroDevsPage page.
@@ -122,6 +123,14 @@ export class TableroDevsPage {
 
   public devs(){
     this.navCtrl.setRoot(DevelopersGraphicsPage);
+  }
+
+  public devs(){
+    this.navCtrl.setRoot(DevelopersGraphicsPage);
+  }
+
+  public projects(){
+    this.navCtrl.setRoot(ChiefmasterPage);
   }
 
 }

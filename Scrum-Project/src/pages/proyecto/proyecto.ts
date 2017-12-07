@@ -28,12 +28,10 @@ export class ProyectoPage {
   idUser:number;
 
   constructor(public app: App,public alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams, public manejadorProvider: ManejadorProvider, public modalCtrl: ModalController, public actionSheetCtrl: ActionSheetController) {
-    this.idUser = navParams.get('idU');
+    this.idUser = navParams.get('userId');
   }
 
   ionViewDidLoad() {
-    //console.log('ionViewDidLoad ProyectoPage');
-
     this.manejadorProvider.proyecto(this.accion, this.idUser)
     .then(data => {
       this.project = data['proyectos'];
@@ -52,13 +50,10 @@ export class ProyectoPage {
           }
         }
       }
-
-
-
     });
   }
 
- 
+
 
   public openModal(){
     let modal = this.modalCtrl.create(ProyectoNuevoPage, {idU:this.idUser});
@@ -79,7 +74,7 @@ export class ProyectoPage {
   }
 
   public ver(id:number){
-    this.navCtrl.setRoot(ViewProjectPage, { projectId: id });
+    this.navCtrl.setRoot(ViewProjectPage, { projectId: id, userId: this.idUser });
   }
 
   public editar(id:number){
@@ -104,6 +99,7 @@ export class ProyectoPage {
           handler: () => {
             this.manejadorProvider.eliminar(id, 'eliminarProyecto', 'idProyecto')
             .then(data => {
+              this.navCtrl.setRoot(ProyectoPage, {userId:this.idUser});
             });
           }
         }

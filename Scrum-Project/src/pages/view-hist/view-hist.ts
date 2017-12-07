@@ -5,6 +5,9 @@ import { ViewController } from 'ionic-angular/navigation/view-controller';
 import { TareasaAsignarPage } from '../tareasa-asignar/tareasa-asignar';
 import { VerTareasPage } from '../ver-tareas/ver-tareas';
 import { AlertController } from 'ionic-angular';
+import { ProyectoPage } from '../proyecto/proyecto';
+import { ViewProjectPage } from '../view-project/view-project';
+import { SprintsPage } from '../sprints/sprints';
 
 /**
  * Generated class for the ViewHistPage page.
@@ -20,14 +23,18 @@ import { AlertController } from 'ionic-angular';
 export class ViewHistPage {
   idHU:number;
   idP:number;
+  idUsuario:number;
+  idS:number;
   hu:any;
   tareas:any;
   lista: Array<any> = [];
   lista2: Array<any> = [];
   constructor(public alertCtrl: AlertController,public navCtrl: NavController, public navParams: NavParams, public manejadorProvider: ManejadorProvider,public modalCtrl: ModalController, public viewCtrl: ViewController, public actionSheetCtrl: ActionSheetController) {
-    console.log('projectId VIEW-HIST', navParams.get('projectId'));
+    console.log('userId VIEW-HIST', navParams.get('userId'));
     this.idHU = navParams.get('huId');
     this.idP = navParams.get('projectId');
+    this.idUsuario = navParams.get('userId');
+    this.idS = navParams.get('sprintId');
   }
 
   ionViewDidLoad() {
@@ -65,16 +72,16 @@ export class ViewHistPage {
   }
 
   public open(){
-    let modal = this.modalCtrl.create(TareasaAsignarPage, { huId: this.idHU, projectId: this.idP });
+    let modal = this.modalCtrl.create(TareasaAsignarPage, { huId: this.idHU, projectId: this.idP, userId:this.idUsuario, sprintId:this.idS });
     modal.present();
   }
 
   public ver(id:number){
-    this.navCtrl.setRoot(VerTareasPage, { tareaId: id });
+    this.navCtrl.setRoot(VerTareasPage, { tareaId: id, projectId: this.idP, huId: this.idHU, sprintId:this.idS, userId:this.idUsuario });
   }
 
   public editar(id:number){
-    let modal = this.modalCtrl.create(TareasaAsignarPage, { tareaId: id, projectId: this.idP, huId: this.idHU });
+    let modal = this.modalCtrl.create(TareasaAsignarPage, { tareaId: id, projectId: this.idP, huId: this.idHU, userId:this.idUsuario, sprintId:this.idS });
     modal.present();
   }
 
@@ -109,5 +116,17 @@ export class ViewHistPage {
 	{
 		this.viewCtrl.dismiss();
 	}
+
+  public proyectos(){
+    this.navCtrl.setRoot(ProyectoPage, {userId: this.idUsuario});
+  }
+
+  public sprints(){
+    this.navCtrl.setRoot(ViewProjectPage, {projectId: this.idP, userId: this.idUsuario});
+  }
+
+  public historias(){
+    this.navCtrl.setRoot(SprintsPage, {projectId: this.idP, sprintId:this.idS, userId: this.idUsuario});
+  }
 
 }
