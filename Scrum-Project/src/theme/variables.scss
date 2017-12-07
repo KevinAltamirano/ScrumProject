@@ -40,10 +40,13 @@ $colors: (
   light:      #f4f4f4,
   dark:       #222,
   upch:       #006190,
-  back:       rgb(66, 151, 113) ,
+  upch2: #003349,
+  back:       rgb(57, 129, 97) ,
   menu:       #002c5f,
   front: rgb(21, 151, 237),
-  blanco: white
+  blanco: white,
+  prueba: rgb(218, 218, 78),
+  hac: rgb(255, 78, 8)
 );
 
 .center {
@@ -58,7 +61,10 @@ $colors: (
     position: relative;
     text-align: center;
     width: 100%;
+    white-space: normal;
   }
+
+  
 
   .p{
     color: white;

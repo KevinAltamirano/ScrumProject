@@ -3,15 +3,10 @@
 </head>
 <body>
   <ion-header>
-    <ion-navbar color="primary">
+    <ion-navbar color="upch">
       <ion-title>
         Proyectos
       </ion-title>
-      <ion-buttons end>
-        <button ion-button icon-only (click)="exit()">
-          <ion-icon name="close-circle"></ion-icon>
-        </button>
-      </ion-buttons>
     </ion-navbar>
 
   </ion-header>
@@ -23,14 +18,20 @@
 
     <ion-list>
       <ion-item *ngFor="let item of lista">
-        <ion-card color="secondary" full>
+        <ion-card color="back" full>
           <ion-card-header>
             <h3>Nombre:</h3>
            <h1>{{item.nombre}}</h1>
           </ion-card-header>
-          <button ion-button icon-only (click)="ver(item.id)">
-            <ion-icon name="eye"></ion-icon>
+        </ion-card>
+
+        <ion-card color="menu" full>
+          <ion-card-header>
+            <button ion-button icon-only (click)="ver(item.id)" >
+              <ion-icon name="eye"></ion-icon>
+          
           </button>
+          </ion-card-header>
         </ion-card>
 
       </ion-item>
