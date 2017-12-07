@@ -8,6 +8,7 @@ import { HistoriasUsuariosPage } from '../historias-usuarios/historias-usuarios'
 import { AlertController } from 'ionic-angular';
 import { App } from 'ionic-angular';
 import { Login1Page } from '../login1/login1';
+import { MenuController } from 'ionic-angular';
 /**
  * Generated class for the ProyectoPage page.
  *
@@ -56,6 +57,8 @@ export class ProyectoPage {
 
     });
   }
+
+ 
 
   public openModal(){
     let modal = this.modalCtrl.create(ProyectoNuevoPage, {idU:this.idUser});

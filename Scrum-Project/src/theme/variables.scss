@@ -38,9 +38,31 @@ $colors: (
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #222
+  dark:       #222,
+  upch:       #006190,
+  back:       rgb(116, 124, 167),
+  menu:       rgb(112, 106, 100),
+  front: #ED5915,
+  blanco: white
 );
 
+.center {
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+
+  ion-card {
+    position: relative;
+    text-align: center;
+    width: 100%;
+  }
+
+  .p{
+    color: white;
+  }
 
 // App iOS Variables
 // --------------------------------------------------

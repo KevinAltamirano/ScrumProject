@@ -6,9 +6,9 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="upch">
       <ion-toolbar>
-          <ion-title>Crear hist de usuario</ion-title>
+          <ion-title>Nueva Historia</ion-title>
          <ion-buttons end>
           <button ion-button icon-only (click)="dismiss()">
             <ion-icon name="arrow-round-back" color="black"></ion-icon>
@@ -19,11 +19,13 @@
 </ion-header>
 <ion-content padding>
   <div>
+    
+      <ion-icon name="ios-document-outline"></ion-icon>
       <ion-item>
           <ion-label color="primary" floating>Nombre de la historia</ion-label>
           <ion-input [(ngModel)]="nombre" type="text" placeholder=""></ion-input>
       </ion-item>
       <br><br>
-    <button ion-button color="primary" menuToggle (click)="crear()">Agregar</button>
+    <button ion-button color="upch" menuToggle (click)="crear()" full>Agregar</button>
 </div>
 </ion-content>

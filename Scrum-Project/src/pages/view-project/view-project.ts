@@ -6,6 +6,7 @@ import { NuevoSprintPage } from '../nuevo-sprint/nuevo-sprint';
 import { SprintsPage} from '../sprints/sprints';
 import { AlertController } from 'ionic-angular';
 import {ProyectoPage} from '../proyecto/proyecto';
+import { App } from 'ionic-angular';
 /**
  * Generated class for the ViewProjectPage page.
  *
@@ -23,7 +24,7 @@ export class ViewProjectPage {
   sprints:any;
   lista: Array<any> = [];
   lista2: Array<any> = [];
-  constructor(public alertCtrl: AlertController,public navCtrl: NavController, public navParams: NavParams, public manejadorProvider: ManejadorProvider,public modalCtrl: ModalController, public viewCtrl: ViewController, public actionSheetCtrl: ActionSheetController) {
+  constructor(public app: App,public alertCtrl: AlertController,public navCtrl: NavController, public navParams: NavParams, public manejadorProvider: ManejadorProvider,public modalCtrl: ModalController, public viewCtrl: ViewController, public actionSheetCtrl: ActionSheetController) {
     //console.log('UserId', navParams.get('projectId'));
     this.idProject = navParams.get('projectId');
     console.log('hola ide de proyecto', this.idProject);
@@ -108,8 +109,11 @@ export class ViewProjectPage {
     alert.present();
   }
 
-  public dismiss()	{
-		this.navCtrl.setRoot(ProyectoPage);
-	}
+
+  
+  public exit(){
+    
+    
+  }
 
 }

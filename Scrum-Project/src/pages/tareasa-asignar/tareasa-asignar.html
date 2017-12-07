@@ -6,10 +6,10 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="upch">
       <ion-toolbar>
-          <ion-title>Crear tarea</ion-title>
-         <ion-buttons end>
+          <ion-title>Nueva Tarea</ion-title>
+           <ion-buttons end>
           <button ion-button icon-only (click)="dismiss()">
             <ion-icon name="arrow-round-back" color="black"></ion-icon>
           </button>
@@ -21,6 +21,7 @@
 
 <ion-content padding>
   <div>
+    <ion-icon name="ios-document-outline"></ion-icon>
       <ion-item>
           <ion-label color="primary" floating>Nombre de la tarea</ion-label>
           <ion-input [(ngModel)]="nombre" type="text" placeholder=""></ion-input>
@@ -37,7 +38,7 @@
         </ion-item>
         <br>
           <form>
-            <button ion-button color="primary" (click)="crear()">Agregar</button>
+            <button ion-button color="upch" (click)="crear()" full>Agregar</button>
           </form>
 </div>
 </ion-content>

@@ -4,28 +4,24 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<html>
-<head>
-</head>
-<body>
+
   <ion-header >
-      <ion-toolbar color="primary">
-        <ion-title>Detalles</ion-title>
+      <ion-toolbar color="upch">
+        <ion-title>Sprints Proyectos</ion-title>
         <ion-buttons end>
-           <button ion-button icon-only (click)="open()">
-             <ion-icon name="add"></ion-icon>
-           </button>
-          <button ion-button icon-only>
+          <button ion-button icon-only (click)="exit()">
             <ion-icon name="close-circle"></ion-icon>
           </button>
          </ion-buttons>
       </ion-toolbar>
   </ion-header>
 
+  
+
   <ion-content >
     <ion-list>
       <ion-item *ngFor="let item of lista">
-        <ion-card color="secondary">
+        <ion-card color="upch">
           <ion-card-header>
             <h3>Nombre:</h3>
            <h1>{{item.nombre}}</h1>
@@ -40,7 +36,7 @@
     <ion-list>
 
       <ion-item *ngFor="let item of lista2">
-        <ion-card color ="danger">
+        <ion-card color ="back">
           <ion-card-header>
             <h3>Nombre Sprint:</h3>
             <h1>{{item.nombre}}</h1>
@@ -51,21 +47,28 @@
             <br>
             <h3>Fecha Final: </h3>
             <h1>{{item.final}}</h1>
-            <button ion-button icon-only (click)="ver(item.id)">
+            
+          </ion-card-content>
+        </ion-card>
+        <ion-card color="menu" full class="center">
+          <ion-card-header>
+            <button ion-button icon-only (click)="ver(item.id)" color="secondary">
               <ion-icon name="eye"></ion-icon>
             </button>
-            <button ion-button icon-only (click)="editar(item.id)">
+            <button ion-button icon-only (click)="editar(item.id)" color="front">
               <ion-icon name="create"></ion-icon>
             </button>
-            <button ion-button icon-only (click)="eliminar(item.id)">
+            <button ion-button icon-only (click)="eliminar(item.id)" color="danger">
               <ion-icon name="trash"></ion-icon>
             </button>
-          </ion-card-content>
+          </ion-card-header>
         </ion-card>
       </ion-item>
 
     </ion-list>
-
+    <ion-fab right bottom>
+      <button ion-button icon-only (click)="open()" large round color="upch">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-fab> 
   </ion-content>
-</body>
-</html>
