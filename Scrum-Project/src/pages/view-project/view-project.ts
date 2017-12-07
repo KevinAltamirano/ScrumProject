@@ -110,10 +110,5 @@ export class ViewProjectPage {
   }
 
 
-  
-  public exit(){
-    
-    
-  }
 
 }
