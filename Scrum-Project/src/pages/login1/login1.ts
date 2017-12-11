@@ -39,12 +39,15 @@ export class Login1Page {
       }else{
         //console.log(this.user['idRol']);
         if(this.user['idRol']==1){
+          alert('Usuario' + this.user['Usuario']);
           this.navCtrl.setRoot(ProyectoPage, {userId:this.user['idUsuario']});
         }
         if(this.user['idRol']==2){
+          alert('Usuario' + this.user['Usuario']);
           this.navCtrl.setRoot(TareasDevPage, {idU:this.user['idUsuario']});
         }
         if(this.user['idRol']==3){
+          alert('Usuario' + this.user['Usuario']);
           this.navCtrl.setRoot(ChiefmasterPage);
         }
       }

@@ -125,10 +125,6 @@ export class TableroDevsPage {
     this.navCtrl.setRoot(DevelopersGraphicsPage);
   }
 
-  public devs(){
-    this.navCtrl.setRoot(DevelopersGraphicsPage);
-  }
-
   public projects(){
     this.navCtrl.setRoot(ChiefmasterPage);
   }
