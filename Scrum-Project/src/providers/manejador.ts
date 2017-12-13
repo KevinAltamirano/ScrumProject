@@ -78,6 +78,19 @@ public showProject(ac:string, idP:number, type:string){
 });
 }
 
+public showTareas(ac:string, id:number, type:string, idP:number, reference:string){
+  let headers = new Headers();
+  headers.append('Content-Type', 'application/json');
+  let data=JSON.stringify({accion:ac, id:id, type:type, idP:idP, reference:reference});
+  return new Promise(resolve => {
+  this.http.post(this.database,data,headers).subscribe(data => {
+    resolve(data);
+  }, err => {
+    console.log(err);
+  });
+});
+}
+
 public newSprint(accion:string, idProject: number, nombre:string, inicial:string, final:string){
   let headers = new Headers();
   headers.append('Content-Type', 'application/json');

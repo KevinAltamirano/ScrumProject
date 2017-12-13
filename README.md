@@ -1,2 +1,0 @@
-# ScrumProject
-Scrum Project Manager.

@@ -42,6 +42,131 @@
         </ion-card>
       </ion-item>
     </ion-list>
+    <ion-scroll scrollX="true" scrollY="true" style="width: 100%; height: 100%">
+      <table>
+        <thead>
+          <tr>
+            <th><ion-card color="danger">
+              <ion-card-header>
+                <h1>Pendiente</h1>
+              </ion-card-header>
+            </ion-card>
+          </th>
+            <th>
+              <ion-card color="hac">
+                <ion-card-header>
+                  <h1>Haciendo</h1>
+                </ion-card-header>
+              </ion-card>
+            </th>
+            <th><ion-card color="prueba">
+              <ion-card-header>
+                <h1>En Pruebas</h1>
+              </ion-card-header>
+            </ion-card>
+          </th>
+            <th><ion-card color="back">
+              <ion-card-header>
+                <h1>Terminado</h1>
+              </ion-card-header>
+            </ion-card>
+          </th>
+          </tr>
+        </thead>
+        <tr>
+          <td>
+            <ion-item *ngFor="let item of pendiente">
+              <ion-card  color="danger2">
+                <ion-card-header>
+                  <h3>Nombre:</h3>
+                 <h1>{{item.nombre}}</h1>
+                </ion-card-header>
+                <ion-card-content>
+                  <h3>Responsable: </h3>
+                  <h1>{{item.usuario}}</h1>
+                  <h3>Proyecto: {{item.proyecto}}</h3>
+                  <h3>Sprint: {{item.sprint}}</h3>
+                  <h3>Historia de usuario: {{item.hu}}</h3>
+                </ion-card-content>
+              </ion-card>
+            </ion-item>
+          </td>
+          <td>
+            <ion-item *ngFor="let item of haciendo">
+              <ion-card  color="hac2">
+                <ion-card-header>
+                  <h3>Nombre:</h3>
+                 <h1>{{item.nombre}}</h1>
+                </ion-card-header>
+                <ion-card-content>
+                  <h3>Responsable: </h3>
+                  <h1>{{item.usuario}}</h1>
+                  <h3>Proyecto: {{item.proyecto}}</h3>
+                  <h3>Sprint: {{item.sprint}}</h3>
+                  <h3>Historia de usuario: {{item.hu}}</h3>
+                </ion-card-content>
+              </ion-card>
+            </ion-item>
+          </td>
+          <td>
+              <ion-item *ngFor="let item of pruebas">
+                <ion-card  color="prueba2">
+                  <ion-card-header>
+                    <h3>Nombre:</h3>
+                   <h1>{{item.nombre}}</h1>
+                  </ion-card-header>
+                  <ion-card-content>
+                    <h3>Responsable: </h3>
+                    <h1>{{item.usuario}}</h1>
+                    <h3>Proyecto: {{item.proyecto}}</h3>
+                    <h3>Sprint: {{item.sprint}}</h3>
+                    <h3>Historia de usuario: {{item.hu}}</h3>
+                  </ion-card-content>
+                </ion-card>
+              </ion-item>
+          </td>
+          <td>
+              <ion-item *ngFor="let item of terminado">
+                <ion-card  color="back2">
+                  <ion-card-header>
+                    <h3>Nombre:</h3>
+                   <h1>{{item.nombre}}</h1>
+                  </ion-card-header>
+                  <ion-card-content>
+                    <h3>Responsable: </h3>
+                    <h1>{{item.usuario}}</h1>
+                    <h3>Proyecto: {{item.proyecto}}</h3>
+                    <h3>Sprint: {{item.sprint}}</h3>
+                    <h3>Historia de usuario: {{item.hu}}</h3>
+                  </ion-card-content>
+                </ion-card>
+              </ion-item>
+          </td>
+        </tr>
+    </table>
+    </ion-scroll>
   </ion-content>
+  <ion-footer style="position:absolute">
+ -  <ion-toolbar>
+ -    <button style="width:30%" ion-button icon-only (click)="projects()" color="menu">
+ -      <span>
+ -      Proyectos
+ -      <ion-icon name="list"></ion-icon>
+ -    </span>
+ -    </button>
+ -    <button style="width:30%" ion-button icon-only (click)="tablero()" color="menu">
+ -      <span>
+ -      Tablero
+ -      <ion-icon name="clipboard"></ion-icon>
+ -    </span>
+ -    </button>
+ -    <button style="width:30%" ion-button icon-only (click)="devs()" color="menu">
+ -      <span>
+ -      Desarrolladores
+ -      <ion-icon name="people"></ion-icon>
+ -    </span>
+ -    </button>
+ -  </ion-toolbar>
+ -</ion-footer>
 </body>
 </html>

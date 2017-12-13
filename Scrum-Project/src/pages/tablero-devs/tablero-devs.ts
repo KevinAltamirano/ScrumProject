@@ -32,7 +32,7 @@ export class TableroDevsPage {
       this.tareas = data['tareas'];
       console.log(this.tareas);
       if(this.tareas==null){
-          alert('No tiene ninguna tarea asignada');
+          //alert('No tiene ninguna tarea asignada');
       }else{
         for (var _i = 0; _i < this.tareas.length; _i++) {
           if(this.tareas[_i]['Estatus']==1){
@@ -55,7 +55,7 @@ export class TableroDevsPage {
       this.tareas = data['tareas'];
       console.log(this.tareas);
       if(this.tareas==null){
-          alert('No tiene ninguna tarea asignada');
+          //alert('No tiene ninguna tarea asignada');
       }else{
         for (var _i = 0; _i < this.tareas.length; _i++) {
           if(this.tareas[_i]['Estatus']==1){
@@ -78,7 +78,7 @@ export class TableroDevsPage {
       this.tareas = data['tareas'];
       console.log(this.tareas);
       if(this.tareas==null){
-          alert('No tiene ninguna tarea asignada');
+          //alert('No tiene ninguna tarea asignada');
       }else{
         for (var _i = 0; _i < this.tareas.length; _i++) {
           if(this.tareas[_i]['Estatus']==1){
@@ -101,7 +101,7 @@ export class TableroDevsPage {
       this.tareas = data['tareas'];
       console.log(this.tareas);
       if(this.tareas==null){
-          alert('No tiene ninguna tarea asignada');
+        //  alert('No tiene ninguna tarea asignada');
       }else{
         for (var _i = 0; _i < this.tareas.length; _i++) {
           if(this.tareas[_i]['Estatus']==1){

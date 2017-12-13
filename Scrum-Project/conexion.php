@@ -114,6 +114,17 @@
       return $dat;
    }
 
+   function showTareasReference($id='', $type='', $idP='', $reference=''){
+     $dat = array();
+      $func = 'conexion';
+      $result=mysqli_query($func(),"SELECT * FROM `proyecto` INNER JOIN sprints on proyecto.idProyecto = sprints.idProyecto INNER JOIN hu on sprints.idSprint=hu.idSprint INNER JOIN tareas on hu.idHU=tareas.idHU INNER JOIN estatus on tareas.idEstatus=estatus.idEstatus INNER JOIN usuarios on usuarios.idUsuario=tareas.idUsuario WHERE ".$type." = ".$id." AND ".$reference." = ".$idP);
+      while ($row = mysqli_fetch_array($result)) {
+        $dat['tareas'][] = $row;
+
+       }
+      return $dat;
+   }
+
    function showteam(){
      $dat = array();
       $func = 'conexion';
@@ -409,6 +420,14 @@
               $type=$request->type;
               $func = 'showTareas';
               echo json_encode($func($idP, $type));
+              break;
+          case "showTareasReference":
+              $id=$request->id;
+              $type=$request->type;
+              $idP=$request->idP;
+              $reference=$request->reference;
+              $func = 'showTareasReference';
+              echo json_encode($func($id, $type, $idP, $reference));
               break;
           case "newHU":
               $idP=$request->id;

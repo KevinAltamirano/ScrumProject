@@ -22,7 +22,12 @@ export class ProjectGraphicsPage {
   idP:number;
   idU:number;
   project:any;
+  tareas:any;
   lista: Array<any> = [];
+  pendiente: Array<any> = [];
+  haciendo: Array<any> = [];
+  pruebas: Array<any> = [];
+  terminado: Array<any> = [];
   cantidades: any;
   public pieChartLabels:string[] = ['Pendiente', 'Haciendo', 'En pruebas', 'Terminado'];
   public pieChart:number[] = [0,0,0,0];
@@ -54,7 +59,99 @@ export class ProjectGraphicsPage {
           var p =  (parseInt(data[0][i]));
           this.pieChart[i] = p;
         }
-          console.log(this.pieChart);
+        //  console.log(this.pieChart);
+      });
+      this.manejadorProvider.showTareas("showTareasReference", 1, "tareas.idEstatus", this.idP, "proyecto.idProyecto").then(data =>{
+        var st='';
+        this.tareas = data['tareas'];
+      //  console.log(this.tareas);
+        if(this.tareas==null){
+            //alert('No tiene ninguna tarea asignada');
+        }else{
+          for (var _i = 0; _i < this.tareas.length; _i++) {
+            if(this.tareas[_i]['Estatus']==1){
+              var p = {
+                id: this.tareas[_i]['idTarea'],
+                nombre: this.tareas[_i][18],
+                usuario: this.tareas[_i][27],
+                proyecto: this.tareas[_i][2],
+                sprint: this.tareas[_i][8],
+                hu: this.tareas[_i][14],
+                estatus: this.tareas[_i][24]
+              };
+              this.pendiente.push(p);
+            }
+          }
+        }
+      });
+      this.manejadorProvider.showTareas("showTareasReference", 2, "tareas.idEstatus", this.idP, "proyecto.idProyecto").then(data =>{
+        var st='';
+        this.tareas = data['tareas'];
+      //  console.log(this.tareas);
+        if(this.tareas==null){
+          //  alert('No tiene ninguna tarea asignada');
+        }else{
+          for (var _i = 0; _i < this.tareas.length; _i++) {
+            if(this.tareas[_i]['Estatus']==1){
+              var p = {
+                id: this.tareas[_i]['idTarea'],
+                nombre: this.tareas[_i][18],
+                usuario: this.tareas[_i][27],
+                proyecto: this.tareas[_i][2],
+                sprint: this.tareas[_i][8],
+                hu: this.tareas[_i][14],
+                estatus: this.tareas[_i][24]
+              };
+              this.haciendo.push(p);
+            }
+          }
+        }
+      });
+      this.manejadorProvider.showTareas("showTareasReference", 3, "tareas.idEstatus", this.idP, "proyecto.idProyecto").then(data =>{
+        var st='';
+        this.tareas = data['tareas'];
+      //  console.log(this.tareas);
+        if(this.tareas==null){
+          //  alert('No tiene ninguna tarea asignada');
+        }else{
+          for (var _i = 0; _i < this.tareas.length; _i++) {
+            if(this.tareas[_i]['Estatus']==1){
+              var p = {
+                id: this.tareas[_i]['idTarea'],
+                nombre: this.tareas[_i][18],
+                usuario: this.tareas[_i][27],
+                proyecto: this.tareas[_i][2],
+                sprint: this.tareas[_i][8],
+                hu: this.tareas[_i][14],
+                estatus: this.tareas[_i][24]
+              };
+              this.pruebas.push(p);
+            }
+          }
+        }
+      });
+      this.manejadorProvider.showTareas("showTareasReference", 4, "tareas.idEstatus", this.idP, "proyecto.idProyecto").then(data =>{
+        var st='';
+        this.tareas = data['tareas'];
+      //  console.log(this.tareas);
+        if(this.tareas==null){
+          //  alert('No tiene ninguna tarea asignada');
+        }else{
+          for (var _i = 0; _i < this.tareas.length; _i++) {
+            if(this.tareas[_i]['Estatus']==1){
+              var p = {
+                id: this.tareas[_i]['idTarea'],
+                nombre: this.tareas[_i][18],
+                usuario: this.tareas[_i][27],
+                proyecto: this.tareas[_i][2],
+                sprint: this.tareas[_i][8],
+                hu: this.tareas[_i][14],
+                estatus: this.tareas[_i][24]
+              };
+              this.terminado.push(p);
+            }
+          }
+        }
       });
     }
     else{
@@ -76,7 +173,99 @@ export class ProjectGraphicsPage {
           var p =  (parseInt(data[0][i]));
           this.pieChart[i] = p;
         }
-          console.log(this.pieChart);
+        //  console.log(this.pieChart);
+      });
+      this.manejadorProvider.showTareas("showTareasReference", 1, "tareas.idEstatus", this.idU, "tareas.idUsuario").then(data =>{
+        var st='';
+        this.tareas = data['tareas'];
+      //  console.log(this.tareas);
+        if(this.tareas==null){
+            //alert('No tiene ninguna tarea asignada');
+        }else{
+          for (var _i = 0; _i < this.tareas.length; _i++) {
+            if(this.tareas[_i]['Estatus']==1){
+              var p = {
+                id: this.tareas[_i]['idTarea'],
+                nombre: this.tareas[_i][18],
+                usuario: this.tareas[_i][27],
+                proyecto: this.tareas[_i][2],
+                sprint: this.tareas[_i][8],
+                hu: this.tareas[_i][14],
+                estatus: this.tareas[_i][24]
+              };
+              this.pendiente.push(p);
+            }
+          }
+        }
+      });
+      this.manejadorProvider.showTareas("showTareasReference", 2, "tareas.idEstatus", this.idU, "tareas.idUsuario").then(data =>{
+        var st='';
+        this.tareas = data['tareas'];
+      //  console.log(this.tareas);
+        if(this.tareas==null){
+          //  alert('No tiene ninguna tarea asignada');
+        }else{
+          for (var _i = 0; _i < this.tareas.length; _i++) {
+            if(this.tareas[_i]['Estatus']==1){
+              var p = {
+                id: this.tareas[_i]['idTarea'],
+                nombre: this.tareas[_i][18],
+                usuario: this.tareas[_i][27],
+                proyecto: this.tareas[_i][2],
+                sprint: this.tareas[_i][8],
+                hu: this.tareas[_i][14],
+                estatus: this.tareas[_i][24]
+              };
+              this.haciendo.push(p);
+            }
+          }
+        }
+      });
+      this.manejadorProvider.showTareas("showTareasReference", 3, "tareas.idEstatus", this.idU, "tareas.idUsuario").then(data =>{
+        var st='';
+        this.tareas = data['tareas'];
+      //  console.log(this.tareas);
+        if(this.tareas==null){
+          //  alert('No tiene ninguna tarea asignada');
+        }else{
+          for (var _i = 0; _i < this.tareas.length; _i++) {
+            if(this.tareas[_i]['Estatus']==1){
+              var p = {
+                id: this.tareas[_i]['idTarea'],
+                nombre: this.tareas[_i][18],
+                usuario: this.tareas[_i][27],
+                proyecto: this.tareas[_i][2],
+                sprint: this.tareas[_i][8],
+                hu: this.tareas[_i][14],
+                estatus: this.tareas[_i][24]
+              };
+              this.pruebas.push(p);
+            }
+          }
+        }
+      });
+      this.manejadorProvider.showTareas("showTareasReference", 4, "tareas.idEstatus", this.idU, "tareas.idUsuario").then(data =>{
+        var st='';
+        this.tareas = data['tareas'];
+      //  console.log(this.tareas);
+        if(this.tareas==null){
+          //  alert('No tiene ninguna tarea asignada');
+        }else{
+          for (var _i = 0; _i < this.tareas.length; _i++) {
+            if(this.tareas[_i]['Estatus']==1){
+              var p = {
+                id: this.tareas[_i]['idTarea'],
+                nombre: this.tareas[_i][18],
+                usuario: this.tareas[_i][27],
+                proyecto: this.tareas[_i][2],
+                sprint: this.tareas[_i][8],
+                hu: this.tareas[_i][14],
+                estatus: this.tareas[_i][24]
+              };
+              this.terminado.push(p);
+            }
+          }
+        }
       });
     }
   }
