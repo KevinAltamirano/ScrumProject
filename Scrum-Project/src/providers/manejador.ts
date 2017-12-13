@@ -4,7 +4,8 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class ManejadorProvider{
-  database = 'http://192.168.100.108:80/scrumproject/conexion.php';
+  //database = 'http://192.168.100.108:80/scrumproject/conexion.php';
+  database = 'http://localhost:80/scrumproject/conexion.php';
   usuario: any;
   constructor(public http: HttpClient){
 

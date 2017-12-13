@@ -29,34 +29,31 @@
   <ion-content padding>
     <ion-list>
       <ion-item *ngFor="let item of lista" >
-        <ion-card color="upch">
+        <ion-card color="back">
           <ion-card-header >
             <h3>Nombre:</h3>
             <h1>{{item.nombre}}</h1>
           </ion-card-header>
-        </ion-card>
 
-        <ion-card color="back">
-          <ion-card-header>
+          <ion-card-content>
             <h3>Descripcion: </h3>
             <h1>{{item.descripcion}}</h1>
             <h3>Estatus: </h3>
             <h1>{{item.estatus}}</h1>
-          </ion-card-header>         
-        </ion-card>
 
-        <ion-card color="front">
-          <ion-card-header>
-            
             <h3>Proyecto:</h3>
             <h1>{{item.proyecto}}</h1>
-            <h3>Sprint: {{item.sprint}}</h3>
+            <h3>Sprint:</h3>
             <h1>{{item.sprint}}</h1>
             <h3>Historia de usuario:</h3>
             <h1>{{item.hu}}</h1>
 
-          </ion-card-header>
+            
+          </ion-card-content>
+          
         </ion-card>
+
+        
 
         <ion-card color="menu">
           <ion-card-header>
