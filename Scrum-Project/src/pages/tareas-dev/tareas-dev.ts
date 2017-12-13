@@ -99,8 +99,8 @@ export class TareasDevPage {
 
 
 public editar(id:number){
-  let modal = this.modalCtrl.create(EstatusTareaPage, {id:id});
-  modal.present();
+  let modal = this.navCtrl.push(EstatusTareaPage, {id:id});
+ // modal.present();
 }
   public exit() {
     this.app.getRootNav().setRoot(Login1Page);

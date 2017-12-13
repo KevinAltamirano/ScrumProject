@@ -78,8 +78,8 @@ export class ProyectoPage {
   }
 
   public editar(id:number){
-    let modal = this.modalCtrl.create(ProyectoNuevoPage, {idP: id, idU:this.idUser});
-    modal.present();
+    let modal = this.navCtrl.push(ProyectoNuevoPage, {idP: id, idU:this.idUser});
+    //modal.present();
   }
 
   public eliminar(id:number){
